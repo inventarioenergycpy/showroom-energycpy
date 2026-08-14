@@ -1280,3 +1280,45 @@ select.form-input {
         grid-template-columns: 1fr;
     }
 }
+
+/* Dual Consultants Layout & Helpers */
+.consultants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.modal-wsp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .modal-wsp-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.strip-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.88rem;
+}
+
+.sub-sep {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+}
+
+.mt-2 {
+    margin-top: 10px;
+}
+

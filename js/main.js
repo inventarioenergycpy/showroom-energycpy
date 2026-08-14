@@ -3,13 +3,23 @@
    ========================================================================== */
 
 // Official Representative Contact Information
-const OFFICIAL_CONTACT = {
-    name: "Javier Ignacio Diaz & Daniel Gonzalez",
-    role: "Consultores Capital Introducer & Finder",
-    email: "areasostenible.consultorespyme@gmail.com",
-    phone: "+54 9 351 2064791",
-    whatsappLink: "https://wa.me/5493512064791"
-};
+const OFFICIAL_CONTACTS = [
+    {
+        name: "Javier Ignacio Diaz",
+        role: "Consultor Capital Introducer & Finder",
+        phone: "+54 9 351 2064791",
+        phoneClean: "5493512064791",
+        whatsappLink: "https://wa.me/5493512064791"
+    },
+    {
+        name: "Daniel Gonzalez",
+        role: "Consultor Capital Introducer & Finder",
+        phone: "+54 9 2974 23-3028",
+        phoneClean: "5492974233028",
+        whatsappLink: "https://wa.me/5492974233028"
+    }
+];
+const OFFICIAL_EMAIL = "areasostenible.consultorespyme@gmail.com";
 
 // Project Database with Slide Images & Detailed Technical Data
 const PROJECTS_DATA = {
@@ -246,9 +256,11 @@ function openProjectModal(projectId) {
     pdfBtn.href = project.pdfPath;
     pdfBtn.setAttribute("download", project.title + ".pdf");
 
-    const wspBtn = document.getElementById("modalWspBtn");
+    const wspDiazBtn = document.getElementById("modalWspDiaz");
+    const wspGonzalezBtn = document.getElementById("modalWspGonzalez");
     const wspText = encodeURIComponent(`Hola, solicito la ficha técnica e información detallada del proyecto "${project.title}".`);
-    wspBtn.href = `${OFFICIAL_CONTACT.whatsappLink}?text=${wspText}`;
+    if (wspDiazBtn) wspDiazBtn.href = `https://wa.me/5493512064791?text=${wspText}`;
+    if (wspGonzalezBtn) wspGonzalezBtn.href = `https://wa.me/5492974233028?text=${wspText}`;
 
     // Render Highlights
     const highlightsUl = document.getElementById("modalHighlights");
@@ -369,5 +381,5 @@ function handleFormSubmit(event) {
     document.getElementById("formSuccessMessage").style.display = "flex";
 
     // Prepare direct mailto backup trigger
-    console.log(`Consulta recibida para ${OFFICIAL_CONTACT.name} (${OFFICIAL_CONTACT.email}):`, { name, email, phone, project, message });
+    console.log(`Consulta recibida para Javier Ignacio Diaz & Daniel Gonzalez (${OFFICIAL_EMAIL}):`, { name, email, phone, project, message });
 }
