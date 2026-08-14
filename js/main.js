@@ -4,7 +4,8 @@
 
 // Official Representative Contact Information
 const OFFICIAL_CONTACT = {
-    name: "Diaz Javier Ignacio",
+    name: "Javier Ignacio Diaz & Daniel Gonzalez",
+    role: "Consultores Capital Introducer & Finder",
     email: "areasostenible.consultorespyme@gmail.com",
     phone: "+54 9 351 2064791",
     whatsappLink: "https://wa.me/5493512064791"
@@ -246,7 +247,7 @@ function openProjectModal(projectId) {
     pdfBtn.setAttribute("download", project.title + ".pdf");
 
     const wspBtn = document.getElementById("modalWspBtn");
-    const wspText = encodeURIComponent(`Hola Javier Diaz, solicito la ficha técnica e información detallada del proyecto "${project.title}".`);
+    const wspText = encodeURIComponent(`Hola, solicito la ficha técnica e información detallada del proyecto "${project.title}".`);
     wspBtn.href = `${OFFICIAL_CONTACT.whatsappLink}?text=${wspText}`;
 
     // Render Highlights
@@ -368,5 +369,5 @@ function handleFormSubmit(event) {
     document.getElementById("formSuccessMessage").style.display = "flex";
 
     // Prepare direct mailto backup trigger
-    console.log(`Consulta recibida para Javier Diaz (${OFFICIAL_CONTACT.email}):`, { name, email, phone, project, message });
+    console.log(`Consulta recibida para ${OFFICIAL_CONTACT.name} (${OFFICIAL_CONTACT.email}):`, { name, email, phone, project, message });
 }
