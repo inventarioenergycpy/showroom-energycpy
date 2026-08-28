@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy CPY — Showroom Oficial de Inversiones Estratégicas</title>
-    <meta name="description" content="Plataforma ejecutiva de inversión en Energía Solar, Pesca Industrial en Patagonia, Infraestructura Energética y Estrategias REIT en Argentina 2026.">
+    <title>Energy CPY — Showroom Oficial de Inversiones Estratégicas 2026</title>
+    <meta name="description" content="Plataforma ejecutiva de inversión en Energía Solar, Pesca Industrial en Patagonia, Infraestructura Energética, Minería, Hotelería y Estrategias REIT en Argentina 2026.">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Energy CPY — Showroom de Inversiones Estratégicas">
@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,21 +46,38 @@
                 </svg>
                 <div class="brand-text">
                     <span class="brand-title">ENERGY <span class="accent">CPY</span></span>
-                    <span class="brand-sub">INVESTMENT SHOWROOM</span>
+                    <span class="brand-sub" data-i18n="brand_sub">INVESTMENT SHOWROOM</span>
                 </div>
             </a>
             
             <nav class="nav-links" id="navLinks">
-                <a href="#inicio"><i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="#proyectos"><i class="fa-solid fa-chart-pie"></i> Proyectos</a>
-                <a href="#metricas"><i class="fa-solid fa-sliders"></i> Indicadores</a>
-                <a href="#ecosistema"><i class="fa-solid fa-shield-halved"></i> Garantías</a>
-                <a href="#contacto" class="btn btn-outline-gold"><i class="fa-solid fa-user-check"></i> Contacto Oficial</a>
+                <a href="#inicio"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Inicio</span></a>
+                <a href="#proyectos"><i class="fa-solid fa-chart-pie"></i> <span data-i18n="nav_projects">Proyectos</span></a>
+                <a href="#metricas"><i class="fa-solid fa-sliders"></i> <span data-i18n="nav_metrics">Indicadores</span></a>
+                <a href="#ecosistema"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="nav_guarantees">Garantías</span></a>
+                <a href="#contacto" class="btn btn-outline-gold"><i class="fa-solid fa-user-check"></i> <span data-i18n="nav_contact">Contacto Oficial</span></a>
             </nav>
 
-            <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir Menú">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="nav-right-cluster">
+                <!-- Language Selector (ES 🇦🇷 / EN 🇺🇸) -->
+                <div class="lang-switcher-box" title="Seleccionar Idioma / Select Language">
+                    <button type="button" class="lang-pill-btn active" id="langBtnEs">
+                        <span class="flag-emoji">🇦🇷</span> ES
+                    </button>
+                    <button type="button" class="lang-pill-btn" id="langBtnEn">
+                        <span class="flag-emoji">🇺🇸</span> EN
+                    </button>
+                </div>
+
+                <!-- Consultant Admin Trigger Button -->
+                <button type="button" class="btn-nav-admin" onclick="openAdminAuthModal()" title="Acceso Consultores (Javier Diaz / Daniel Gonzalez)">
+                    <i class="fa-solid fa-lock"></i> <span data-i18n="nav_admin">Gestión</span>
+                </button>
+
+                <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -70,54 +87,50 @@
         <div class="hero-glow glow-2"></div>
         
         <div class="container hero-content">
-            <div class="hero-badge">
+            <div class="hero-badge" data-i18n="hero_badge">
                 <span class="badge-dot"></span> 🏛️ Plataforma Oficial de Inversiones — Argentina 2026
             </div>
             
             <h1 class="hero-title">
-                Oportunidades Estratégicas de <span class="text-gradient">Alto Rendimiento</span>
+                <span data-i18n="hero_title_1">Oportunidades Estratégicas de</span> <span class="text-gradient" data-i18n="hero_title_2">Alto Rendimiento</span>
             </h1>
             
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n="hero_desc">
                 Estructuración de capital y proyectos llave en mano en <strong>Energía Solar Fotovoltaica</strong>, 
                 <strong>Pesca Industrial de Gran Escala en Patagonia</strong>, <strong>Servicios Energéticos en Salta</strong> y <strong>Estrategias REIT Dolarizadas</strong>.
             </p>
             
             <div class="hero-cta-group">
                 <a href="#proyectos" class="btn btn-primary-gold">
-                    <i class="fa-solid fa-rocket"></i> Explorar Oportunidades
+                    <i class="fa-solid fa-rocket"></i> <span data-i18n="hero_btn_explore">Explorar Oportunidades</span>
                 </a>
                 <a href="#contacto" class="btn btn-glass">
-                    <i class="fa-solid fa-paper-plane"></i> Contactar a Dirección
+                    <i class="fa-solid fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Contactar a Dirección</span>
                 </a>
             </div>
 
-            <!-- Representative Quick Card -->
+            <!-- Consultant WhatsApp Direct Strip (Zero Email Exposure) -->
             <div class="hero-contact-strip">
                 <div class="contact-strip-item">
                     <i class="fa-solid fa-user-tie icon-gold"></i>
                     <div>
-                        <span class="strip-label">Consultores de Capital</span>
+                        <span class="strip-label" data-i18n="strip_consultants_label">Consultores de Capital</span>
                         <span class="strip-value">Javier Ignacio Diaz & Daniel Gonzalez</span>
-                    </div>
-                </div>
-                <div class="contact-strip-divider"></div>
-                <div class="contact-strip-item">
-                    <i class="fa-solid fa-envelope icon-cyan"></i>
-                    <div>
-                        <span class="strip-label">Email Corporativo</span>
-                        <a href="mailto:areasostenible.consultorespyme@gmail.com" class="strip-value strip-link">areasostenible.consultorespyme@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-strip-divider"></div>
                 <div class="contact-strip-item">
                     <i class="fa-brands fa-whatsapp icon-green"></i>
                     <div>
-                        <span class="strip-label">Teléfonos / WhatsApp Directo</span>
+                        <span class="strip-label" data-i18n="strip_wsp_label">WhatsApp Directo Consultores</span>
                         <div class="strip-numbers">
-                            <a href="https://wa.me/5493512064791" target="_blank" rel="noopener" class="strip-value strip-link"><strong>J. Diaz:</strong> +54 9 351 2064791</a>
+                            <a href="https://wa.me/5493512064791" target="_blank" rel="noopener" class="strip-value strip-link">
+                                <strong>J. Diaz:</strong> +54 9 351 2064791
+                            </a>
                             <span class="sub-sep">|</span>
-                            <a href="https://wa.me/5492974233028" target="_blank" rel="noopener" class="strip-value strip-link"><strong>D. Gonzalez:</strong> +54 9 2974 23-3028</a>
+                            <a href="https://wa.me/5492974233028" target="_blank" rel="noopener" class="strip-value strip-link">
+                                <strong>D. Gonzalez:</strong> +54 9 2974 23-3028
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -131,290 +144,111 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <i class="fa-solid fa-sack-dollar stat-icon"></i>
-                    <span class="stat-badge">+265M USD</span>
+                    <span class="stat-badge" data-i18n="stat_capex_badge">+265M USD</span>
                 </div>
                 <h3 class="stat-number" data-target="265.5">USD 0M</h3>
-                <p class="stat-label">CAPEX Total en Portafolio</p>
-                <p class="stat-sub">Activos físicos estructurados en Argentina</p>
+                <p class="stat-label" data-i18n="stat_capex_lbl">CAPEX Total en Portafolio</p>
+                <p class="stat-sub" data-i18n="stat_capex_sub">Activos físicos estructurados en Argentina</p>
             </div>
             
             <div class="stat-card">
                 <div class="stat-header">
                     <i class="fa-solid fa-solar-panel stat-icon icon-cyan"></i>
-                    <span class="stat-badge">Co-Financiado</span>
+                    <span class="stat-badge" data-i18n="stat_solar_badge">Co-Financiado</span>
                 </div>
                 <h3 class="stat-number" data-target="50">0%</h3>
-                <p class="stat-label">CAPEX Solar Pre-Financiado</p>
-                <p class="stat-sub">Respaldado por fabricante global de tecnología</p>
+                <p class="stat-label" data-i18n="stat_solar_lbl">CAPEX Solar Pre-Financiado</p>
+                <p class="stat-sub" data-i18n="stat_solar_sub">Respaldado por fabricante global de tecnología</p>
             </div>
             
             <div class="stat-card">
                 <div class="stat-header">
                     <i class="fa-solid fa-ship stat-icon icon-gold"></i>
-                    <span class="stat-badge">600M USD/año</span>
+                    <span class="stat-badge" data-i18n="stat_pesca_badge">600M USD/año</span>
                 </div>
                 <h3 class="stat-number" data-target="25">0 Años</h3>
-                <p class="stat-label">Track Record en Pesca Industrial</p>
-                <p class="stat-sub">Flota activa de 16 buques en ZEE Patagonia</p>
+                <p class="stat-label" data-i18n="stat_pesca_lbl">Track Record en Pesca Industrial</p>
+                <p class="stat-sub" data-i18n="stat_pesca_sub">Flota activa de 16 buques en ZEE Patagonia</p>
             </div>
 
             <div class="stat-card">
                 <div class="stat-header">
                     <i class="fa-solid fa-file-contract stat-icon icon-green"></i>
-                    <span class="stat-badge">MATER / PPA</span>
+                    <span class="stat-badge" data-i18n="stat_mater_badge">MATER / PPA</span>
                 </div>
                 <h3 class="stat-number" data-target="20">0 Años</h3>
-                <p class="stat-label">Plazo PPA Indexado en Dólares</p>
-                <p class="stat-sub">Contratos con industrias y distribuidores</p>
+                <p class="stat-label" data-i18n="stat_mater_lbl">Plazo PPA Indexado en Dólares</p>
+                <p class="stat-sub" data-i18n="stat_mater_sub">Contratos con industrias y distribuidores</p>
             </div>
         </div>
     </section>
 
-    <!-- Project Showroom Catalog -->
+    <!-- Project Showroom Catalog & Advanced Multicriteria Filters -->
     <section class="projects-section" id="proyectos">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">CATÁLOGO EJECUTIVO</span>
-                <h2 class="section-title">Portafolio de Proyectos de Inversión</h2>
-                <p class="section-desc">Haga clic en cualquier propuesta para desplegar su ficha técnica y el visor interactivo de diapositivas.</p>
+                <span class="section-subtitle" data-i18n="catalog_subtitle">CATÁLOGO EJECUTIVO</span>
+                <h2 class="section-title" data-i18n="catalog_title">Portafolio de Proyectos de Inversión</h2>
+                <p class="section-desc" data-i18n="catalog_desc">Utilice los filtros avanzados por monto, categoría y estado para explorar las oportunidades disponibles.</p>
                 
-                <!-- Filter Tabs -->
-                <div class="filter-tabs" id="filterTabs">
-                    <button class="tab-btn active" data-filter="all">
-                        <i class="fa-solid fa-border-all"></i> Todos (5)
-                    </button>
-                    <button class="tab-btn" data-filter="energia">
-                        <i class="fa-solid fa-bolt"></i> Energía Solar (1)
-                    </button>
-                    <button class="tab-btn" data-filter="pesca">
-                        <i class="fa-solid fa-water"></i> Pesca Industrial (2)
-                    </button>
-                    <button class="tab-btn" data-filter="infraestructura">
-                        <i class="fa-solid fa-industry"></i> Pozo Salta (1)
-                    </button>
-                    <button class="tab-btn" data-filter="reit">
-                        <i class="fa-solid fa-building-columns"></i> Estrategia REIT (1)
-                    </button>
+                <!-- Advanced Filter Box -->
+                <div class="advanced-filter-panel">
+                    <!-- Row 1: Search text + Sector category + Status -->
+                    <div class="filter-row-primary">
+                        <div class="filter-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass filter-input-icon"></i>
+                            <input type="text" id="filterSearch" class="filter-text-input" placeholder="Buscar por palabra clave..." data-i18n-placeholder="filter_search_placeholder">
+                        </div>
+
+                        <select id="filterCategory" class="filter-select">
+                            <option value="all" data-i18n="filter_category_all">Todos los Sectores</option>
+                            <option value="energia" data-i18n="filter_cat_energia">Energía Solar & Renovable</option>
+                            <option value="pesca" data-i18n="filter_cat_pesca">Pesca Industrial</option>
+                            <option value="petroleo" data-i18n="filter_cat_petroleo">Petróleo, Gas & Infraestructura</option>
+                            <option value="reit" data-i18n="filter_cat_reit">Fondo Inmobiliario REIT</option>
+                            <option value="mineria" data-i18n="filter_cat_mineria">Minería & Litio</option>
+                            <option value="hoteleria" data-i18n="filter_cat_hoteleria">Hotelería & Renta</option>
+                        </select>
+
+                        <select id="filterStatus" class="filter-select">
+                            <option value="all" data-i18n="filter_status_all">Todos los Estados</option>
+                            <option value="activo" data-i18n="filter_status_activo">🔵 Activo (Azul)</option>
+                            <option value="tramite" data-i18n="filter_status_tramite">🟡 En trámite (Amarillo)</option>
+                            <option value="vendido" data-i18n="filter_status_vendido">🟢 Vendido (Verde)</option>
+                        </select>
+                    </div>
+
+                    <!-- Row 2: Monto Desde - Hasta (USD Millions) & Presets -->
+                    <div class="filter-row-amount">
+                        <span class="amount-title" data-i18n="filter_amount_title">
+                            <i class="fa-solid fa-sack-dollar text-gold"></i> Monto del Proyecto (USD):
+                        </span>
+                        
+                        <div class="amount-inputs-group">
+                            <input type="number" id="filterMinAmount" class="amount-input" placeholder="Desde USD (M)" data-i18n-placeholder="filter_amount_min" min="0" step="0.5">
+                            <span class="amount-sep">—</span>
+                            <input type="number" id="filterMaxAmount" class="amount-input" placeholder="Hasta USD (M)" data-i18n-placeholder="filter_amount_max" min="0" step="0.5">
+                        </div>
+
+                        <div class="amount-preset-chips">
+                            <button type="button" class="preset-btn active" data-min="" data-max="" data-i18n="filter_preset_all">Todos los Montos</button>
+                            <button type="button" class="preset-btn" data-min="0" data-max="10" data-i18n="filter_preset_under10">&lt; USD 10M</button>
+                            <button type="button" class="preset-btn" data-min="10" data-max="50" data-i18n="filter_preset_10to50">USD 10M - 50M</button>
+                            <button type="button" class="preset-btn" data-min="50" data-max="200" data-i18n="filter_preset_50to200">USD 50M - 200M</button>
+                            <button type="button" class="preset-btn" data-min="200" data-max="9999" data-i18n="filter_preset_over200">&gt; USD 200M</button>
+                        </div>
+                    </div>
+
+                    <!-- Results Bar -->
+                    <div class="filter-results-bar">
+                        <span id="resultsCounter">Mostrando 5 de 5 proyectos de inversión</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- Dynamic Project Cards Grid -->
             <div class="projects-grid" id="projectsGrid">
-                
-                <!-- Project Card 1: Energía Solar -->
-                <article class="project-card" data-category="energia" data-id="solar">
-                    <div class="card-image-wrapper">
-                        <span class="card-tag tag-energy"><i class="fa-solid fa-sun"></i> Energía Solar Fotovoltaica</span>
-                        <img src="assets/slides/Inversión_en_Plantas_Solares_en_Argentina_2026_page_1.png" alt="Energía Solar Fotovoltaica CPY" class="card-img">
-                        <div class="card-overlay">
-                            <span class="overlay-btn"><i class="fa-solid fa-images"></i> Ver 13 Diapositivas</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-header-info">
-                            <span class="card-location"><i class="fa-solid fa-location-dot"></i> Cuyo y NOA, Argentina</span>
-                            <span class="card-status status-active">Co-Financiado 50%</span>
-                        </div>
-                        <h3 class="card-title">Plantas Solares Llave en Mano con Financiamiento Asegurado</h3>
-                        <p class="card-desc">Desarrollo fotovoltaico estratégico con el 50% del CAPEX pre-financiado por fabricante líder global de tecnología y contratos PPA dólar a 15-20 años.</p>
-                        
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <span class="metric-val text-gold">50% CAPEX</span>
-                                <span class="metric-lbl">Pre-Financiado</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val">15 - 20 Años</span>
-                                <span class="metric-lbl">Contratos PPA USD</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val text-green">MATER / EPC</span>
-                                <span class="metric-lbl">Garantía Total</span>
-                            </div>
-                        </div>
-
-                        <div class="card-footer-actions">
-                            <button class="btn btn-card" onclick="openProjectModal('solar')">
-                                <i class="fa-solid fa-expand"></i> Ver Presentación & Ficha
-                            </button>
-                            <a href="assets/docs/plantas_solares_2026.pdf" download class="btn btn-icon-download" title="Descargar PDF">
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project Card 2: Pesca Industrial Gran Escala -->
-                <article class="project-card" data-category="pesca" data-id="pesca-gran-escala">
-                    <div class="card-image-wrapper">
-                        <span class="card-tag tag-pesca"><i class="fa-solid fa-ship"></i> Pesca Industrial Gran Escala</span>
-                        <img src="assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_2.png" alt="Pesca Industrial Gran Escala" class="card-img">
-                        <div class="card-overlay">
-                            <span class="overlay-btn"><i class="fa-solid fa-images"></i> Ver 13 Diapositivas</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-header-info">
-                            <span class="card-location"><i class="fa-solid fa-location-dot"></i> ZEE Patagonia, Argentina</span>
-                            <span class="card-status status-gold">USD 260M CAPEX</span>
-                        </div>
-                        <h3 class="card-title">Proyecto 6.6 — Pesca Industrial de Gran Escala</h3>
-                        <p class="card-desc">Modelo consolidado de alta rentabilidad para captura de especies premium (Merluza Hubbsi y Langostino Rojo) con flota activa de 16 buques y planta de procesado propia.</p>
-                        
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <span class="metric-val text-gold">USD 260M</span>
-                                <span class="metric-lbl">CAPEX Requerido</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val text-green">USD 600M/año</span>
-                                <span class="metric-lbl">Ganancia Anual</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val">16 Buques</span>
-                                <span class="metric-lbl">Flota Activa</span>
-                            </div>
-                        </div>
-
-                        <div class="card-footer-actions">
-                            <button class="btn btn-card" onclick="openProjectModal('pesca-gran-escala')">
-                                <i class="fa-solid fa-expand"></i> Ver Presentación & Ficha
-                            </button>
-                            <a href="assets/docs/pesca_industrial_2026.pdf" download class="btn btn-icon-download" title="Descargar PDF">
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project Card 3: Pesca Integrado Patagonia -->
-                <article class="project-card" data-category="pesca" data-id="pesca-integrado">
-                    <div class="card-image-wrapper">
-                        <span class="card-tag tag-pesca"><i class="fa-solid fa-fish"></i> Cadena de Valor Pesquera</span>
-                        <img src="assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_4.png" alt="Pesca Integrado Patagonia" class="card-img">
-                        <div class="card-overlay">
-                            <span class="overlay-btn"><i class="fa-solid fa-images"></i> Ver 13 Diapositivas</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-header-info">
-                            <span class="card-location"><i class="fa-solid fa-location-dot"></i> Madryn / Deseado / Mar del Plata</span>
-                            <span class="card-status status-green">USD 5.5M CAPEX</span>
-                        </div>
-                        <h3 class="card-title">Proyecto 6.7 — Ecosistema Pesquero Integrado Patagonia</h3>
-                        <p class="card-desc">Estructura ágil de capital con rápida recuperación (ROI) respaldada por demanda inelástica en mercados internacionales y certificación global MSC Certified.</p>
-                        
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <span class="metric-val text-gold">USD 5.5M</span>
-                                <span class="metric-lbl">CAPEX Total</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val text-green">USD 4.5M/año</span>
-                                <span class="metric-lbl">Retorno Anual</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val">MSC Certified</span>
-                                <span class="metric-lbl">Estándar Global</span>
-                            </div>
-                        </div>
-
-                        <div class="card-footer-actions">
-                            <button class="btn btn-card" onclick="openProjectModal('pesca-integrado')">
-                                <i class="fa-solid fa-expand"></i> Ver Presentación & Ficha
-                            </button>
-                            <a href="assets/docs/pesca_industrial_2026.pdf" download class="btn btn-icon-download" title="Descargar PDF">
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project Card 4: Pozo Salta -->
-                <article class="project-card" data-category="infraestructura" data-id="pozo-salta">
-                    <div class="card-image-wrapper">
-                        <span class="card-tag tag-infra"><i class="fa-solid fa-oil-well"></i> Servicios Energéticos Salta</span>
-                        <img src="assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_1.png" alt="Proyecto Pozo Salta" class="card-img">
-                        <div class="card-overlay">
-                            <span class="overlay-btn"><i class="fa-solid fa-images"></i> Ver 25 Diapositivas</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-header-info">
-                            <span class="card-location"><i class="fa-solid fa-location-dot"></i> Provincia de Salta, Argentina</span>
-                            <span class="card-status status-active">Infraestructura Crítica</span>
-                        </div>
-                        <h3 class="card-title">Proyecto Pozo Salta — Infraestructura & Secado de Cuttings</h3>
-                        <p class="card-desc">Desarrollo de servicios petroleros y gasíferos de última generación, tratamiento de efluentes, locación seca e industrialización técnica en el NOA.</p>
-                        
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <span class="metric-val text-cyan">Cuenca NOA</span>
-                                <span class="metric-lbl">Ubicación Clave</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val">25 Slides</span>
-                                <span class="metric-lbl">Dossier Técnico</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val text-gold">Dolarizado</span>
-                                <span class="metric-lbl">Contratos Operativos</span>
-                            </div>
-                        </div>
-
-                        <div class="card-footer-actions">
-                            <button class="btn btn-card" onclick="openProjectModal('pozo-salta')">
-                                <i class="fa-solid fa-expand"></i> Ver Presentación & Ficha
-                            </button>
-                            <a href="assets/docs/pozo_salta_2026.pdf" download class="btn btn-icon-download" title="Descargar PDF">
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project Card 5: REIT Investment Strategy -->
-                <article class="project-card" data-category="reit" data-id="reit-strategy">
-                    <div class="card-image-wrapper">
-                        <span class="card-tag tag-reit"><i class="fa-solid fa-landmark"></i> Fondo REIT Argentina</span>
-                        <img src="assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_1.png" alt="ENERGY CPY REIT Investment Strategy" class="card-img">
-                        <div class="card-overlay">
-                            <span class="overlay-btn"><i class="fa-solid fa-images"></i> Ver 11 Diapositivas</span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-header-info">
-                            <span class="card-location"><i class="fa-solid fa-location-dot"></i> Argentina 2026</span>
-                            <span class="card-status status-gold">Renta Corporativa</span>
-                        </div>
-                        <h3 class="card-title">ENERGY CPY Argentina REIT Investment Strategy</h3>
-                        <p class="card-desc">Fondo de inversión inmobiliario y estructuración de fideicomisos para activos corporativos e industriales de alto rendimiento con flujos de caja predecibles.</p>
-                        
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <span class="metric-val text-gold">REIT Fund</span>
-                                <span class="metric-lbl">Vehículo Financiero</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val">11 Slides</span>
-                                <span class="metric-lbl">Estrategia 2026</span>
-                            </div>
-                            <div class="metric-item">
-                                <span class="metric-val text-green">Renta USD</span>
-                                <span class="metric-lbl">Flujo Dolarizado</span>
-                            </div>
-                        </div>
-
-                        <div class="card-footer-actions">
-                            <button class="btn btn-card" onclick="openProjectModal('reit-strategy')">
-                                <i class="fa-solid fa-expand"></i> Ver Presentación & Ficha
-                            </button>
-                            <a href="assets/docs/reit_strategy_2026.pdf" download class="btn btn-icon-download" title="Descargar PDF">
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
+                <!-- Rendered dynamically by JS -->
             </div>
         </div>
     </section>
@@ -423,53 +257,52 @@
     <section class="ecosystem-section" id="ecosistema">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-subtitle">SEGURIDAD Y MITIGACIÓN DE RIESGOS</span>
-                <h2 class="section-title">Ecosistema Integrado & Garantías de Inversión</h2>
-                <p class="section-desc">Estructuración sólida con mitigación activa de riesgos técnicos, financieros y regulatorios.</p>
+                <span class="section-subtitle" data-i18n="ecosystem_subtitle">SEGURIDAD Y MITIGACIÓN DE RIESGOS</span>
+                <h2 class="section-title" data-i18n="ecosystem_title">Ecosistema Integrado & Garantías de Inversión</h2>
+                <p class="section-desc" style="margin: 0 auto;" data-i18n="ecosystem_desc">Estructuración sólida con mitigación activa de riesgos técnicos, financieros y regulatorios.</p>
             </div>
 
             <div class="features-grid">
                 <div class="feature-box">
                     <div class="feature-icon"><i class="fa-solid fa-handshake"></i></div>
-                    <h3>Alianzas con Fabricantes Líderes</h3>
-                    <p>En proyectos fotovoltaicos, el 50% del CAPEX es pre-financiado directamente por fabricantes mundiales de primer nivel, reduciendo la exposición inicial de capital.</p>
+                    <h3 data-i18n="eco_1_title">Alianzas con Fabricantes Líderes</h3>
+                    <p data-i18n="eco_1_desc">En proyectos fotovoltaicos, el 50% del CAPEX es pre-financiado directamente por fabricantes mundiales de primer nivel, reduciendo la exposición inicial de capital.</p>
                 </div>
                 
                 <div class="feature-box">
                     <div class="feature-icon icon-cyan"><i class="fa-solid fa-file-signature"></i></div>
-                    <h3>Contratos PPA & Renta Dolarizada</h3>
-                    <p>Acuerdos de compra de energía a largo plazo (15 a 20 años) indexados al USD, garantizando predictibilidad total de flujos de caja y rentabilidad sostenida.</p>
+                    <h3 data-i18n="eco_2_title">Contratos PPA & Renta Dolarizada</h3>
+                    <p data-i18n="eco_2_desc">Acuerdos de compra de energía a largo plazo (15 a 20 años) indexados al USD, garantizando predictibilidad total de flujos de caja y rentabilidad sostenida.</p>
                 </div>
                 
                 <div class="feature-box">
                     <div class="feature-icon icon-gold"><i class="fa-solid fa-award"></i></div>
-                    <h3>Certificación Global MSC & ESG</h3>
-                    <p>En el sector pesquero de la Patagonia, las pesquerías operan bajo normas internacionales estrictas MSC Certified, asegurando acceso prioritario a mercados de exportación.</p>
+                    <h3 data-i18n="eco_3_title">Certificación Global MSC & ESG</h3>
+                    <p data-i18n="eco_3_desc">En el sector pesquero de la Patagonia, las pesquerías operan bajo normas internacionales estrictas MSC Certified, asegurando acceso prioritario a mercados de exportación.</p>
                 </div>
 
                 <div class="feature-box">
                     <div class="feature-icon icon-green"><i class="fa-solid fa-shield-cat"></i></div>
-                    <h3>Construcción Llave en Mano (EPC)</h3>
-                    <p>Ingeniería de detalle, montaje y puesta en marcha ejecutados bajo contratos cerrados de tarifa fija para neutralizar desvíos presupuestarios.</p>
+                    <h3 data-i18n="eco_4_title">Construcción Llave en Mano (EPC)</h3>
+                    <p data-i18n="eco_4_desc">Ingeniería de detalle, montaje y puesta en marcha ejecutados bajo contratos cerrados de tarifa fija para neutralizar desvíos presupuestarios.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & MoU Section -->
+    <!-- Contact & Dossier Section (Zero Email Exposure to Guest Clients) -->
     <section class="contact-section" id="contacto">
         <div class="container">
             <div class="contact-card-wrapper">
                 
-                <!-- Left Info Box -->
+                <!-- Left Info Box: WhatsApp Only -->
                 <div class="contact-info-panel">
-                    <span class="badge-tag gold-badge">INFORMACIÓN OFICIAL DE CONTACTO</span>
-                    <h2>Deseo iniciar una conversación o coordinar una reunión</h2>
-                    <p class="contact-intro">
-                        Comuníquese directamente con los consultores estratégicos de <strong>Energy CPY</strong> para acceder a los memorandos de entendimiento (MoU), informes de debida diligencia o acordar estructuras de Join Venture.
+                    <span class="gold-badge" data-i18n="contact_tag">CANAL EJECUTIVO DIRECTO</span>
+                    <h2 data-i18n="contact_title">Consultas Directas con Consultores de Capital</h2>
+                    <p class="contact-intro" data-i18n="contact_desc">
+                        Comuníquese directamente con nuestros consultores estratégicos vía WhatsApp para solicitar memorandos de entendimiento (MoU), informes de debida diligencia o acordar estructuras conjuntas.
                     </p>
 
-                    <!-- Consultants Stack (1 Column Stack, 0% Overlap) -->
                     <div class="consultants-stack">
                         <!-- Consultant 1: Javier Ignacio Diaz -->
                         <div class="official-contact-card">
@@ -477,16 +310,14 @@
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
                             <div class="contact-details">
-                                <div class="contact-header-info">
-                                    <h3>Javier Ignacio Diaz</h3>
-                                    <span class="contact-role">Consultor Capital Introducer & Finder</span>
-                                </div>
+                                <h3>Javier Ignacio Diaz</h3>
+                                <span class="contact-role">Consultor Capital Introducer & Finder</span>
                                 <div class="contact-phone-row">
                                     <i class="fa-brands fa-whatsapp icon-green"></i>
                                     <a href="https://wa.me/5493512064791" target="_blank" rel="noopener" class="phone-link">+54 9 351 2064791</a>
                                 </div>
                                 <a href="https://wa.me/5493512064791?text=Hola%20Javier%2C%20quisiera%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20proyectos%20de%20Energy%20CPY" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm mt-2">
-                                    <i class="fa-brands fa-whatsapp"></i> Chat en WhatsApp con Javier Diaz
+                                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="wsp_btn_chat_javier">Chat en WhatsApp con Javier Diaz</span>
                                 </a>
                             </div>
                         </div>
@@ -497,82 +328,79 @@
                                 <i class="fa-solid fa-user-tie"></i>
                             </div>
                             <div class="contact-details">
-                                <div class="contact-header-info">
-                                    <h3>Daniel Gonzalez</h3>
-                                    <span class="contact-role">Consultor Capital Introducer & Finder</span>
-                                </div>
+                                <h3>Daniel Gonzalez</h3>
+                                <span class="contact-role">Consultor Capital Introducer & Finder</span>
                                 <div class="contact-phone-row">
                                     <i class="fa-brands fa-whatsapp icon-green"></i>
                                     <a href="https://wa.me/5492974233028" target="_blank" rel="noopener" class="phone-link">+54 9 2974 23-3028</a>
                                 </div>
                                 <a href="https://wa.me/5492974233028?text=Hola%20Daniel%2C%20quisiera%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20proyectos%20de%20Energy%20CPY" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm mt-2">
-                                    <i class="fa-brands fa-whatsapp"></i> Chat en WhatsApp con Daniel Gonzalez
+                                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="wsp_btn_chat_daniel">Chat en WhatsApp con Daniel Gonzalez</span>
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Shared Email Block (Single Link) -->
-                    <div class="shared-email-box">
-                        <i class="fa-solid fa-envelope icon-gold"></i>
-                        <div>
-                            <span class="email-label">Correo Electrónico Oficial</span>
-                            <a href="mailto:areasostenible.consultorespyme@gmail.com" class="email-value">areasostenible.consultorespyme@gmail.com</a>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Right Form Box -->
+                <!-- Right Form Box (Silent Dispatch to Javier/Daniel Email) -->
                 <div class="contact-form-panel">
-                    <h3>Solicitar Dossier / Coordinar Reunión</h3>
-                    <p>Complete el formulario a continuación y nos pondremos en contacto a la brevedad.</p>
+                    <h3 data-i18n="form_title">Solicitar Dossier / Coordinar Reunión</h3>
+                    <p data-i18n="form_desc">Complete los campos y el sistema derivará automáticamente su solicitud al consultor especialista en la temática.</p>
 
                     <form id="contactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <label for="formName">Nombre Completo *</label>
-                            <input type="text" id="formName" class="form-input" placeholder="Ej. Ing. Martín Rodríguez" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="formEmail">Correo Electrónico *</label>
-                                <input type="email" id="formEmail" class="form-input" placeholder="inversor@empresa.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="formPhone">Teléfono / WhatsApp *</label>
-                                <input type="tel" id="formPhone" class="form-input" placeholder="+54 9 11 ..." required>
-                            </div>
+                            <label for="formName" data-i18n="form_name">Nombre Completo *</label>
+                            <input type="text" id="formName" class="form-input" placeholder="Ej. Ing. Martín Rodríguez" data-i18n-placeholder="form_name_ph" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="formProject">Proyecto de Interés Principal *</label>
+                            <label for="formPhone" data-i18n="form_phone">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="formPhone" class="form-input" placeholder="+54 9 11 ... o código internacional" data-i18n-placeholder="form_phone_ph" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formProject" data-i18n="form_project_lbl">Proyecto o Temática de Interés *</label>
                             <select id="formProject" class="form-input" required>
-                                <option value="" disabled selected>Seleccione una opción...</option>
-                                <option value="Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)">Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)</option>
-                                <option value="Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)">Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)</option>
-                                <option value="Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)">Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)</option>
-                                <option value="Proyecto Pozo Salta (Servicios Petroleros & Cuttings)">Proyecto Pozo Salta (Servicios Petroleros & Cuttings)</option>
-                                <option value="Estrategia REIT & Fondo de Inversión Dolarizado">Estrategia REIT & Fondo de Inversión Dolarizado</option>
+                                <option value="" disabled selected data-i18n="form_project_ph">Seleccione una opción...</option>
+                                <optgroup label="Especialidad: Javier Diaz (Minería, Energía, Ingeniería, English)">
+                                    <option value="Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)">Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)</option>
+                                    <option value="Energía Renovable & Parques Eólicos / MATER">Energía Renovable & Parques Eólicos / MATER</option>
+                                    <option value="Minería, Litio & Cobre en Argentina">Minería, Litio & Cobre en Argentina</option>
+                                    <option value="Proyectos de Ingeniería e Infraestructura Crítica">Proyectos de Ingeniería e Infraestructura Crítica</option>
+                                    <option value="English Language Inquiries / Foreign Investment">English Language Inquiries / Foreign Investment</option>
+                                </optgroup>
+                                <optgroup label="Especialidad: Daniel Gonzalez (Hotelería, Pesca, Petróleo, REIT, Finanzas)">
+                                    <option value="Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)">Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)</option>
+                                    <option value="Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)">Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)</option>
+                                    <option value="Proyecto Pozo Salta (Servicios Petroleros & Cuttings)">Proyecto Pozo Salta (Servicios Petroleros & Cuttings)</option>
+                                    <option value="Petróleo & Gas / Cuencas Hidrocarburíferas">Petróleo & Gas / Cuencas Hidrocarburíferas</option>
+                                    <option value="Estrategia REIT & Fondo de Inversión Dolarizado">Estrategia REIT & Fondo de Inversión Dolarizado</option>
+                                    <option value="Hotelería & Complejos Turísticos de Renta">Hotelería & Complejos Turísticos de Renta</option>
+                                    <option value="TRUST Real Estate & Parques Logísticos">TRUST Real Estate & Parques Logísticos</option>
+                                    <option value="Renta Corporativa & Asesoramiento Financiero">Renta Corporativa & Asesoramiento Financiero</option>
+                                </optgroup>
                                 <option value="Consulta General de Portafolio">Consulta General de Portafolio</option>
                             </select>
                         </div>
 
+                        <!-- Dynamic Assigned Specialist Indicator -->
+                        <div id="formSpecialistBadge" class="specialist-badge-box" style="display: none;">
+                            <!-- Injected dynamically -->
+                        </div>
+
                         <div class="form-group">
-                            <label for="formMessage">Mensaje o Consulta Específica</label>
-                            <textarea id="formMessage" class="form-input form-textarea" rows="4" placeholder="Indique sus requerimientos, ticket de inversión estimado o propuesta de alianza..."></textarea>
+                            <label for="formMessage" data-i18n="form_message_lbl">Mensaje o Requerimiento Específico</label>
+                            <textarea id="formMessage" class="form-input form-textarea" rows="4" placeholder="Indique ticket estimado de inversión, plazo previsto o detalle de consulta..." data-i18n-placeholder="form_message_ph"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary-gold btn-block">
-                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje a Consultores
+                            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="form_btn_submit">Enviar Solicitud a Consultores</span>
                         </button>
                     </form>
                     
-                    <div id="formSuccessMessage" class="form-success-alert" style="display: none;">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <div>
-                            <h4>¡Mensaje Recibido!</h4>
-                            <p>Muchas gracias por contactarse. Su solicitud ha sido enviada a <strong>Javier Ignacio Diaz y Daniel Gonzalez</strong> (<code>areasostenible.consultorespyme@gmail.com</code>).</p>
-                        </div>
+                    <!-- Success Executive Message (Zero email displayed) -->
+                    <div id="formSuccessMessage" style="display: none;">
+                        <!-- Injected dynamically by JS -->
                     </div>
                 </div>
 
@@ -587,13 +415,16 @@
                 <a href="#" class="brand-logo">
                     <span class="brand-title">ENERGY <span class="accent">CPY</span></span>
                 </a>
-                <p>Plataforma de Inversión Estratégica & Showroom de Proyectos.</p>
+                <p data-i18n="brand_sub">INVESTMENT SHOWROOM</p>
             </div>
             
             <div class="footer-meta">
-                <p>© 2026 Energy CPY — Todos los derechos reservados.</p>
-                <p>Desplegado bajo el dominio oficial <code>inventarioenergycpy.github.io</code></p>
-                <p>Consultores Capital Introducer & Finder: <strong>Javier Ignacio Diaz</strong> (<a href="https://wa.me/5493512064791" target="_blank" class="text-gold">+54 9 351 2064791</a>) | <strong>Daniel Gonzalez</strong> (<a href="https://wa.me/5492974233028" target="_blank" class="text-gold">+54 9 2974 23-3028</a>) | <a href="mailto:areasostenible.consultorespyme@gmail.com" class="text-cyan">areasostenible.consultorespyme@gmail.com</a></p>
+                <p data-i18n="footer_rights">© 2026 Energy CPY — Todos los derechos reservados.</p>
+                <p data-i18n="footer_domain">Desplegado bajo el dominio oficial inventarioenergycpy.github.io</p>
+                <p>
+                    WhatsApp: <strong>Javier Ignacio Diaz</strong> (<a href="https://wa.me/5493512064791" target="_blank" class="text-gold">+54 9 351 2064791</a>) | 
+                    <strong>Daniel Gonzalez</strong> (<a href="https://wa.me/5492974233028" target="_blank" class="text-gold">+54 9 2974 23-3028</a>)
+                </p>
             </div>
         </div>
     </footer>
@@ -604,6 +435,9 @@
             <div class="modal-header">
                 <div class="modal-title-group">
                     <span class="modal-tag" id="modalTag">Categoría</span>
+                    <span class="card-status-badge status-badge-activo" id="modalStatusBadge">
+                        <span class="status-indicator-dot"></span> Activo
+                    </span>
                     <h2 class="modal-title" id="modalTitle">Título del Proyecto</h2>
                 </div>
                 <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Cerrar Modal">
@@ -612,7 +446,6 @@
             </div>
 
             <div class="modal-body">
-                
                 <!-- Left: Interactive Slide Viewer -->
                 <div class="slide-viewer-container">
                     <div class="slide-main-stage">
@@ -639,11 +472,11 @@
 
                 <!-- Right: Detailed Project Info & Actions -->
                 <div class="project-info-panel">
-                    <h3 class="panel-heading"><i class="fa-solid fa-circle-info text-gold"></i> Ficha Técnica del Proyecto</h3>
+                    <h3 class="panel-heading"><i class="fa-solid fa-circle-info text-gold"></i> <span data-i18n="modal_tech_sheet">Ficha Técnica del Proyecto</span></h3>
                     <p class="panel-desc" id="modalDesc">Descripción completa del proyecto...</p>
 
                     <div class="panel-highlights-box">
-                        <h4 class="box-title"><i class="fa-solid fa-list-check text-cyan"></i> Puntos Clave de Inversión</h4>
+                        <h4 class="box-title"><i class="fa-solid fa-list-check text-cyan"></i> <span data-i18n="modal_highlights">Puntos Clave de Inversión</span></h4>
                         <ul class="highlights-list" id="modalHighlights">
                             <!-- Rendered dynamically -->
                         </ul>
@@ -655,20 +488,84 @@
 
                     <div class="panel-cta-group">
                         <a href="#" id="modalPdfBtn" download class="btn btn-outline-gold btn-block">
-                            <i class="fa-solid fa-file-pdf"></i> Descargar Presentación Completa (PDF)
+                            <i class="fa-solid fa-file-pdf"></i> <span data-i18n="modal_btn_pdf">Descargar Presentación Completa (PDF)</span>
                         </a>
                         <div class="modal-wsp-grid">
                             <a href="#" id="modalWspDiaz" target="_blank" rel="noopener" class="btn btn-whatsapp">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Javier Diaz
+                                <i class="fa-brands fa-whatsapp"></i> <span data-i18n="modal_wsp_javier">WhatsApp Javier Diaz</span>
                             </a>
                             <a href="#" id="modalWspGonzalez" target="_blank" rel="noopener" class="btn btn-whatsapp">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp Daniel Gonzalez
+                                <i class="fa-brands fa-whatsapp"></i> <span data-i18n="modal_wsp_daniel">WhatsApp Daniel Gonzalez</span>
                             </a>
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
+
+    <!-- Consultant Admin Authentication & Status Management Modal -->
+    <div class="modal-backdrop" id="adminAuthModal" onclick="closeModalOnBackdrop(event)">
+        <div class="admin-modal-card">
+            
+            <!-- Step 1: Consultant Email Authentication -->
+            <div id="adminAuthStep" class="admin-auth-box">
+                <div class="admin-lock-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Acceso Exclusivo para Consultores</h3>
+                <p>Ingrese su correo corporativo autorizado (Javier Diaz / Daniel Gonzalez) para gestionar el estado de avance de los proyectos.</p>
+                
+                <div id="adminAuthError" class="admin-auth-error">
+                    Correo electrónico no autorizado.
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="adminEmailInput" class="form-input" placeholder="correo@autorizado.com" autocomplete="off">
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 20px;">
+                    <button type="button" class="btn btn-primary-gold" style="flex-grow: 1;" onclick="validateAdminEmail()">
+                        <i class="fa-solid fa-key"></i> Validar y Acceder
+                    </button>
+                    <button type="button" class="btn btn-glass" onclick="closeAdminModal()">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Project Status Management Panel -->
+            <div id="adminPanelStep" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: #fff;">Gestión de Estado de Proyectos</h3>
+                        <span style="font-size: 0.8rem; color: var(--accent-gold);">Sesión de Consultor Activa</span>
+                    </div>
+                    <button type="button" class="modal-close-btn" onclick="closeAdminModal()" aria-label="Cerrar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+                    Seleccione el estado de avance para cada proyecto en el catálogo: 
+                    <strong style="color: #38bdf8;">🔵 Activo (Azul)</strong>, 
+                    <strong style="color: #fbbf24;">🟡 En trámite (Amarillo)</strong>, 
+                    <strong style="color: #34d399;">🟢 Vendido (Verde)</strong>.
+                </p>
+
+                <!-- Project List -->
+                <div class="admin-project-list" id="adminProjectList">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn btn-primary-gold" style="flex-grow: 1;" onclick="saveAdminChangesAndClose()">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar y Aplicar Cambios
+                    </button>
+                    <button type="button" class="btn btn-glass" onclick="closeAdminModal()">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
