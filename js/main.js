@@ -2464,6 +2464,269 @@ const PROJECTS_DATA = {
     }
 };
 
+const TRANSLATIONS = {
+    es: {
+        brand_sub: "INVESTMENT SHOWROOM",
+        filter_cat_hoteleria: "Hotelería & Casinos",
+        filter_cat_agro: "Agro, Campo & Industria",
+        filter_cat_mineria: "Minería & Metales",
+        filter_cat_petroleo: "Petróleo, Gas & Infraestructura",
+        filter_cat_asesoramiento: "Asesoramiento Financiero",
+        card_btn_onepager: "Resumen Ejecutivo (1 Pág)",
+        card_badge_private: "🔒 Private Placement / Off-Market",
+        card_cta_private: "Solicitar Invitación & NDA",
+        private_amount: "A Invitación Exclusiva",
+        
+        nav_home: "Inicio",
+        nav_projects: "Proyectos",
+        nav_metrics: "Indicadores",
+        nav_guarantees: "Garantías",
+        nav_contact: "Contacto Oficial",
+        nav_admin: "Gestión",
+
+        hero_badge: "🏛️ Plataforma Oficial de Inversiones — Argentina 2026",
+        hero_title_1: "Oportunidades Estratégicas de",
+        hero_title_2: "Alto Rendimiento",
+        hero_desc: "Estructuración de capital y proyectos llave en mano en <strong>Energía Solar Fotovoltaica</strong>, <strong>Pesca Industrial en Patagonia</strong>, <strong>Servicios Energéticos en Salta</strong> y <strong>Estrategias REIT Dolarizadas</strong>.",
+        hero_btn_explore: "Explorar Oportunidades",
+        hero_btn_contact: "Contactar a Dirección",
+        strip_consultants_label: "Consultores de Capital",
+        strip_wsp_label: "WhatsApp Directo Consultores",
+
+        stat_capex_badge: "+265M USD",
+        stat_capex_lbl: "CAPEX Total en Portafolio",
+        stat_capex_sub: "Activos físicos estructurados en Argentina",
+        stat_solar_badge: "Co-Financiado",
+        stat_solar_lbl: "CAPEX Solar Pre-Financiado",
+        stat_solar_sub: "Respaldado por fabricante global de tecnología",
+        stat_pesca_badge: "600M USD/año",
+        stat_pesca_lbl: "Track Record en Pesca Industrial",
+        stat_pesca_sub: "Flota activa de 16 buques en ZEE Patagonia",
+        stat_mater_badge: "MATER / PPA",
+        stat_mater_lbl: "Plazo PPA Indexado en Dólares",
+        stat_mater_sub: "Contratos con industrias y distribuidores",
+
+        catalog_subtitle: "CATÁLOGO EJECUTIVO",
+        catalog_title: "Portafolio de Proyectos de Inversión",
+        catalog_desc: "Utilice los filtros avanzados por monto, categoría y estado para explorar las oportunidades disponibles.",
+
+        filter_search_placeholder: "Buscar por palabra clave (ej. solar, pesca, REIT, salta)...",
+        filter_category_all: "Todos los Sectores",
+        filter_cat_energia: "Energía Solar & Renovable",
+        filter_cat_pesca: "Pesca Industrial",
+        filter_cat_petroleo: "Petróleo, Gas & Infraestructura",
+        filter_cat_reit: "Fondo Inmobiliario REIT",
+        filter_cat_mineria: "Minería & Litio",
+        filter_cat_hoteleria: "Hotelería & Renta",
+
+        filter_amount_title: "Monto del Proyecto (USD):",
+        filter_amount_min: "Desde USD (M)",
+        filter_amount_max: "Hasta USD (M)",
+        filter_preset_all: "Todos los Montos",
+        filter_preset_under10: "< USD 10M",
+        filter_preset_10to50: "USD 10M - 50M",
+        filter_preset_50to200: "USD 50M - 200M",
+        filter_preset_over200: "> USD 200M",
+
+        filter_status_all: "Todos los Estados",
+        filter_status_activo: "Activo (Azul)",
+        filter_status_tramite: "En trámite (Amarillo)",
+        filter_status_vendido: "Vendido (Verde)",
+
+        results_showing: "Mostrando",
+        results_of: "de",
+        results_projects: "proyectos de inversión",
+
+        card_btn_details: "Ver Presentación & Ficha",
+        card_status_activo: "Activo",
+        card_status_tramite: "En trámite",
+        card_status_vendido: "Vendido",
+
+        ecosystem_subtitle: "SEGURIDAD Y MITIGACIÓN DE RIESGOS",
+        ecosystem_title: "Ecosistema Integrado & Garantías de Inversión",
+        ecosystem_desc: "Estructuración sólida con mitigación activa de riesgos técnicos, financieros y regulatorios.",
+        eco_1_title: "Alianzas con Fabricantes Líderes",
+        eco_1_desc: "En proyectos fotovoltaicos, el 50% del CAPEX es pre-financiado directamente por fabricantes mundiales de primer nivel, reduciendo la exposición inicial de capital.",
+        eco_2_title: "Contratos PPA & Renta Dolarizada",
+        eco_2_desc: "Acuerdos de compra de energía a largo plazo (15 a 20 años) indexados al USD, garantizando predictibilidad total de flujos de caja y rentabilidad sostenida.",
+        eco_3_title: "Certificación Global MSC & ESG",
+        eco_3_desc: "En el sector pesquero de la Patagonia, las pesquerías operan bajo normas internacionales estrictas MSC Certified, asegurando acceso prioritario a mercados de exportación.",
+        eco_4_title: "Construcción Llave en Mano (EPC)",
+        eco_4_desc: "Ingeniería de detalle, montaje y puesta en marcha ejecutados bajo contratos cerrados de tarifa fija para neutralizar desvíos presupuestarios.",
+
+        contact_tag: "CANAL EJECUTIVO DIRECTO",
+        contact_title: "Consultas Directas con Consultores de Capital",
+        contact_desc: "Comuníquese directamente con nuestros consultores estratégicos vía WhatsApp para solicitar memorandos de entendimiento (MoU), informes de debida diligencia o acordar estructuras conjuntas.",
+        wsp_btn_chat_javier: "Chat en WhatsApp con Javier Diaz",
+        wsp_btn_chat_daniel: "Chat en WhatsApp con Daniel Gonzalez",
+
+        form_title: "Solicitar Dossier / Coordinar Reunión",
+        form_desc: "Complete los campos y el sistema derivará automáticamente su solicitud al consultor especialista en la temática.",
+        form_name: "Nombre Completo *",
+        form_name_ph: "Ej. Ing. Martín Rodríguez",
+        form_phone: "Teléfono / WhatsApp *",
+        form_phone_ph: "+54 9 11 ... o código internacional",
+        form_project_lbl: "Proyecto o Temática de Interés *",
+        form_project_ph: "Seleccione una opción...",
+        form_message_lbl: "Mensaje o Requerimiento Específico",
+        form_message_ph: "Indique ticket estimado de inversión, plazo previsto o detalle de consulta...",
+        form_btn_submit: "Enviar Solicitud a Consultores",
+        
+        assigned_specialist_badge: "Consultor Asignado:",
+        specialist_javier_note: "Especialista en Minería, Energía Renovable, Proyectos de Ingeniería y Consultas en Inglés.",
+        specialist_daniel_note: "Especialista en Hotelería, Pesca, Petróleo, TRUST Real Estate, REIT, Renta Corporativa y Asesoramiento Financiero.",
+
+        success_title: "¡Consulta Enviada con Éxito!",
+        success_body: "Muchas gracias por contactarse. Su solicitud ha sido procesada y asignada al consultor especialista de Energy CPY a cargo de la temática seleccionada. Nos pondremos en contacto a la brevedad.",
+        success_btn_wsp: "Continuar Consulta Directa por WhatsApp con",
+        success_btn_another: "Enviar Otra Consulta",
+
+        footer_rights: "© 2026 Energy CPY — Todos los derechos reservados.",
+        footer_domain: "Desplegado bajo el dominio oficial inventarioenergycpy.github.io",
+
+        modal_tech_sheet: "Ficha Técnica del Proyecto",
+        modal_highlights: "Puntos Clave de Inversión",
+        modal_btn_pdf: "Descargar Presentación Completa (PDF)",
+        modal_wsp_javier: "WhatsApp Javier Diaz",
+        modal_wsp_daniel: "WhatsApp Daniel Gonzalez"
+    },
+
+    en: {
+        brand_sub: "INVESTMENT SHOWROOM",
+        filter_cat_hoteleria: "Hospitality & Casinos",
+        filter_cat_agro: "Agribusiness & Industry",
+        filter_cat_mineria: "Mining & Critical Minerals",
+        filter_cat_petroleo: "Oil, Gas & Infrastructure",
+        filter_cat_asesoramiento: "Financial Advisory & Structuring",
+        card_btn_onepager: "Executive Summary (1 Page)",
+        card_badge_private: "🔒 Private Placement / Off-Market",
+        card_cta_private: "Request Invitation & NDA",
+        private_amount: "Exclusive Invitation Only",
+        
+        nav_home: "Home",
+        nav_projects: "Projects",
+        nav_metrics: "Metrics",
+        nav_guarantees: "Guarantees",
+        nav_contact: "Official Contact",
+        nav_admin: "Management",
+
+        hero_badge: "🏛️ Official Investment Platform — Argentina 2026",
+        hero_title_1: "Strategic High-Yield",
+        hero_title_2: "Opportunities",
+        hero_desc: "Capital structuring and turnkey project delivery in <strong>Photovoltaic Solar Power</strong>, <strong>Industrial Fisheries in Patagonia</strong>, <strong>Oilfield Services in Salta</strong> and <strong>USD REIT Strategies</strong>.",
+        hero_btn_explore: "Explore Opportunities",
+        hero_btn_contact: "Contact Management",
+        strip_consultants_label: "Capital Consultants",
+        strip_wsp_label: "Direct WhatsApp Line",
+
+        stat_capex_badge: "+265M USD",
+        stat_capex_lbl: "Total Portfolio CAPEX",
+        stat_capex_sub: "Tangible physical assets structured in Argentina",
+        stat_solar_badge: "Co-Financed",
+        stat_solar_lbl: "Pre-Financed Solar CAPEX",
+        stat_solar_sub: "Backed by tier-1 global PV manufacturers",
+        stat_pesca_badge: "600M USD/yr",
+        stat_pesca_lbl: "Industrial Fishing Track Record",
+        stat_pesca_sub: "Active fleet of 16 vessels in Patagonian EEZ",
+        stat_mater_badge: "MATER / PPA",
+        stat_mater_lbl: "USD-Indexed PPA Contract Term",
+        stat_mater_sub: "Agreements with industries and utilities",
+
+        catalog_subtitle: "EXECUTIVE PORTFOLIO",
+        catalog_title: "Investment Project Catalog",
+        catalog_desc: "Use advanced filters by ticket size, category and project status to explore available opportunities.",
+
+        filter_search_placeholder: "Search by keyword (e.g., solar, fishing, REIT, Salta)...",
+        filter_category_all: "All Sectors",
+        filter_cat_energia: "Solar & Renewable Energy",
+        filter_cat_pesca: "Industrial Fisheries",
+        filter_cat_petroleo: "Oil, Gas & Infrastructure",
+        filter_cat_reit: "REIT Real Estate Fund",
+        filter_cat_mineria: "Mining & Lithium",
+        filter_cat_hoteleria: "Hospitality & Yield",
+
+        filter_amount_title: "Project Ticket Size (USD):",
+        filter_amount_min: "From USD (M)",
+        filter_amount_max: "To USD (M)",
+        filter_preset_all: "All Amounts",
+        filter_preset_under10: "< USD 10M",
+        filter_preset_10to50: "USD 10M - 50M",
+        filter_preset_50to200: "USD 50M - 200M",
+        filter_preset_over200: "> USD 200M",
+
+        filter_status_all: "All Statuses",
+        filter_status_activo: "Active (Blue)",
+        filter_status_tramite: "In Progress (Yellow)",
+        filter_status_vendido: "Sold Out (Green)",
+
+        results_showing: "Showing",
+        results_of: "of",
+        results_projects: "investment projects",
+
+        card_btn_details: "View Deck & Technical Sheet",
+        card_status_activo: "Active",
+        card_status_tramite: "In Progress",
+        card_status_vendido: "Sold Out",
+
+        ecosystem_subtitle: "SECURITY & RISK MITIGATION",
+        ecosystem_title: "Integrated Ecosystem & Investment Guarantees",
+        ecosystem_desc: "Robust financial and technical structuring designed for active risk mitigation.",
+        eco_1_title: "Tier-1 Manufacturer Partnerships",
+        eco_1_desc: "In photovoltaic projects, 50% of CAPEX is directly pre-financed by leading global manufacturers, reducing upfront investor exposure.",
+        eco_2_title: "USD-Indexed Long-Term PPAs",
+        eco_2_desc: "Long-term power purchase agreements (15 to 20 years) indexed to USD, ensuring predictable cash flows and sustained yields.",
+        eco_3_title: "Global MSC & ESG Certification",
+        eco_3_desc: "Patagonian marine operations comply with rigorous MSC Certified standards, securing priority access to key export markets.",
+        eco_4_title: "Turnkey EPC Construction",
+        eco_4_desc: "Detailed engineering, procurement and commissioning carried out under fixed-price contracts to neutralize cost overruns.",
+
+        contact_tag: "DIRECT EXECUTIVE CHANNEL",
+        contact_title: "Direct Inquiries with Capital Consultants",
+        contact_desc: "Connect directly with our strategic consultants via WhatsApp to request Memorandums of Understanding (MoU), due diligence materials or discuss joint venture structures.",
+        wsp_btn_chat_javier: "Chat on WhatsApp with Javier Diaz",
+        wsp_btn_chat_daniel: "Chat on WhatsApp with Daniel Gonzalez",
+
+        form_title: "Request Dossier / Schedule Meeting",
+        form_desc: "Complete the form and our system will automatically route your request to the specialist consultant for your sector.",
+        form_name: "Full Name *",
+        form_name_ph: "e.g., Eng. Martin Rodriguez",
+        form_phone: "Phone / WhatsApp *",
+        form_phone_ph: "+1 ... or international country code",
+        form_project_lbl: "Project or Area of Interest *",
+        form_project_ph: "Select an option...",
+        form_message_lbl: "Message or Specific Requirement",
+        form_message_ph: "Indicate estimated investment ticket, timeline or inquiry details...",
+        form_btn_submit: "Submit Request to Consultants",
+
+        assigned_specialist_badge: "Assigned Consultant:",
+        specialist_javier_note: "Specialist in Mining, Renewable Energy, Engineering Projects & English-language inquiries.",
+        specialist_daniel_note: "Specialist in Hospitality, Fisheries, Oil & Gas, TRUST Real Estate, REIT, Corporate Yield & Financial Advisory.",
+
+        success_title: "Inquiry Successfully Submitted!",
+        success_body: "Thank you for reaching out. Your inquiry has been processed and routed to the dedicated Energy CPY consultant for your selected sector. We will be in touch promptly.",
+        success_btn_wsp: "Continue Direct Chat on WhatsApp with",
+        success_btn_another: "Send Another Inquiry",
+
+        footer_rights: "© 2026 Energy CPY — All rights reserved.",
+        footer_domain: "Deployed under the official domain inventarioenergycpy.github.io",
+
+        modal_tech_sheet: "Project Technical Sheet",
+        modal_highlights: "Key Investment Highlights",
+        modal_btn_pdf: "Download Full Deck (PDF)",
+        modal_wsp_javier: "WhatsApp Javier Diaz",
+        modal_wsp_daniel: "WhatsApp Daniel Gonzalez"
+    }
+};
+
+
+
+// Global App State
+let currentLang = localStorage.getItem("energycpy_lang") || "es";
+let currentProjectId = null;
+let currentSlideIndex = 1;
+let totalSlidesInCurrentProject = 1;
+
+// Project Statuses State (persisted in localStorage)
 let projectStatuses = loadProjectStatuses();
 
 function loadProjectStatuses() {
@@ -2565,6 +2828,8 @@ function applyLanguage(lang) {
 /* ==========================================================================
    2. Project Cards Dynamic Rendering & Status Styling
    ========================================================================== */
+
+
 function renderProjectCards() {
     const grid = document.getElementById("projectsGrid");
     if (!grid) return;
@@ -2619,7 +2884,7 @@ function renderProjectCards() {
                 <p class="card-desc">${langData.description}</p>
                 
                 <div class="metrics-grid">
-                    ${langData.metrics.slice(0, 3).map(m => `
+                    ${(langData.metrics || []).slice(0, 3).map(m => `
                         <div class="metric-item">
                             <span class="metric-val ${m.color}">${m.val}</span>
                             <span class="metric-lbl">${m.label}</span>
@@ -3320,6 +3585,5 @@ function printOnePager() {
 }
 
 function requestPrivateAccess(projectId) {
-    // Open the dedicated One-Pager which contains the confidential terms, watermark, and direct NDA request channel
     openOnePager(projectId);
 }
