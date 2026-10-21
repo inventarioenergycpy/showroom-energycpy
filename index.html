@@ -144,11 +144,11 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <i class="fa-solid fa-sack-dollar stat-icon"></i>
-                    <span class="stat-badge" data-i18n="stat_capex_badge">+265M USD</span>
+                    <span class="stat-badge" data-i18n="stat_capex_badge">+4.1B USD</span>
                 </div>
-                <h3 class="stat-number" data-target="265.5">USD 0M</h3>
-                <p class="stat-label" data-i18n="stat_capex_lbl">CAPEX Total en Portafolio</p>
-                <p class="stat-sub" data-i18n="stat_capex_sub">Activos físicos estructurados en Argentina</p>
+                <h3 class="stat-number" data-target="4116.5">USD 0M</h3>
+                <p class="stat-label" data-i18n="stat_capex_lbl">Volumen Total en Portafolio</p>
+                <p class="stat-sub" data-i18n="stat_capex_sub">26 proyectos de inversión estructurados en Argentina</p>
             </div>
             
             <div class="stat-card">
@@ -350,38 +350,68 @@
                     <p data-i18n="form_desc">Complete los campos y el sistema derivará automáticamente su solicitud al consultor especialista en la temática.</p>
 
                     <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                        <div class="form-group">
-                            <label for="formName" data-i18n="form_name">Nombre Completo *</label>
-                            <input type="text" id="formName" class="form-input" placeholder="Ej. Ing. Martín Rodríguez" data-i18n-placeholder="form_name_ph" required>
+                        <!-- Row 1: Nombre & Empresa -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formName" data-i18n="form_name">Nombre Completo *</label>
+                                <input type="text" id="formName" class="form-input" placeholder="Ej. Lic. Fernando Morales" data-i18n-placeholder="form_name_ph" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="formCompany" data-i18n="form_company">Empresa / Fondo / Institución</label>
+                                <input type="text" id="formCompany" class="form-input" placeholder="Ej. Austral Capital Partners" data-i18n-placeholder="form_company_ph">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="formPhone" data-i18n="form_phone">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="formPhone" class="form-input" placeholder="+54 9 11 ... o código internacional" data-i18n-placeholder="form_phone_ph" required>
+                        <!-- Row 2: Email & Teléfono -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formEmail" data-i18n="form_email">Correo Electrónico de Contacto *</label>
+                                <input type="email" id="formEmail" class="form-input" placeholder="inversor@ejemplo.com" data-i18n-placeholder="form_email_ph" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="formPhone" data-i18n="form_phone">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="formPhone" class="form-input" placeholder="+54 9 11 5555-5555" data-i18n-placeholder="form_phone_ph" required>
+                            </div>
                         </div>
 
+                        <!-- Row 3: Proyecto o Temática -->
                         <div class="form-group">
                             <label for="formProject" data-i18n="form_project_lbl">Proyecto o Temática de Interés *</label>
                             <select id="formProject" class="form-input" required>
-                                <option value="" disabled selected data-i18n="form_project_ph">Seleccione una opción...</option>
-                                <optgroup label="Especialidad: Javier Diaz (Minería, Energía, Ingeniería, English)">
-                                    <option value="Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)">Plantas Solares Fotovoltaicas (50% CAPEX Pre-Financiado)</option>
-                                    <option value="Energía Renovable & Parques Eólicos / MATER">Energía Renovable & Parques Eólicos / MATER</option>
-                                    <option value="Minería, Litio & Cobre en Argentina">Minería, Litio & Cobre en Argentina</option>
+                                <option value="" disabled selected data-i18n="form_project_ph">Seleccione un proyecto o temática...</option>
+                                <optgroup label="► Especialidad: Javier Diaz (Energía Solar, Minería, Agroindustria, Ingeniería, English)">
+                                    <option value="Parque Solar Sol de los Cuatro Vientos 300 MW (USD 300M)">Parque Solar Sol de los Cuatro Vientos 300 MW (USD 300M)</option>
+                                    <option value="Parque Solar 30 MW Vaca Muerta (USD 30M)">Parque Solar 30 MW Vaca Muerta (USD 30M)</option>
+                                    <option value="Parque Solar Fotovoltaico MATER 50 MW - Salta (USD 50M)">Parque Solar Fotovoltaico MATER 50 MW - Salta (USD 50M)</option>
+                                    <option value="Proyecto Minero Diente Verde Oro & Cobre (USD 60M)">Proyecto Minero Diente Verde Oro & Cobre (USD 60M)</option>
+                                    <option value="Cantera de Mármol & Travertino San Luis (USD 50M)">Cantera de Mármol & Travertino San Luis (USD 50M)</option>
+                                    <option value="Proyecto Explotación de Oro San Juan (USD 150M)">Proyecto Explotación de Oro San Juan (USD 150M)</option>
+                                    <option value="Proyecto Litio Catamarca (USD 11M)">Proyecto Litio Catamarca (USD 11M)</option>
+                                    <option value="Estancia Productiva 17.000 ha con Riego Mendoza (USD 60M)">Estancia Productiva 17.000 ha con Riego Mendoza (USD 60M)</option>
+                                    <option value="Planta Procesadora Avícola Avex Río Cuarto (USD 5M)">Planta Procesadora Avícola Avex Río Cuarto (USD 5M)</option>
                                     <option value="Proyectos de Ingeniería e Infraestructura Crítica">Proyectos de Ingeniería e Infraestructura Crítica</option>
-                                    <option value="English Language Inquiries / Foreign Investment">English Language Inquiries / Foreign Investment</option>
+                                    <option value="English Language Inquiries / Foreign Investment Desk">English Language Inquiries / Foreign Investment Desk</option>
                                 </optgroup>
-                                <optgroup label="Especialidad: Daniel Gonzalez (Hotelería, Pesca, Petróleo, REIT, Finanzas)">
-                                    <option value="Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)">Pesca Industrial Gran Escala USD 260M (Proyecto 6.6)</option>
-                                    <option value="Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)">Pesca Integrado Patagonia USD 5.5M (Proyecto 6.7)</option>
-                                    <option value="Proyecto Pozo Salta (Servicios Petroleros & Cuttings)">Proyecto Pozo Salta (Servicios Petroleros & Cuttings)</option>
-                                    <option value="Petróleo & Gas / Cuencas Hidrocarburíferas">Petróleo & Gas / Cuencas Hidrocarburíferas</option>
-                                    <option value="Estrategia REIT & Fondo de Inversión Dolarizado">Estrategia REIT & Fondo de Inversión Dolarizado</option>
-                                    <option value="Hotelería & Complejos Turísticos de Renta">Hotelería & Complejos Turísticos de Renta</option>
-                                    <option value="TRUST Real Estate & Parques Logísticos">TRUST Real Estate & Parques Logísticos</option>
-                                    <option value="Renta Corporativa & Asesoramiento Financiero">Renta Corporativa & Asesoramiento Financiero</option>
+                                <optgroup label="► Especialidad: Daniel Gonzalez (Petróleo & Gas, Hotelería, Pesca, REITs, Finanzas)">
+                                    <option value="Refinería Refipampa Medanito (USD 180M)">Refinería Refipampa Medanito (USD 180M)</option>
+                                    <option value="Refinería REFINOR Campo Durán Salta (USD 50M)">Refinería REFINOR Campo Durán Salta (USD 50M)</option>
+                                    <option value="Áreas Hidrocarburíferas Salta Garrido 25 Concesiones (USD 1.870M)">Áreas Hidrocarburíferas Salta Garrido 25 Concesiones (USD 1.870M)</option>
+                                    <option value="Cuenca Hidrocarburífera Palermo Aike Chubut (USD 200M)">Cuenca Hidrocarburífera Palermo Aike Chubut (USD 200M)</option>
+                                    <option value="Vaca Muerta 3 Refinerías y Puerto Petrolero (USD 350M)">Vaca Muerta 3 Refinerías y Puerto Petrolero (USD 350M)</option>
+                                    <option value="Vaca Muerta Operadora 15 Concesiones (USD 340M)">Vaca Muerta Operadora 15 Concesiones (USD 340M)</option>
+                                    <option value="Proyecto Pozo Salta Cuttings (USD 15M)">Proyecto Pozo Salta Cuttings (USD 15M)</option>
+                                    <option value="Hotel & Casino Mendoza 3 Estrellas (USD 40M)">Hotel & Casino Mendoza 3 Estrellas (USD 40M)</option>
+                                    <option value="Hotel Casino Mendoza 5 Estrellas (USD 60M)">Hotel Casino Mendoza 5 Estrellas (USD 60M)</option>
+                                    <option value="Hotel de Lujo Bariloche (Private Placement Off-Market)">Hotel de Lujo Bariloche (Private Placement Off-Market)</option>
+                                    <option value="Hotel Boutique de Lujo Córdoba (Private Placement Off-Market)">Hotel Boutique de Lujo Córdoba (Private Placement Off-Market)</option>
+                                    <option value="Proyecto 6.6 Pesca Industrial Gran Escala Patagonia (USD 260M)">Proyecto 6.6 Pesca Industrial Gran Escala Patagonia (USD 260M)</option>
+                                    <option value="Proyecto 6.7 Ecosistema Pesquero Integrado Patagonia (USD 5.5M)">Proyecto 6.7 Ecosistema Pesquero Integrado Patagonia (USD 5.5M)</option>
+                                    <option value="ENERGY CPY Argentina REIT Strategy 2026 (USD 30M)">ENERGY CPY Argentina REIT Strategy 2026 (USD 30M)</option>
+                                    <option value="Gestión y Administración Integral de Grupos Inversores">Gestión y Administración Integral de Grupos Inversores</option>
+                                    <option value="Financiamiento Proyectos Gubernamentales / RIGI">Financiamiento Proyectos Gubernamentales / RIGI</option>
+                                    <option value="Gestión Bienes Raíces & Parques Logísticos">Gestión Bienes Raíces & Parques Logísticos</option>
                                 </optgroup>
-                                <option value="Consulta General de Portafolio">Consulta General de Portafolio</option>
+                                <option value="Consulta General de Portafolio / Co-Inversión">Consulta General de Portafolio / Co-Inversión</option>
                             </select>
                         </div>
 
@@ -395,7 +425,7 @@
                             <textarea id="formMessage" class="form-input form-textarea" rows="4" placeholder="Indique ticket estimado de inversión, plazo previsto o detalle de consulta..." data-i18n-placeholder="form_message_ph"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary-gold btn-block">
+                        <button type="submit" id="btnSubmitContact" class="btn btn-primary-gold btn-block">
                             <i class="fa-solid fa-paper-plane"></i> <span data-i18n="form_btn_submit">Enviar Solicitud a Consultores</span>
                         </button>
                     </form>

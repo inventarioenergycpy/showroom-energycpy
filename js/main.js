@@ -2493,7 +2493,7 @@ const TRANSLATIONS = {
         strip_consultants_label: "Consultores de Capital",
         strip_wsp_label: "WhatsApp Directo Consultores",
 
-        stat_capex_badge: "+265M USD",
+        stat_capex_badge: "+4.1B USD",
         stat_capex_lbl: "CAPEX Total en Portafolio",
         stat_capex_sub: "Activos físicos estructurados en Argentina",
         stat_solar_badge: "Co-Financiado",
@@ -2564,6 +2564,10 @@ const TRANSLATIONS = {
         form_desc: "Complete los campos y el sistema derivará automáticamente su solicitud al consultor especialista en la temática.",
         form_name: "Nombre Completo *",
         form_name_ph: "Ej. Ing. Martín Rodríguez",
+        form_company: "Empresa / Fondo / Institución",
+        form_company_ph: "Ej. Austral Capital Partners",
+        form_email: "Correo Electrónico de Contacto *",
+        form_email_ph: "inversor@ejemplo.com",
         form_phone: "Teléfono / WhatsApp *",
         form_phone_ph: "+54 9 11 ... o código internacional",
         form_project_lbl: "Proyecto o Temática de Interés *",
@@ -2619,7 +2623,7 @@ const TRANSLATIONS = {
         strip_consultants_label: "Capital Consultants",
         strip_wsp_label: "Direct WhatsApp Line",
 
-        stat_capex_badge: "+265M USD",
+        stat_capex_badge: "+4.1B USD",
         stat_capex_lbl: "Total Portfolio CAPEX",
         stat_capex_sub: "Tangible physical assets structured in Argentina",
         stat_solar_badge: "Co-Financed",
@@ -2690,6 +2694,10 @@ const TRANSLATIONS = {
         form_desc: "Complete the form and our system will automatically route your request to the specialist consultant for your sector.",
         form_name: "Full Name *",
         form_name_ph: "e.g., Eng. Martin Rodriguez",
+        form_company: "Company / Fund / Institution",
+        form_company_ph: "e.g., Austral Capital Partners",
+        form_email: "Contact Email Address *",
+        form_email_ph: "investor@example.com",
         form_phone: "Phone / WhatsApp *",
         form_phone_ph: "+1 ... or international country code",
         form_project_lbl: "Project or Area of Interest *",
@@ -3018,18 +3026,20 @@ function initContactFormRouting() {
 }
 
 function getAssignedConsultantByTopic(topicValue) {
-    // Topic classification rules:
-    // Javier Diaz: Minería, Energía Renovable, Proyectos de Ingeniería, Idioma Inglés / English
-    // Daniel Gonzalez: Hotelería, Pesca, Petróleo, TRUST Real Estate, REIT, Renta Corporativa, Asesoramiento Financiero
     const v = (topicValue || "").toLowerCase();
 
-    if (v.includes("solar") || v.includes("energía") || v.includes("energia") || 
-        v.includes("minería") || v.includes("mineria") || v.includes("ingeniería") || 
-        v.includes("ingenieria") || v.includes("english") || v.includes("inglés") || v.includes("ingles")) {
-        return CONSULTANTS.javier;
-    } else {
-        return CONSULTANTS.daniel;
-    }
+    // Topics assigned to Javier Diaz:
+    // Energía Solar, Parques Renovables, Minería (Oro, Litio, Cobre, Mármol), Agroindustria (Estancias, Avex), Ingeniería, English Deals
+    const javierKeywords = [
+        "solar", "viento", "renovable", "fotovoltaic", "cammessa", "cuatro vientos",
+        "miner", "oro", "litio", "cobre", "marmol", "mármol", "travertino", "diente verde", "san juan", "catamarca", "san luis",
+        "agro", "estancia", "riego", "avícola", "avicola", "avex", "campo",
+        "ingenier", "infraestructura",
+        "english", "foreign", "inquir"
+    ];
+
+    const isJavier = javierKeywords.some(kw => v.includes(kw));
+    return isJavier ? CONSULTANTS.javier : CONSULTANTS.daniel;
 }
 
 function updateFormSpecialistBadge() {
@@ -3062,68 +3072,164 @@ function updateFormSpecialistBadge() {
 function handleFormSubmit(event) {
     event.preventDefault();
 
-    const name = document.getElementById("formName").value.trim();
-    const phone = document.getElementById("formPhone").value.trim();
-    const topic = document.getElementById("formProject").value;
-    const message = document.getElementById("formMessage").value.trim();
+    const name = (document.getElementById("formName")?.value || "").trim();
+    const company = (document.getElementById("formCompany")?.value || "").trim();
+    const email = (document.getElementById("formEmail")?.value || "").trim();
+    const phone = (document.getElementById("formPhone")?.value || "").trim();
+    const topic = (document.getElementById("formProject")?.value || "").trim();
+    const message = (document.getElementById("formMessage")?.value || "").trim();
 
-    if (!name || !phone || !topic) return;
+    if (!name || !email || !phone || !topic) {
+        alert("Por favor complete los campos obligatorios: Nombre, Email, Teléfono y Proyecto.");
+        return;
+    }
 
     const consultant = getAssignedConsultantByTopic(topic);
-    const dict = TRANSLATIONS[currentLang];
+    const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.es;
 
-    // SILENT INTERNAL EMAIL DISPATCH (No email address shown to guest client)
-    const emailSubject = encodeURIComponent(`[Consulta Showroom Energy CPY] ${name} - ${topic}`);
-    const emailBody = encodeURIComponent(
-        `NUEVA CONSULTA DE INVERSIÓN DESDE SHOWROOM WEB ENERGY CPY 2026\n\n` +
-        `Consultor Asignado: ${consultant.name}\n` +
-        `Nombre del Cliente / Inversor: ${name}\n` +
-        `Teléfono / WhatsApp: ${phone}\n` +
-        `Proyecto / Temática: ${topic}\n` +
-        `Mensaje o Requerimiento:\n${message || '(Sin mensaje adicional)'}\n\n` +
-        `Idioma de consulta: ${currentLang.toUpperCase()}\n` +
-        `Fecha y Hora: ${new Date().toLocaleString()}`
-    );
+    const emailSubject = `[Showroom Inversiones Energy CPY] Consulta: ${topic} - ${name}${company ? ' (' + company + ')' : ''}`;
+    
+    const emailBodyText = 
+`SOLICITUD DE INVERSIÓN - SHOWROOM WEB ENERGY CPY 2026
+============================================================
 
-    // Trigger background mailto dispatch without blocking or exposing email
-    const mailtoUri = `mailto:${consultant.internalEmail}?subject=${emailSubject}&body=${emailBody}`;
-    const hiddenIframe = document.createElement("iframe");
-    hiddenIframe.style.display = "none";
-    hiddenIframe.src = mailtoUri;
-    document.body.appendChild(hiddenIframe);
-    setTimeout(() => hiddenIframe.remove(), 2000);
+DATOS DEL INTERESADO / INVERSOR:
+------------------------------------------------------------
+• Nombre Completo: ${name}
+• Empresa / Fondo: ${company || '(No especificada)'}
+• Correo Electrónico: ${email}
+• Teléfono / WhatsApp: ${phone}
 
-    // Prepare direct WhatsApp message URL for the assigned consultant
+PROYECTO O SECTOR DE INTERÉS:
+------------------------------------------------------------
+• Proyecto Seleccionado: ${topic}
+• Consultor Especialista Asignado: ${consultant.name} (${consultant.specialties_es})
+• Correo Consultor Asignado: ${consultant.internalEmail}
+• Teléfono / WhatsApp Consultor: ${consultant.phone}
+
+MENSAJE O REQUERIMIENTO ESPECÍFICO:
+------------------------------------------------------------
+${message || '(Sin mensaje adicional provisto por el interesado)'}
+
+ENRUTAMIENTO Y RESPALDO INSTITUCIONAL:
+------------------------------------------------------------
+• Cuentas Emisoras / Monitoreo: inventario.energycpy@gmail.com / energycpy@gmail.com
+• Destinatario Principal: ${consultant.name} <${consultant.internalEmail}>
+• Copia Central (CC): inventario.energycpy@gmail.com, energycpy@gmail.com
+• Canal Web: inventarioenergycpy.github.io/showroom-energycpy/
+• Idioma de Consulta: ${currentLang.toUpperCase()}
+• Fecha y Hora: ${new Date().toLocaleString('es-AR')}
+============================================================`;
+
+    // 1. Direct Gmail Web Compose link pre-filled (One-Click send from inventario.energycpy@gmail.com or energycpy@gmail.com)
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1` +
+        `&to=${encodeURIComponent(consultant.internalEmail)}` +
+        `&cc=${encodeURIComponent("inventario.energycpy@gmail.com,energycpy@gmail.com")}` +
+        `&su=${encodeURIComponent(emailSubject)}` +
+        `&body=${encodeURIComponent(emailBodyText)}`;
+
+    // 2. Direct WhatsApp chat link
     const wspText = encodeURIComponent(
-        `Hola ${consultant.name}, mi nombre es ${name} (Tel: ${phone}). Estoy interesado en el proyecto/temática "${topic}". Deseo coordinar una reunión o solicitar el dossier.` +
-        (message ? ` Consulta: "${message}"` : "")
+        `Hola ${consultant.name}, mi nombre es ${name}${company ? ' (' + company + ')' : ''} (Email: ${email}, Tel: ${phone}). Estoy interesado en el proyecto/temática: "${topic}". Deseo coordinar una reunión o solicitar el dossier de inversión.` +
+        (message ? ` Detalle: "${message}"` : "")
     );
     const wspUrl = `https://wa.me/${consultant.phoneClean}?text=${wspText}`;
 
-    // Hide form and display executive success alert (Zero email exposure)
-    document.getElementById("contactForm").style.display = "none";
-    const successDiv = document.getElementById("formSuccessMessage");
-    successDiv.style.display = "block";
+    // 3. Automated background dispatch via FormSubmit API to central mailbox with CC to assigned consultant & secondary account
+    try {
+        fetch("https://formsubmit.co/ajax/inventario.energycpy@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                _subject: emailSubject,
+                _cc: `${consultant.internalEmail},energycpy@gmail.com`,
+                _replyto: email,
+                nombre_interesado: name,
+                empresa_interesado: company || "No especificada",
+                email_interesado: email,
+                telefono_interesado: phone,
+                proyecto_interes: topic,
+                consultor_asignado: `${consultant.name} (${consultant.internalEmail})`,
+                mensaje_consulta: message || "Sin observaciones adicionales",
+                fecha_registro: new Date().toLocaleString('es-AR')
+            })
+        }).catch(e => console.log("FormSubmit background dispatch handled:", e));
+    } catch (e) {
+        console.warn("Silent background fetch:", e);
+    }
 
-    successDiv.innerHTML = `
-        <div class="success-alert-card">
-            <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-            <h3>${dict.success_title}</h3>
-            <p>${dict.success_body}</p>
-            <div class="success-specialist-info">
-                <span class="specialist-pill"><i class="fa-solid fa-user-tie"></i> ${consultant.name}</span>
-                <span class="specialist-phone"><i class="fa-brands fa-whatsapp icon-green"></i> ${consultant.phone}</span>
+    // 4. Fallback hidden mailto iframe trigger
+    try {
+        const mailtoUri = `mailto:${consultant.internalEmail}?cc=inventario.energycpy@gmail.com,energycpy@gmail.com&subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyText)}`;
+        const hiddenIframe = document.createElement("iframe");
+        hiddenIframe.style.display = "none";
+        hiddenIframe.src = mailtoUri;
+        document.body.appendChild(hiddenIframe);
+        setTimeout(() => hiddenIframe.remove(), 2500);
+    } catch (e) {}
+
+    // 5. Hide form and display executive confirmation summary card
+    const formEl = document.getElementById("contactForm");
+    const successDiv = document.getElementById("formSuccessMessage");
+    if (formEl) formEl.style.display = "none";
+    if (successDiv) {
+        successDiv.style.display = "block";
+        successDiv.innerHTML = `
+            <div class="success-alert-card">
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h3>${dict.success_title || "¡Consulta Registrada con Éxito!"}</h3>
+                <p>${dict.success_body || "Su consulta ha sido procesada y derivada al consultor especialista asignado con copia de respaldo a la administración central de Energy CPY."}</p>
+                
+                <div class="success-specialist-info">
+                    <span class="specialist-pill"><i class="fa-solid fa-user-tie"></i> ${consultant.name}</span>
+                    <span class="specialist-phone"><i class="fa-brands fa-whatsapp icon-green"></i> ${consultant.phone}</span>
+                </div>
+
+                <!-- Executive Summary Box -->
+                <div class="success-summary-box">
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Interesado:</span>
+                        <span class="success-summary-value">${name}${company ? ' (' + company + ')' : ''}</span>
+                    </div>
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Email de Contacto:</span>
+                        <span class="success-summary-value">${email}</span>
+                    </div>
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Teléfono / WhatsApp:</span>
+                        <span class="success-summary-value">${phone}</span>
+                    </div>
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Proyecto / Temática:</span>
+                        <span class="success-summary-value">${topic}</span>
+                    </div>
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Consultor Derivado:</span>
+                        <span class="success-summary-value" style="color: var(--accent-gold);">${consultant.name}</span>
+                    </div>
+                    <div class="success-summary-row">
+                        <span class="success-summary-label">Cuentas de Monitoreo:</span>
+                        <span class="success-summary-value" style="font-size: 0.78rem;">inventario.energycpy@gmail.com | energycpy@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="success-actions" style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="${gmailUrl}" target="_blank" rel="noopener" class="btn btn-gmail btn-block">
+                        <i class="fa-solid fa-envelope-open-text"></i> Abrir en Gmail (Enviar desde inventario.energycpy / energycpy)
+                    </a>
+                    <a href="${wspUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+                        <i class="fa-brands fa-whatsapp"></i> Chat Directo en WhatsApp con ${consultant.name}
+                    </a>
+                    <button type="button" onclick="resetContactForm()" class="btn btn-outline-gold btn-block mt-2">
+                        <i class="fa-solid fa-rotate-left"></i> ${dict.success_btn_another || "Enviar otra consulta"}
+                    </button>
+                </div>
             </div>
-            <div class="success-actions">
-                <a href="${wspUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
-                    <i class="fa-brands fa-whatsapp"></i> ${dict.success_btn_wsp} ${consultant.name}
-                </a>
-                <button type="button" onclick="resetContactForm()" class="btn btn-outline-gold btn-block mt-2">
-                    <i class="fa-solid fa-rotate-left"></i> ${dict.success_btn_another}
-                </button>
-            </div>
-        </div>
-    `;
+        `;
+    }
 }
 
 function resetContactForm() {
@@ -3390,13 +3496,24 @@ function animateValue(obj, start, end, duration) {
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const val = (progress * (end - start) + start).toFixed(end % 1 === 0 ? 0 : 1);
+        const currentVal = (progress * (end - start) + start);
         
-        if (end === 265.5) obj.innerHTML = `USD ${val}M`;
-        else if (end === 50) obj.innerHTML = `${val}%`;
-        else if (end === 25) obj.innerHTML = `+${val} Años`;
-        else if (end === 20) obj.innerHTML = `${val} Años`;
-        else obj.innerHTML = val;
+        if (end >= 1000) {
+            // Formatted as USD 4.116,5M
+            const formatted = currentVal.toLocaleString('es-AR', {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1
+            });
+            obj.innerHTML = `USD ${formatted}M`;
+        } else if (end === 50) {
+            obj.innerHTML = `${Math.round(currentVal)}%`;
+        } else if (end === 25) {
+            obj.innerHTML = `+${Math.round(currentVal)} Años`;
+        } else if (end === 20) {
+            obj.innerHTML = `${Math.round(currentVal)} Años`;
+        } else {
+            obj.innerHTML = currentVal.toFixed(end % 1 === 0 ? 0 : 1);
+        }
 
         if (progress < 1) {
             window.requestAnimationFrame(step);
