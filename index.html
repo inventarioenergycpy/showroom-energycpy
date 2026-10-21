@@ -203,11 +203,13 @@
                         <select id="filterCategory" class="filter-select">
                             <option value="all" data-i18n="filter_category_all">Todos los Sectores</option>
                             <option value="energia" data-i18n="filter_cat_energia">Energía Solar & Renovable</option>
-                            <option value="pesca" data-i18n="filter_cat_pesca">Pesca Industrial</option>
+                            <option value="hoteleria" data-i18n="filter_cat_hoteleria">Hotelería & Casinos</option>
+                            <option value="agro" data-i18n="filter_cat_agro">Agro, Campo & Industria</option>
+                            <option value="mineria" data-i18n="filter_cat_mineria">Minería & Metales</option>
                             <option value="petroleo" data-i18n="filter_cat_petroleo">Petróleo, Gas & Infraestructura</option>
+                            <option value="asesoramiento" data-i18n="filter_cat_asesoramiento">Asesoramiento Financiero</option>
+                            <option value="pesca" data-i18n="filter_cat_pesca">Pesca Industrial</option>
                             <option value="reit" data-i18n="filter_cat_reit">Fondo Inmobiliario REIT</option>
-                            <option value="mineria" data-i18n="filter_cat_mineria">Minería & Litio</option>
-                            <option value="hoteleria" data-i18n="filter_cat_hoteleria">Hotelería & Renta</option>
                         </select>
 
                         <select id="filterStatus" class="filter-select">
@@ -569,7 +571,41 @@
         </div>
     </div>
 
-    <!-- Main JavaScript File -->
+        <!-- ==========================================================================
+         One-Pager Executive Summary Modal (1-Page A4 with Energy CPY Watermark)
+         ========================================================================== -->
+    <div class="modal-backdrop" id="onePagerModal" onclick="closeModalOnBackdrop(event)">
+        <div class="one-pager-modal-container">
+            <div class="one-pager-actions-bar no-print">
+                <div class="one-pager-actions-left">
+                    <span class="badge-onepager-live"><i class="fa-solid fa-file-contract"></i> Resumen Ejecutivo Sintético (1 Página A4)</span>
+                </div>
+                <div class="one-pager-actions-right">
+                    <button type="button" class="btn btn-print-pdf" onclick="printOnePager()">
+                        <i class="fa-solid fa-print"></i> Imprimir / Guardar en PDF
+                    </button>
+                    <button type="button" class="modal-close-btn" onclick="closeOnePager()" aria-label="Cerrar Resumen">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Single Page Printable A4 Sheet -->
+            <div class="one-pager-sheet-scroll">
+                <div class="one-pager-sheet" id="onePagerSheet">
+                    <!-- Watermark Overlay (Energy CPY) -->
+                    <div class="one-pager-watermark">ENERGY CPY — PRIVATE INVESTMENT ADVISORY</div>
+                    
+                    <!-- Dynamic Content Injected by main.js -->
+                    <div id="onePagerContent">
+                        <!-- Dynamic executive summary content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Main JavaScript File -->
     <script src="js/main.js"></script>
 </body>
 </html>
