@@ -3387,6 +3387,22 @@ function handleFormSubmit(event) {
         storedLeads.unshift(leadRecord);
         localStorage.setItem("energycpy_inquiries_db", JSON.stringify(storedLeads));
         console.log("Lead guardado exitosamente en base de datos local:", leadId);
+
+        // Notificación en tiempo real multicanal para el Dashboard
+        try {
+            if (typeof BroadcastChannel !== 'undefined') {
+                const bc = new BroadcastChannel('energycpy_inquiries_channel');
+                bc.postMessage({
+                    type: 'INQUIRY_CREATED',
+                    ticket: leadRecord,
+                    allInquiries: storedLeads,
+                    timestamp: Date.now()
+                });
+                setTimeout(() => bc.close(), 1000);
+            }
+        } catch (bcErr) {
+            console.log("BroadcastChannel dispatch:", bcErr);
+        }
     } catch (err) {
         console.warn("Error guardando lead en storage local:", err);
     }
