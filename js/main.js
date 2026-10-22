@@ -54,7 +54,7 @@ const PROJECTS_DATA = {
         "roi": "7 Años",
         "statusProgress": "Ingeniería avanzada y estudios de red listos para PPA MATER/CAMMESA",
         "isPrivatePlacement": false,
-        "coverImage": "assets/slides/Inversión_en_Plantas_Solares_en_Argentina_2026_page_1.png",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 13,
         "slidePrefix": "assets/slides/Inversión_en_Plantas_Solares_en_Argentina_2026_page_",
         "es": {
@@ -157,7 +157,7 @@ const PROJECTS_DATA = {
         "roi": "5 Años",
         "statusProgress": "Proyecto ejecutivo orientado a offtakers industriales de hidrocarburos en Añelo",
         "isPrivatePlacement": false,
-        "coverImage": "assets/slides/Inversión_en_Plantas_Solares_en_Argentina_2026_page_2.png",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 13,
         "slidePrefix": "assets/slides/Inversión_en_Plantas_Solares_en_Argentina_2026_page_",
         "es": {
@@ -364,7 +364,7 @@ const PROJECTS_DATA = {
         "roi": "1 Año",
         "statusProgress": "Activo operativo en marcha con flujo consolidado y licencias de juego vigentes",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -467,7 +467,7 @@ const PROJECTS_DATA = {
         "roi": "1 Año",
         "statusProgress": "Hotel 5 estrellas de lujo en operación con sala de juego y cocheras",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -570,7 +570,7 @@ const PROJECTS_DATA = {
         "roi": "Confidencial",
         "statusProgress": "Operación off-market estrictamente confidencial disponible solo bajo NDA firmado",
         "isPrivatePlacement": true,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -673,7 +673,7 @@ const PROJECTS_DATA = {
         "roi": "Confidencial",
         "statusProgress": "Operación off-market estrictamente confidencial disponible solo bajo NDA firmado",
         "isPrivatePlacement": true,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -776,7 +776,7 @@ const PROJECTS_DATA = {
         "roi": "2 Años",
         "statusProgress": "Establecimiento productivo en marcha con pivotes de riego y títulos perfectos",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p10_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -879,7 +879,7 @@ const PROJECTS_DATA = {
         "roi": "Activo Minero",
         "statusProgress": "Yacimiento aurífero a certificar bajo estándar internacional NI 43-101",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p1_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -982,7 +982,7 @@ const PROJECTS_DATA = {
         "roi": "Activo Minero",
         "statusProgress": "Canteras con reservas cubicadas de roca de aplicación ornamental y bloques",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_3.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1085,7 +1085,7 @@ const PROJECTS_DATA = {
         "roi": "En Producción",
         "statusProgress": "Yacimiento en producción inicial (28 t/d) buscando capital para ampliación de planta",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1188,7 +1188,7 @@ const PROJECTS_DATA = {
         "roi": "Exploración OK",
         "statusProgress": "Estudios de exploración geoquímica y geofísica concluidos con dictamen favorable",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1291,7 +1291,7 @@ const PROJECTS_DATA = {
         "roi": "En Producción",
         "statusProgress": "Refinería activa 750 m³/d (proy. 3.000 m³/d), 500 pozos en Medanito y Data Room listo",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p1_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1394,7 +1394,7 @@ const PROJECTS_DATA = {
         "roi": "En Producción",
         "statusProgress": "Refinería activa en Campo Durán con capacidad de 4.000 m³/día y red de ductos",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p1_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1497,7 +1497,7 @@ const PROJECTS_DATA = {
         "roi": "Plan No Convencional",
         "statusProgress": "Proyecto oficial integral presentado por Chubut para exploración no convencional",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_2.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1600,7 +1600,7 @@ const PROJECTS_DATA = {
         "roi": "Reactivación 6 Meses",
         "statusProgress": "3 refinerías y Puerto Galván con título propio; puesta a punto a 6 meses",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_3.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1703,7 +1703,7 @@ const PROJECTS_DATA = {
         "roi": "En Producción",
         "statusProgress": "15 concesiones en 3.000 km², ~1.200 pozos, >500 empleados; inversión llave en mano",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -1910,7 +1910,7 @@ const PROJECTS_DATA = {
         "roi": "Continuo",
         "statusProgress": "Servicio institucional integral con equipo multidisciplinario y cartelera curada",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p1_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -2013,7 +2013,7 @@ const PROJECTS_DATA = {
         "roi": "Estructural",
         "statusProgress": "Asesoría para entes públicos, provincias y municipios bajo marco RIGI / PPP",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -2116,7 +2116,7 @@ const PROJECTS_DATA = {
         "roi": "Renta / Plusvalía",
         "statusProgress": "Vehículos fiduciarios, parques logísticos, loteos y fondos REIT dolarizados",
         "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p3_1.jpeg",
+        "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
         "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
         "es": {
@@ -2954,7 +2954,7 @@ function renderProjectCards() {
         const hasPresentation = PRESENTATION_ENABLED_IDS.has(p.id);
 
         card.innerHTML = `
-            <div class="card-image-wrapper">
+            <div class="card-image-wrapper ${hasPresentation ? '' : 'has-white-bg'}">
                 <span class="card-tag tag-${p.category}">${langData.categoryTag}</span>
                 <span class="card-status-badge ${statusClass}">
                     <span class="status-indicator-dot"></span> ${statusText}
