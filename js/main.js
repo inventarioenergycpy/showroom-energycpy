@@ -92,7 +92,11 @@ const PROJECTS_DATA = {
                     "val": "Socio Inversor",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Fuerte demanda de contratos PPA entre grandes usuarios industriales (MATER) que buscan descarbonización y cobertura tarifaria ante la quita de subsidios nacionales. El nodo de Cuyo cuenta con el factor de capacidad solar líder del país.",
+                "intl": "Creciente asignación de capital por fondos de inversión globales hacia activos solares utility-scale en economías emergentes con marcos de estabilidad fiscal como el RIGI."
+            }
         },
         "en": {
             "categoryTag": "Solar PV Energy",
@@ -129,8 +133,14 @@ const PROJECTS_DATA = {
                     "val": "Equity Partner",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "High demand for private corporate PPAs (MATER) driven by industrial decarbonization and utility tariff normalization in Argentina. Cuyo grid node offers peak solar irradiance.",
+                "intl": "Expanding institutional capital allocation towards utility-scale solar assets in emerging markets under long-term USD contracts and tax stability frameworks."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "18.5%"
     },
     "solar-vaca-muerta": {
         "id": "solar-vaca-muerta",
@@ -185,7 +195,11 @@ const PROJECTS_DATA = {
                     "val": "Socio Inversor",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Las operadoras en Vaca Muerta precisan descarbonizar operaciones upstream y reemplazar costosa generación diésel en boca de pozo por energía solar fotovoltaica con amortización acelerada.",
+                "intl": "Los compromisos internacionales Net-Zero de las petroleras globales impulsan la electrificación limpia de campos no convencionales para reducir la huella de carbono del crudo Medanito."
+            }
         },
         "en": {
             "categoryTag": "Solar & O&G Decarbonization",
@@ -222,8 +236,14 @@ const PROJECTS_DATA = {
                     "val": "Equity Partner",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Upstream operators in Vaca Muerta urgently replacing expensive diesel generation with low-cost on-site solar power to reduce lifting costs.",
+                "intl": "Global oil majors prioritizing clean field electrification to meet international Scope 1 emissions targets and lower crude carbon intensity."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "22.0%"
     },
     "solar": {
         "id": "solar",
@@ -279,7 +299,11 @@ const PROJECTS_DATA = {
                     "val": "EPC Llave en Mano",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Modelo de co-inversión EPC llave en mano con pre-financiamiento del 50% de fábrica, superando la principal barrera crediticia local y acelerando la puesta en marcha.",
+                "intl": "Alianzas directas con fabricantes globales Tier-1 de módulos e inversores garantizan precios de equipamiento altamente competitivos y garantías extendidas a 25 años."
+            }
         },
         "en": {
             "categoryTag": "Photovoltaic Solar Energy",
@@ -316,8 +340,14 @@ const PROJECTS_DATA = {
                     "val": "Turnkey EPC",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Turnkey EPC co-investment model with 50% vendor pre-financing overcoming capital barriers and accelerating COD in Argentina.",
+                "intl": "Direct strategic supply agreements with global Tier-1 PV manufacturers securing volume-discounted hardware and 25-year performance warranties."
+            }
+        },
+        "dealType": "Venta / Socio Inversor",
+        "tir": "24.0%"
     },
     "hotel-casino-mendoza-3s": {
         "id": "hotel-casino-mendoza-3s",
@@ -372,7 +402,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Mendoza lidera la recepción de turismo enológico y corporativo. La licencia oficial de casino otorga un flujo de caja diario en efectivo, sumamente resistente a fluctuaciones macroeconómicas.",
+                "intl": "Crecimiento sostenido del turismo internacional de Brasil, EE.UU. y Europa atraído por la enogastronomía andina de alta gama, con tarifas ADR dolarizadas."
+            }
         },
         "en": {
             "categoryTag": "Hospitality & Casino",
@@ -409,8 +443,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Mendoza heads regional wine and executive tourism. The official casino gaming license provides daily resilient, high-margin cash flow.",
+                "intl": "Sustained international traveler influx from the Americas and Europe seeking premium wine experiences with dollarized room rates."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "65.0%"
     },
     "hotel-casino-mendoza-5s": {
         "id": "hotel-casino-mendoza-5s",
@@ -465,7 +505,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Activo trophy de 72 suites de ultra-lujo y complejo de juego con ocupación ejecutiva de alta gama en el polo vitivinícola más prestigioso de Sudamérica.",
+                "intl": "Escasez absoluta de activos hoteleros 5 estrellas con licencia de casino habilitada en plazas turísticas consolidadas del Cono Sur."
+            }
         },
         "en": {
             "categoryTag": "Luxury Hospitality & Casino",
@@ -502,8 +546,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Trophy hospitality asset featuring 72 luxury suites and premium casino gaming in South America premier wine capital.",
+                "intl": "Extreme scarcity of licensed 5-star hotel-casinos in top South American leisure and convention destination markets."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "58.0%"
     },
     "hotel-lujo-bariloche": {
         "id": "hotel-lujo-bariloche",
@@ -558,7 +608,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Exclusiva",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Bariloche registra ocupación plena en las 4 temporadas del año, combinando esquí de clase mundial en invierno con ecoturismo y eventos náuticos en verano.",
+                "intl": "Multiplicación de vuelos internacionales directos hacia la Patagonia y demanda global inelástica de viajeros High-Net-Worth por naturaleza virgen."
+            }
         },
         "en": {
             "categoryTag": "Private Placement — Ultra Luxury",
@@ -595,8 +649,14 @@ const PROJECTS_DATA = {
                     "val": "Exclusive Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Bariloche records year-round prime occupancy, driven by winter ski seasons and luxury lake-district summer tourism.",
+                "intl": "Expansion of direct international flights to Patagonia boosting ultra-high-net-worth foreign guest arrivals."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "26.0%"
     },
     "hotel-lujo-cordoba": {
         "id": "hotel-lujo-cordoba",
@@ -651,7 +711,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Exclusiva",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Epicentro nacional para turismo de convenciones corporativas, torneos de golf y relax en las Sierras de Córdoba, con acceso vial y aéreo federal privilegiado.",
+                "intl": "Interés de grupos patrimoniales extranjeros por adquirir hoteles boutique con valor histórico y potencial de desarrollo fiduciario a largo plazo."
+            }
         },
         "en": {
             "categoryTag": "Private Placement — Ultra Luxury",
@@ -688,8 +752,14 @@ const PROJECTS_DATA = {
                     "val": "Exclusive Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Central hub for corporate conventions, championship golf, and mountain leisure with federal highway and airport connections.",
+                "intl": "Rising interest from cross-border family offices acquiring heritage boutique hospitality assets with capital appreciation potential."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "25.5%"
     },
     "estancia-17000ha-riego": {
         "id": "estancia-17000ha-riego",
@@ -744,7 +814,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "17.000 hectáreas con concesiones definitivas de riego tecnificado para nogales, olivos, vid y ganadería intensiva en corredor turístico estratégico.",
+                "intl": "La seguridad alimentaria global y la apreciación de la tierra fértil con agua asegurada consolidan este activo como refugio patrimonial anti-inflacionario."
+            }
         },
         "en": {
             "categoryTag": "Agribusiness & Prime Land",
@@ -781,101 +855,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
-    },
-    "planta-avicola-avex": {
-        "id": "planta-avicola-avex",
-        "category": "agro",
-        "sector": "Agro, Campo & Industria",
-        "assignedAgent": "javier",
-        "amountUSD": 5.0,
-        "basePrice": 5000000,
-        "overpriceTarget": 500000,
-        "currency": "USD",
-        "amountDisplay": "USD 5M",
-        "defaultStatus": "activo",
-        "modality": "Socio Inversor",
-        "roi": "7 Años",
-        "statusProgress": "Planta frigorífica habilitada SENASA con red de distribución nacional estructurada",
-        "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p10_2.jpeg",
-        "totalSlides": 5,
-        "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
-        "es": {
-            "categoryTag": "Industria Frigorífica & Alimentos",
-            "title": "Planta Avícola + Red de Distribución Nacional (Avex)",
-            "location": "Río Cuarto, Córdoba, Argentina",
-            "statusLabel": "USD 5M — Socio Inversor",
-            "description": "Complejo agroindustrial avícola con habilitación SENASA para faena y despiece, complementado con red logística y comercial en las principales plazas del país. Búsqueda de socio inversor para reactivación y capital de trabajo.",
-            "thesis": "Inversión de bajo ticket relativo (USD 5M) sobre activos tangibles de gran valor de reposición, generando un EBITDA sólido con retorno a 7 años.",
-            "highlights": [
-                "Planta de faena avícola con habilitaciones oficiales SENASA y capacidad instalada relevante.",
-                "Red de comercialización y distribución nacional en canales mayoristas y minoristas.",
-                "Socio inversor de USD 5M destinado a capital de giro y optimización de líneas de proceso.",
-                "Retorno proyectado a 7 años respaldado por alta demanda de proteína animal.",
-                "Excelente conectividad logística en el nudo de rutas de Río Cuarto, Córdoba."
             ],
-            "metrics": [
-                {
-                    "label": "Inversión Final",
-                    "val": "USD 5M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Ubicación",
-                    "val": "Río Cuarto, Cba",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "ROI Estimado",
-                    "val": "7 Años",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Modalidad",
-                    "val": "Socio Inversor",
-                    "color": "text-gold"
-                }
-            ]
+            "marketTrend": {
+                "local": "17,000 hectares with permanent water rights and pivot irrigation systems suitable for intensive agriculture and livestock in prime valley.",
+                "intl": "Global food security priorities cementing water-secured agricultural land as a premier long-term inflation hedge."
+            }
         },
-        "en": {
-            "categoryTag": "Poultry & Food Processing",
-            "title": "Poultry Processing Plant + National Distribution (Avex)",
-            "location": "Río Cuarto, Córdoba, Argentina",
-            "statusLabel": "USD 5M — Equity Partner",
-            "description": "SENASA-certified poultry slaughter and processing facility with nationwide distribution channels. Seeking equity partner for operating capital and throughput reactivation.",
-            "thesis": "Attractive entry ticket (USD 5M) securing substantial tangible industrial assets and predictable cash flows with 7-year capital recovery.",
-            "highlights": [
-                "Modern processing facility fully licensed by SENASA.",
-                "Structured nationwide sales and refrigerated distribution network.",
-                "USD 5M equity ticket targeted for working capital expansion.",
-                "Solid 7-year projected ROI driven by steady protein market consumption.",
-                "Prime logistic junction in Río Cuarto, central Argentina."
-            ],
-            "metrics": [
-                {
-                    "label": "Final Ticket",
-                    "val": "USD 5M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Location",
-                    "val": "Río Cuarto, Cba",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Est. ROI",
-                    "val": "7 Years",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Deal Type",
-                    "val": "Equity Partner",
-                    "color": "text-gold"
-                }
-            ]
-        }
+        "dealType": "Venta",
+        "tir": "38.0%"
     },
     "mineria-diente-oro-verde": {
         "id": "mineria-diente-oro-verde",
@@ -930,7 +917,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Total",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Distrito minero histórico con régimen RIGI aplicable que otorga 30 años de estabilidad fiscal, exención arancelaria y libre disponibilidad de divisas.",
+                "intl": "Cotización del oro en máximos históricos impulsada por compras masivas de bancos centrales soberanos y cobertura ante volatilidad geopolítica."
+            }
         },
         "en": {
             "categoryTag": "Precious Metals — Gold",
@@ -967,8 +958,14 @@ const PROJECTS_DATA = {
                     "val": "100% Asset Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Historical mining district benefiting from Argentine RIGI framework offering 30-year tax stability and customs duty exemptions.",
+                "intl": "Gold bullion prices hovering near historic records driven by central bank reserve accumulation and global currency hedging."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "34.0%"
     },
     "mineria-marmol-san-luis": {
         "id": "mineria-marmol-san-luis",
@@ -1023,7 +1020,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Canteras operativas de mármol y travertino con reservas comprobadas para abastecer proyectos de arquitectura corporativa y residencial de alta gama en Argentina.",
+                "intl": "Demanda internacional sostenida de bloques y placas de piedra natural ornamental para desarrollos hoteleros y residenciales de lujo en EE.UU. y Europa."
+            }
         },
         "en": {
             "categoryTag": "Industrial Minerals — Marble",
@@ -1060,8 +1061,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Active marble and travertine quarries holding verified reserves supplying premium domestic commercial construction.",
+                "intl": "Solid international export demand for dimensional natural stone across luxury architectural developments worldwide."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "30.0%"
     },
     "mineria-oro-san-juan": {
         "id": "mineria-oro-san-juan",
@@ -1116,7 +1123,11 @@ const PROJECTS_DATA = {
                     "val": "Socio Inversor",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Yacimiento en etapa de producción inicial (28 ton/día) con permisos ambientales al día en San Juan, la provincia con mayor seguridad jurídica minera de Argentina.",
+                "intl": "Márgenes operativos extraordinarios por la cotización del oro, atrayendo socios internacionales para escalar la capacidad de molienda y beneficio."
+            }
         },
         "en": {
             "categoryTag": "Gold Mining — Operating",
@@ -1153,8 +1164,14 @@ const PROJECTS_DATA = {
                     "val": "Equity Partner",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Operating mine processing 28 tons/day with approved environmental baseline in San Juan, Argentina top-rated mining jurisdiction.",
+                "intl": "Extraordinary gold extraction margins driving institutional joint-venture interest to scale crushing and flotation capacity."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "42.0%"
     },
     "mineria-litio-catamarca": {
         "id": "mineria-litio-catamarca",
@@ -1209,7 +1226,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Propiedad minera en el corazón del Triángulo del Litio catamarqueño con estudios hidrogeológicos favorables y reservas de salmuera de alta concentración.",
+                "intl": "La revolución global de vehículos eléctricos y almacenamiento en baterías a escala de red requiere suministro estratégico garantizado de litio grado batería."
+            }
         },
         "en": {
             "categoryTag": "Critical Minerals — Lithium",
@@ -1246,8 +1267,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Prime acreage in the Catamarca Lithium Triangle with proven brine chemistry, low impurity ratios, and exploration permits.",
+                "intl": "Global EV and grid battery expansion driving long-term strategic supply security for high-purity lithium carbonate."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "29.0%"
     },
     "refipampa-medanito": {
         "id": "refipampa-medanito",
@@ -1302,7 +1329,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Total",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Refinería modular conectada a 500 pozos en producción activa en Cuenca Neuquina, con red de estaciones y distribución mayorista directa en el centro del país.",
+                "intl": "La desregulación del mercado energético en Argentina permite fijar precios a paridad de importación en dólares, maximizando márgenes de refinación."
+            }
         },
         "en": {
             "categoryTag": "Integrated Oil & Refining",
@@ -1339,8 +1370,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Fully operating modular refinery interconnected with 500 active producing wells in Neuquen Basin with private fuel retail network.",
+                "intl": "Downstream deregulation in Argentina enabling full dollarized import-parity pricing and robust crack-spread margins."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "33.0%"
     },
     "refinor-salta": {
         "id": "refinor-salta",
@@ -1395,7 +1432,11 @@ const PROJECTS_DATA = {
                     "val": "Venta Directa",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Complejo de refinación, poliductos y fraccionamiento de GLP con posición dominante de abastecimiento en 7 provincias del Noroeste Argentino.",
+                "intl": "La reversión del Gasoducto Norte transforma a REFINOR en el nudo logístico indispensable para procesar y transportar gas y condensados hacia Brasil y Bolivia."
+            }
         },
         "en": {
             "categoryTag": "Downstream & Pipelines",
@@ -1432,101 +1473,14 @@ const PROJECTS_DATA = {
                     "val": "Direct Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
-    },
-    "salta-garrido-25areas": {
-        "id": "salta-garrido-25areas",
-        "category": "petroleo",
-        "sector": "Petróleo, Gas & Infraestructura",
-        "assignedAgent": "daniel",
-        "amountUSD": 1870.0,
-        "basePrice": 1870000000,
-        "overpriceTarget": 50000000,
-        "currency": "USD",
-        "amountDisplay": "USD 1.870M",
-        "defaultStatus": "activo",
-        "modality": "Socio Inversor",
-        "roi": "20 Años Concesión",
-        "statusProgress": "25 áreas hidrocarburíferas para explotación integral con concesión a 20 años renovable",
-        "isPrivatePlacement": false,
-        "coverImage": "assets/images/img_ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_p2_1.jpeg",
-        "totalSlides": 5,
-        "slidePrefix": "assets/slides/ENERGY_CPY_Argentina_REIT_Investment_Strategy___Argentina_2026_page_",
-        "es": {
-            "categoryTag": "Upstream Hidrocarburos — 25 Áreas",
-            "title": "Proyecto Salta - GARRIDO (25 Áreas de Explotación)",
-            "location": "Cuenca Noroeste, Salta, Argentina",
-            "statusLabel": "USD 1.870M — Socio Inversor / UTE",
-            "description": "Magno proyecto petrolero y gasífero que comprende 25 áreas de concesión adjudicadas por 20 años con opción de renovación en Salta. Búsqueda de socio inversor para plan maestro de USD 1.870M, con esquemas flexibles de participación por áreas o UTE.",
-            "thesis": "Consolidación de cuenca madura y bloques profundos con reservas de crudo liviano y gas natural, beneficiados por la reversión del Gasoducto Norte y exportaciones a Brasil.",
-            "highlights": [
-                "25 áreas de explotación hidrocarburífera con concesión legal a 20 años.",
-                "Estructura de participación societaria flexible o UTE compartida por bloques.",
-                "Reservas certificadas de crudo y gas con acceso a red troncal de transporte.",
-                "Reversión del Gasoducto Norte que abre mercado premium de exportación a Brasil.",
-                "Monto total de financiamiento: USD 1.870 Millones."
             ],
-            "metrics": [
-                {
-                    "label": "Inversión Total",
-                    "val": "USD 1.870M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Concesiones",
-                    "val": "25 Áreas",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Plazo",
-                    "val": "20 Años Renov.",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Modalidad",
-                    "val": "Socio / UTE",
-                    "color": "text-gold"
-                }
-            ]
+            "marketTrend": {
+                "local": "The sole refining, LPG fractionation, and pipeline complex in Northwest Argentina, commanding wholesale supply across 7 provinces.",
+                "intl": "Northern Gas Pipeline reversal establishes REFINOR as the primary logistics bridge for hydrocarbon transit to Brazil."
+            }
         },
-        "en": {
-            "categoryTag": "Upstream Oil & Gas — 25 Blocks",
-            "title": "Salta - GARRIDO Project (25 Exploitation Blocks)",
-            "location": "Northwest Basin, Salta, Argentina",
-            "statusLabel": "USD 1,870M — Equity / JV Partner",
-            "description": "Major hydrocarbon upstream development covering 25 licensed exploitation blocks for 20 renewable years in Salta. Seeking institutional partner for a USD 1.87B capex plan, open to block farm-outs or JV syndication.",
-            "thesis": "Large-scale basin consolidation with proven sweet crude and natural gas reserves, strategically aligned with the Northern Gas Pipeline reversal towards Brazilian markets.",
-            "highlights": [
-                "25 oil and gas concession blocks with secure 20-year renewable licenses.",
-                "Flexible corporate joint-venture models or shared block farm-ins.",
-                "Certified crude and gas reserves with direct pipeline interconnection.",
-                "Northern Pipeline reversal unlocking high-value export markets to Brazil.",
-                "Total project capex: USD 1,870 Million."
-            ],
-            "metrics": [
-                {
-                    "label": "Total Ticket",
-                    "val": "USD 1,870M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Concessions",
-                    "val": "25 Blocks",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Term",
-                    "val": "20 Yrs Renewable",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Deal Type",
-                    "val": "JV / Farm-In",
-                    "color": "text-gold"
-                }
-            ]
-        }
+        "dealType": "Venta",
+        "tir": "36.0%"
     },
     "palermo-aike-chubut": {
         "id": "palermo-aike-chubut",
@@ -1581,7 +1535,11 @@ const PROJECTS_DATA = {
                     "val": "Socio Inversor",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "La formación shale más prometedora fuera de Vaca Muerta, con espesores netos y madurez térmica ideales para petróleo liviano y gas en la Cuenca Austral.",
+                "intl": "Operadoras internacionales buscan posicionarse tempranamente en la próxima frontera no convencional de Sudamérica a una fracción del costo por acre de Texas."
+            }
         },
         "en": {
             "categoryTag": "Shale Play — Palermo Aike",
@@ -1618,8 +1576,14 @@ const PROJECTS_DATA = {
                     "val": "Equity Partner",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Argentina premier emerging shale play outside Neuquen, featuring excellent thermal maturity for light oil in the Austral Basin.",
+                "intl": "International E&P firms targeting early-entry acreage in South America next shale frontier at attractive valuation multiples."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "27.5%"
     },
     "vacamuerta-3refinerias-puerto": {
         "id": "vacamuerta-3refinerias-puerto",
@@ -1674,7 +1638,11 @@ const PROJECTS_DATA = {
                     "val": "Llave en Mano",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Paquete de 3 refinerías modulares y terminal portuaria de aguas profundas diseñada para evacuar crudo no convencional sin depender de oleoductos congestionados.",
+                "intl": "La producción de Vaca Muerta superará 1 millón de barriles diarios en 2030, demandando infraestructura privada de despacho marítimo a mercados del Atlántico."
+            }
         },
         "en": {
             "categoryTag": "Refining & Deepwater Port Hub",
@@ -1711,8 +1679,14 @@ const PROJECTS_DATA = {
                     "val": "Turnkey Sale",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Strategic package of 3 modular refineries and deep-water terminal bypassing domestic pipeline bottlenecks for Vaca Muerta crude.",
+                "intl": "Vaca Muerta surging towards 1M bpd by 2030, creating critical need for private offshore tanker loading to global export routes."
+            }
+        },
+        "dealType": "Venta",
+        "tir": "45.0%"
     },
     "vacamuerta-operadora-15concesiones": {
         "id": "vacamuerta-operadora-15concesiones",
@@ -1767,7 +1741,11 @@ const PROJECTS_DATA = {
                     "val": "Socio Inversor",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Compañía operadora con 15 áreas de concesión adjudicadas, producción inmediata de petróleo y gas, y red de ductos de captación en Cuenca Neuquina.",
+                "intl": "Entrada directa de capital al shale oil más competitivo del hemisferio sur, con costos de desarrollo y punto de equilibrio (break-even) inferiores a USD 35/bbl."
+            }
         },
         "en": {
             "categoryTag": "Upstream Operator — Vaca Muerta",
@@ -1804,102 +1782,118 @@ const PROJECTS_DATA = {
                     "val": "Equity Partner",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Independent producer holding 15 active concession blocks with running crude production and field gathering facilities.",
+                "intl": "Direct equity access to top-tier shale oil assets delivering sub-USD 35/bbl breakeven economics."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "35.0%"
     },
     "pozo-salta": {
         "id": "pozo-salta",
         "category": "petroleo",
         "sector": "Petróleo, Gas & Infraestructura",
         "assignedAgent": "daniel",
-        "amountUSD": 15.0,
+        "amountUSD": 1885.0,
         "basePrice": 15000000,
         "overpriceTarget": 1000000,
         "currency": "USD",
-        "amountDisplay": "USD 15M CAPEX",
+        "amountDisplay": "USD 15M CAPEX / Plan USD 1.870M (25 Áreas)",
         "defaultStatus": "activo",
-        "modality": "Infraestructura & Servicios",
-        "roi": "3 Años",
-        "statusProgress": "Planta de tratamiento y secado de cuttings en zona hidrocarburífera de Salta",
+        "modality": "Socio Inversor / Concesión & UTE",
+        "roi": "3 Años (Planta) / 20 Años (Concesión)",
+        "statusProgress": "Planta de secado de cuttings (500 m³/d) unificada a 25 áreas de concesión hidrocarburífera por 20 años en Salta",
         "isPrivatePlacement": false,
         "pdfPath": "assets/docs/pozo_salta_2026.pdf",
-        "totalSlides": 12,
-        "slidePrefix": "assets/slides/Proyecto_Pozo_Salta_2026_page_",
-        "coverImage": "assets/slides/Proyecto_Pozo_Salta_2026_page_2.png",
+        "totalSlides": 25,
+        "slidePrefix": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_",
+        "coverImage": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_1.png",
         "es": {
-            "categoryTag": "Servicios Petroleros & Cuttings",
+            "categoryTag": "Infraestructura & Upstream NOA — 25 Áreas",
             "title": "Proyecto Pozo Salta — Infraestructura & Secado de Cuttings",
             "location": "Cuenca Noroeste, Salta, Argentina",
             "statusLabel": "USD 15M CAPEX",
-            "description": "Centro logístico y ambiental para tratamiento térmico y disposición de lodos y recortes de perforación (cuttings) con certificación ambiental en el NOA.",
-            "thesis": "Servicio ambiental mandatorio para operadoras con tarifas indexadas y alta tasa de utilización de planta.",
+            "description": "Complejo integral hidrocarburífero y ambiental en Salta que combina: 1) Planta industrial de tratamiento térmico y secado de cuttings (500 m³/día) con demanda regulatoria mandatoria, y 2) Concesión oficial por 20 años sobre 25 áreas de explotación en Cuenca Noroeste con reservas certificadas de crudo y gas.",
+            "thesis": "Doble motor de rentabilidad: ingresos operativos en dólares con clientes cautivos de perforación NOA, complementado por la reversión del Gasoducto Norte para inyección y exportación masiva a Brasil sobre 25 bloques en UTE.",
             "highlights": [
-                "USD 15M CAPEX con recupero a 3 años.",
-                "Capacidad para 500 m³ diarios de cuttings.",
-                "Contratos vigentes de servicio ambiental.",
-                "Normativa ambiental estricta que asegura demanda inelástica.",
-                "Ubicación en nudo neurálgico de perforación."
+                "Planta de tratamiento térmico y secado de recortes de perforación (500 m³/día).",
+                "25 áreas de concesión adjudicadas por 20 años con opción de renovación en Salta.",
+                "Reversión del Gasoducto Norte: enlace directo para exportaciones de gas a Brasil.",
+                "Modelos de entrada flexibles: inversión en planta de cuttings (USD 15M) o UTE por bloques de áreas (USD 1.870M).",
+                "Flujos en dólares, contratos con operadoras de primer nivel y marco regulatorio pro-inversión (RIGI)."
             ],
             "metrics": [
                 {
-                    "label": "CAPEX Requerido",
+                    "label": "CAPEX Planta",
                     "val": "USD 15M",
                     "color": "text-gold"
                 },
                 {
-                    "label": "Capacidad",
-                    "val": "500 m³/día",
+                    "label": "Concesión Bloques",
+                    "val": "25 Áreas",
                     "color": "text-cyan"
                 },
                 {
-                    "label": "Recupero",
+                    "label": "Retorno Planta",
                     "val": "3 Años",
                     "color": "text-green"
                 },
                 {
-                    "label": "Servicio",
-                    "val": "Mandatorio",
+                    "label": "TIR Estimada",
+                    "val": "31.0%",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Servicio ambiental obligatorio de secado térmico de cuttings (500 m³/día) con tarifas dolarizadas, unificado al desarrollo de 25 áreas concesionadas a 20 años con gasoducto troncal.",
+                "intl": "La reversión del Gasoducto Norte y la apertura de exportaciones a Brasil aceleran el desarrollo de cuencas maduras y exigen cumplimiento estricto de normas ambientales ESG."
+            }
         },
         "en": {
-            "categoryTag": "Oilfield Environmental Services",
-            "title": "Pozo Salta Project — Cuttings Drying & Treatment",
+            "categoryTag": "Infrastructure & Upstream Basin — 25 Blocks",
+            "title": "Pozo Salta Project — Infrastructure & Cuttings Treatment",
             "location": "Northwest Basin, Salta, Argentina",
             "statusLabel": "USD 15M CAPEX",
-            "description": "Environmental and logistics hub for thermal treatment and recycling of drilling muds and cuttings serving Northwest Argentina oilfields.",
-            "thesis": "Mandatory compliance service with recurring dollar-linked contracts and strong EBITDA margins.",
+            "description": "Integrated oilfield and environmental complex in Salta combining: 1) Thermal drying facility for drilling cuttings (500 m3/day) with mandatory compliance demand, and 2) 20-year concession covering 25 licensed exploration blocks in Northwest Basin.",
+            "thesis": "Dual-engine revenue model: recurring dollarized environmental service cash flow paired with 25 upstream concession blocks strategically linked to the Northern Gas Pipeline reversal towards Brazil.",
             "highlights": [
-                "USD 15M CAPEX with 3-year payback.",
-                "Processing capacity of 500 m³/day.",
-                "Active long-term environmental service agreements.",
-                "Inelastic demand driven by strict environmental regulations.",
-                "Prime geographical hub near drilling clusters."
+                "500 m3/day thermal cuttings treatment plant with operating contracts.",
+                "25 oil and gas concession blocks with secure 20-year renewable licenses in Salta.",
+                "Northern Pipeline reversal unlocking high-value export markets to Brazil.",
+                "Flexible investment entry: cuttings plant capex (USD 15M) or block farm-in syndication (USD 1,870M).",
+                "High-margin dollar contracts and favorable RIGI investment framework."
             ],
             "metrics": [
                 {
-                    "label": "Required CAPEX",
+                    "label": "Plant CAPEX",
                     "val": "USD 15M",
                     "color": "text-gold"
                 },
                 {
-                    "label": "Throughput",
-                    "val": "500 m³/day",
+                    "label": "Concessions",
+                    "val": "25 Blocks",
                     "color": "text-cyan"
                 },
                 {
-                    "label": "Payback",
+                    "label": "Plant Payback",
                     "val": "3 Years",
                     "color": "text-green"
                 },
                 {
-                    "label": "Compliance",
-                    "val": "Mandatory",
+                    "label": "Estimated IRR",
+                    "val": "31.0%",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Mandatory thermal cuttings drying hub (500 m3/day) paired with 25 licensed 20-year concession blocks in the Northwest Basin.",
+                "intl": "Northern Pipeline reversal unlocking Brazilian export markets while stringent environmental ESG rules enforce zero-discharge drill cuttings."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "31.0%"
     },
     "asesoramiento-inbound-funds": {
         "id": "asesoramiento-inbound-funds",
@@ -1954,7 +1948,11 @@ const PROJECTS_DATA = {
                     "val": "Mandato Privado",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "El nuevo marco macroeconómico argentino y el régimen RIGI generan un flujo masivo de consultas de fondos extranjeros para estructurar adquisiciones directas.",
+                "intl": "Fondos soberanos y de private equity buscan originadores locales con conocimiento regulatorio, contratos NCNDA y acceso directo a activos privados."
+            }
         },
         "en": {
             "categoryTag": "Investment Banking & Advisory",
@@ -1991,8 +1989,14 @@ const PROJECTS_DATA = {
                     "val": "Private Mandate",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Pro-market reforms and RIGI incentives accelerating institutional foreign capital entry into Argentina natural resources.",
+                "intl": "Sovereign wealth and private equity funds seeking trusted local partners to originate, diligence, and structure private transactions."
+            }
+        },
+        "dealType": "Asesoramiento / Mandato",
+        "tir": "Estructuración"
     },
     "asesoramiento-gobiernos": {
         "id": "asesoramiento-gobiernos",
@@ -2047,7 +2051,11 @@ const PROJECTS_DATA = {
                     "val": "Estructuración",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Estados provinciales y municipios demandan estructuración de esquemas de Participación Público-Privada (PPP) para obras viales, energéticas e hídricas.",
+                "intl": "Bancos multilaterales de crédito (BID, CAF, Banco Mundial) priorizan financiamiento de infraestructura resiliente con gobernanza transparente."
+            }
         },
         "en": {
             "categoryTag": "Public Finance & Infrastructure",
@@ -2084,8 +2092,14 @@ const PROJECTS_DATA = {
                     "val": "Financial Advisory",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Provinces and municipalities deploying private PPP financing models for critical public infrastructure works.",
+                "intl": "Multilateral development banks and global institutional lenders prioritizing transparent blended-finance infrastructure facilities."
+            }
+        },
+        "dealType": "Mandato Soberano",
+        "tir": "Honorarios Éxito"
     },
     "asesoramiento-real-estate": {
         "id": "asesoramiento-real-estate",
@@ -2140,7 +2154,11 @@ const PROJECTS_DATA = {
                     "val": "Estructuración",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "El regreso del crédito hipotecario y la regularización de activos impulsan el desarrollo de urbanizaciones, parques logísticos y oficinas corporativas AAA.",
+                "intl": "Costos de construcción en dólares históricamente atractivos en Argentina permiten a desarrolladores internacionales capturar retornos por plusvalía y renta."
+            }
         },
         "en": {
             "categoryTag": "Real Estate & REIT Structuring",
@@ -2177,8 +2195,14 @@ const PROJECTS_DATA = {
                     "val": "Fiduciary Vehicle",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Mortgage lending recovery and tax normalization driving residential, logistics, and AAA corporate real estate developments.",
+                "intl": "Highly attractive construction costs in USD allowing international investors to secure premium yields and long-term capital gains."
+            }
+        },
+        "dealType": "Socio Inversor / Desarrollo",
+        "tir": "18.0%"
     },
     "reit-strategy": {
         "id": "reit-strategy",
@@ -2234,7 +2258,11 @@ const PROJECTS_DATA = {
                     "val": "REIT Dolarizado",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Primer vehículo institucional estructurado bajo ley de fideicomisos que consolida inmuebles comerciales y hoteleros con renta dolarizada y liquidación trimestral.",
+                "intl": "Estructura REIT alineada con estándares globales de transparencia que permite diversificar portafolios internacionales con rentas protegidas contra la inflación."
+            }
         },
         "en": {
             "categoryTag": "Real Estate Investment Trust",
@@ -2271,8 +2299,14 @@ const PROJECTS_DATA = {
                     "val": "USD REIT",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Pioneering institutional REIT vehicle consolidating prime hotel and commercial real estate yielding quarterly dollarized distributions.",
+                "intl": "Standardized REIT architecture offering global investors liquid, inflation-protected, high-dividend exposure to prime Argentine real estate."
+            }
+        },
+        "dealType": "Fondo Inmobiliario / REIT",
+        "tir": "16.5%"
     },
     "pesca-gran-escala": {
         "id": "pesca-gran-escala",
@@ -2328,7 +2362,11 @@ const PROJECTS_DATA = {
                     "val": "Exportación 100%",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Flota activa de 16 buques pesqueros con cuota CITP federal asignada en caladeros patagónicos, capturando langostino salvaje, calamar illex y merluza hubbsi.",
+                "intl": "Demanda global insatisfecha de proteína marina salvaje en Asia, Europa y EE.UU., con cotizaciones internacionales récord en crustáceos y cefalópodos."
+            }
         },
         "en": {
             "categoryTag": "Industrial High-Seas Fishing",
@@ -2365,8 +2403,14 @@ const PROJECTS_DATA = {
                     "val": "100% Export",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Premier 16-vessel industrial fleet holding permanent federal fishing quotas across the prolific Argentine Patagonia exclusive economic zone.",
+                "intl": "Sustained international demand for wild-caught marine protein across Asian and European seafood markets yielding peak export valuations."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "28.0%"
     },
     "pesca-integrado": {
         "id": "pesca-integrado",
@@ -2422,7 +2466,11 @@ const PROJECTS_DATA = {
                     "val": "Europa / Asia",
                     "color": "text-gold"
                 }
-            ]
+            ],
+            "marketTrend": {
+                "local": "Operación boutique integrada verticalmente con buques congeladores y planta de procesamiento en tierra a pie de muelle para langostino IQF en Chubut.",
+                "intl": "Cadenas gastronómicas y cadenas gourmet europeas y norteamericanas pagan sobreprecios de hasta el 35% por productos de pesca sustentable trazable."
+            }
         },
         "en": {
             "categoryTag": "Integrated Fishery & Cold Chain",
@@ -2459,8 +2507,14 @@ const PROJECTS_DATA = {
                     "val": "Europe / Asia",
                     "color": "text-gold"
                 }
-            ]
-        }
+            ],
+            "marketTrend": {
+                "local": "Integrated boutique processing operation with dockside IQF freezing plant in Patagonia port cluster, capturing maximum value-added margins.",
+                "intl": "Global gourmet retail and premium foodservice paying up to 35% premium for fully traceable, wild-caught sustainable seafood."
+            }
+        },
+        "dealType": "Socio Inversor",
+        "tir": "32.5%"
     }
 };
 
@@ -2473,6 +2527,10 @@ const TRANSLATIONS = {
         filter_cat_petroleo: "Petróleo, Gas & Infraestructura",
         filter_cat_asesoramiento: "Asesoramiento Financiero",
         card_btn_onepager: "Resumen Ejecutivo (1 Pág)",
+        card_btn_presentation: "Ver Presentación",
+        card_metric_ticket: "Inversión",
+        card_metric_deal: "Tipo Oferta",
+        card_metric_roi: "Retorno / TIR",
         card_badge_private: "🔒 Private Placement / Off-Market",
         card_cta_private: "Solicitar Invitación & NDA",
         private_amount: "A Invitación Exclusiva",
@@ -2848,11 +2906,21 @@ function renderProjectCards() {
 
     grid.innerHTML = "";
 
+    // Set of exactly 5 projects authorized to display the presentation viewer
+    const PRESENTATION_ENABLED_IDS = new Set([
+        "solar",
+        "pozo-salta",
+        "reit-strategy",
+        "pesca-gran-escala",
+        "pesca-integrado"
+    ]);
+
     Object.keys(PROJECTS_DATA).forEach(projectId => {
         const p = PROJECTS_DATA[projectId];
         const status = projectStatuses[projectId] || p.defaultStatus || "activo";
         const langData = p[currentLang] || p.es;
         const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.es;
+        const isEn = (currentLang === "en");
 
         let statusClass = "status-badge-activo";
         let statusText = dict.card_status_activo || "Activo";
@@ -2875,6 +2943,15 @@ function renderProjectCards() {
         card.setAttribute("data-status", status);
 
         const amountText = p.isPrivatePlacement ? (dict.private_amount || "A Invitación Exclusiva") : p.amountDisplay;
+        const dealTypeText = p.dealType || p.modality || (isEn ? "Direct Deal" : "Venta / Socio Inversor");
+        const roiTirText = p.tir && p.tir !== "Consulte" ? `${isEn ? 'IRR' : 'TIR'} ${p.tir}` : p.roi;
+
+        // Market trend micro-snippet
+        const trendSnippet = (langData.marketTrend && langData.marketTrend.local) 
+            ? (langData.marketTrend.local.length > 115 ? langData.marketTrend.local.slice(0, 115) + "..." : langData.marketTrend.local)
+            : (langData.thesis ? (langData.thesis.length > 115 ? langData.thesis.slice(0, 115) + "..." : langData.thesis) : "");
+
+        const hasPresentation = PRESENTATION_ENABLED_IDS.has(p.id);
 
         card.innerHTML = `
             <div class="card-image-wrapper">
@@ -2892,31 +2969,44 @@ function renderProjectCards() {
                     <span class="card-location"><i class="fa-solid fa-location-dot"></i> ${langData.location}</span>
                     <span class="card-ticket-amount text-gold"><strong>${amountText}</strong></span>
                 </div>
+                
+                <div style="margin: 4px 0 6px 0;">
+                    <span class="card-offer-badge"><i class="fa-solid fa-handshake"></i> ${dealTypeText}</span>
+                </div>
+
                 <h3 class="card-title">${langData.title}</h3>
                 <p class="card-desc">${langData.description}</p>
+
+                <!-- Market Trend Preview -->
+                <div class="card-trend-snippet">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span><strong>${isEn ? 'Market Trend:' : 'Tendencia:'}</strong> ${trendSnippet}</span>
+                </div>
                 
                 <div class="metrics-grid">
-                    ${(langData.metrics || []).slice(0, 3).map(m => `
-                        <div class="metric-item">
-                            <span class="metric-val ${m.color}">${m.val}</span>
-                            <span class="metric-lbl">${m.label}</span>
-                        </div>
-                    `).join("")}
+                    <div class="metric-item">
+                        <span class="metric-val text-gold">${amountText}</span>
+                        <span class="metric-lbl">${dict.card_metric_ticket || 'Inversión'}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-val text-cyan">${dealTypeText}</span>
+                        <span class="metric-lbl">${dict.card_metric_deal || 'Tipo Oferta'}</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-val text-green">${roiTirText}</span>
+                        <span class="metric-lbl">${dict.card_metric_roi || 'Retorno / TIR'}</span>
+                    </div>
                 </div>
 
                 <div class="card-footer-actions">
-                    <button class="btn btn-card-op" onclick="openOnePager('${p.id}')">
+                    <button class="btn btn-card-op ${hasPresentation ? '' : 'btn-card-op-full'}" onclick="openOnePager('${p.id}')">
                         <i class="fa-solid fa-file-contract"></i> ${dict.card_btn_onepager || 'Resumen (1 Pág)'}
                     </button>
-                    ${p.isPrivatePlacement ? `
-                        <button class="btn btn-card-private" onclick="requestPrivateAccess('${p.id}')">
-                            <i class="fa-solid fa-key"></i> ${dict.card_cta_private || 'Solicitar NDA'}
+                    ${hasPresentation ? `
+                        <button class="btn btn-card btn-card-pres" onclick="openProjectModal('${p.id}')" title="${dict.card_btn_presentation || 'Ver Presentación'}">
+                            <i class="fa-solid fa-desktop"></i> ${dict.card_btn_presentation || 'Ver Presentación'} (${p.totalSlides || 5})
                         </button>
-                    ` : `
-                        <button class="btn btn-card" onclick="openProjectModal('${p.id}')" title="Ver Presentación">
-                            <i class="fa-solid fa-images"></i> ${p.totalSlides || 5}
-                        </button>
-                    `}
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -3636,8 +3726,9 @@ function openOnePager(projectId) {
         ? (isEn ? "Exclusive Invitation Only" : "A Invitación Exclusiva") 
         : p.amountDisplay;
 
-    const modalityLabel = p.modality || "Direct Deal";
+    const dealTypeLabel = p.dealType || p.modality || (isEn ? "Direct Deal" : "Venta / Socio Inversor");
     const roiLabel = p.roi || "N/A";
+    const tirLabel = p.tir && p.tir !== "Consulte" ? p.tir : (isEn ? "Upon Request" : "A Consultar");
     const statusProg = p.statusProgress || (isEn ? "Active in Portfolio" : "Activo en Cartera");
 
     const highlightsHtml = (langData.highlights || []).map(h => `
@@ -3658,6 +3749,10 @@ function openOnePager(projectId) {
     );
 
     const wspUrl = `https://wa.me/${consultant.phoneClean}?text=${wspMsg}`;
+
+    // Local and International Market Trends
+    const localTrendText = (langData.marketTrend && langData.marketTrend.local) ? langData.marketTrend.local : (langData.thesis || "");
+    const intlTrendText = (langData.marketTrend && langData.marketTrend.intl) ? langData.marketTrend.intl : (isEn ? "Sustained global commodity demand and institutional capital inflows." : "Demanda global sostenida de commodities y flujos de capital institucional.");
 
     container.innerHTML = `
         <!-- Header -->
@@ -3688,12 +3783,12 @@ function openOnePager(projectId) {
                 <span class="op-deal-val">${amountLabel}</span>
             </div>
             <div class="op-deal-col">
-                <span class="op-deal-lbl">${isEn ? "Deal Modality" : "Modalidad"}</span>
-                <span class="op-deal-val">${modalityLabel}</span>
+                <span class="op-deal-lbl">${isEn ? "Deal Type / Offer" : "Tipo de Oferta"}</span>
+                <span class="op-deal-val">${dealTypeLabel}</span>
             </div>
             <div class="op-deal-col">
-                <span class="op-deal-lbl">${isEn ? "Est. ROI / Payback" : "Retorno / Payback"}</span>
-                <span class="op-deal-val">${roiLabel}</span>
+                <span class="op-deal-lbl">${isEn ? "Est. ROI & IRR" : "Retorno / ROI & TIR"}</span>
+                <span class="op-deal-val">${roiLabel} | ${isEn ? 'IRR' : 'TIR'}: ${tirLabel}</span>
             </div>
             <div class="op-deal-col">
                 <span class="op-deal-lbl">${isEn ? "Stage / Status" : "Estado de Avance"}</span>
@@ -3701,26 +3796,43 @@ function openOnePager(projectId) {
             </div>
         </div>
 
-        <!-- Body: Summary & Thesis -->
+        <!-- Body: Summary & Strategic Highlights -->
         <div class="op-body-grid">
             <div class="op-card-block">
                 <div class="op-block-title">
-                    <i class="fa-solid fa-briefcase"></i> ${isEn ? "Executive Summary & Investment Thesis" : "Resumen Ejecutivo & Tesis de Inversión"}
+                    <i class="fa-solid fa-briefcase"></i> ${isEn ? "Executive Summary & Asset Overview" : "Resumen Ejecutivo de la Actividad & Activo"}
                 </div>
                 <p class="op-desc-text">${langData.description}</p>
                 ${langData.thesis ? `
                 <div class="op-thesis-box">
-                    <strong>${isEn ? "Investment Thesis: " : "Tesis Financiera: "}</strong>${langData.thesis}
+                    <strong>${isEn ? "Financial Thesis: " : "Tesis Financiera: "}</strong>${langData.thesis}
                 </div>` : ''}
             </div>
 
             <div class="op-card-block">
                 <div class="op-block-title">
-                    <i class="fa-solid fa-star"></i> ${isEn ? "Strategic Value Drivers & Key Highlights" : "Factores Críticos de Valor & Aspectos Clave"}
+                    <i class="fa-solid fa-star"></i> ${isEn ? "Strategic Value Drivers & Key Terms" : "Factores Críticos de Valor & Aspectos Clave"}
                 </div>
                 <ul class="op-highlights-list">
                     ${highlightsHtml}
                 </ul>
+            </div>
+        </div>
+
+        <!-- Market Trends: Local & International (Requested Section) -->
+        <div class="op-market-trend-container">
+            <div class="op-block-title">
+                <i class="fa-solid fa-earth-americas" style="color: #10b981;"></i> ${isEn ? "Market Outlook & Local/International Trends" : "Tendencia de Mercado Local e Internacional"}
+            </div>
+            <div class="op-market-grid">
+                <div class="op-market-card op-market-local">
+                    <div class="op-market-tag"><i class="fa-solid fa-location-crosshairs"></i> ${isEn ? "Domestic Argentine Market" : "Mercado Local (Argentina)"}</div>
+                    <p class="op-market-text">${localTrendText}</p>
+                </div>
+                <div class="op-market-card op-market-intl">
+                    <div class="op-market-tag"><i class="fa-solid fa-globe"></i> ${isEn ? "Global / International Demand" : "Mercado Internacional"}</div>
+                    <p class="op-market-text">${intlTrendText}</p>
+                </div>
             </div>
         </div>
 
