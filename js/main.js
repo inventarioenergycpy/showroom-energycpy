@@ -2591,6 +2591,10 @@ const TRANSLATIONS = {
         modal_tech_sheet: "Ficha Técnica del Proyecto",
         modal_highlights: "Puntos Clave de Inversión",
         modal_btn_pdf: "Descargar Presentación Completa (PDF)",
+        modal_btn_onepager: "Ver y Descargar Resumen Ejecutivo (1 Pág. A4)",
+        success_client_title: "¡Su consulta ha sido enviada con éxito!",
+        success_client_desc: "Hemos recibido correctamente su solicitud de información y coordinación. Todos sus datos han sido registrados de forma segura y confidencial.",
+        success_client_banner: "Por favor espere una respuesta a la brevedad. Nuestro consultor especialista asignado ya ha sido notificado y se comunicará con usted.",
         modal_wsp_javier: "WhatsApp Javier Diaz",
         modal_wsp_daniel: "WhatsApp Daniel Gonzalez"
     },
@@ -2913,10 +2917,6 @@ function renderProjectCards() {
                             <i class="fa-solid fa-images"></i> ${p.totalSlides || 5}
                         </button>
                     `}
-                    ${p.pdfPath ? `
-                    <a href="${p.pdfPath}" download class="btn btn-icon-download" title="Descargar PDF">
-                        <i class="fa-solid fa-download"></i>
-                    </a>` : ''}
                 </div>
             </div>
         `;
@@ -3086,12 +3086,44 @@ function handleFormSubmit(event) {
 
     const consultant = getAssignedConsultantByTopic(topic);
     const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.es;
+    const isEn = (currentLang === "en");
+    const leadId = "ECPY-" + Date.now().toString(36).toUpperCase();
 
+    // 1. GUARDAR TODOS LOS DATOS EN STORAGE PERSISTENTE LOCAL
+    const leadRecord = {
+        id: leadId,
+        timestamp: new Date().toISOString(),
+        dateFormatted: new Date().toLocaleString('es-AR'),
+        clientName: name,
+        clientCompany: company || "No especificada",
+        clientEmail: email,
+        clientPhone: phone,
+        projectTopic: topic,
+        clientMessage: message || "Sin mensaje adicional",
+        assignedConsultantName: consultant.name,
+        assignedConsultantEmail: consultant.internalEmail,
+        assignedConsultantPhone: consultant.phone,
+        senderAccount: "inventario.energycpy@gmail.com",
+        status: "recibido_esperando_respuesta"
+    };
+
+    try {
+        const storedLeads = JSON.parse(localStorage.getItem("energycpy_inquiries_db") || "[]");
+        storedLeads.unshift(leadRecord);
+        localStorage.setItem("energycpy_inquiries_db", JSON.stringify(storedLeads));
+        console.log("Lead guardado exitosamente en base de datos local:", leadId);
+    } catch (err) {
+        console.warn("Error guardando lead en storage local:", err);
+    }
+
+    // 2. DISPATCH INTERNO: Usar inventario.energycpy@gmail.com para notificar al consultor
     const emailSubject = `[Showroom Inversiones Energy CPY] Consulta: ${topic} - ${name}${company ? ' (' + company + ')' : ''}`;
     
     const emailBodyText = 
 `SOLICITUD DE INVERSIÓN - SHOWROOM WEB ENERGY CPY 2026
 ============================================================
+REF TICKET: ${leadId}
+FECHA Y HORA: ${leadRecord.dateFormatted}
 
 DATOS DEL INTERESADO / INVERSOR:
 ------------------------------------------------------------
@@ -3113,29 +3145,14 @@ ${message || '(Sin mensaje adicional provisto por el interesado)'}
 
 ENRUTAMIENTO Y RESPALDO INSTITUCIONAL:
 ------------------------------------------------------------
-• Cuentas Emisoras / Monitoreo: inventario.energycpy@gmail.com / energycpy@gmail.com
-• Destinatario Principal: ${consultant.name} <${consultant.internalEmail}>
+• Cuenta Emisora Central: inventario.energycpy@gmail.com
+• Destinatario Principal (Consultor Asignado): ${consultant.name} <${consultant.internalEmail}>
 • Copia Central (CC): inventario.energycpy@gmail.com, energycpy@gmail.com
 • Canal Web: inventarioenergycpy.github.io/showroom-energycpy/
 • Idioma de Consulta: ${currentLang.toUpperCase()}
-• Fecha y Hora: ${new Date().toLocaleString('es-AR')}
 ============================================================`;
 
-    // 1. Direct Gmail Web Compose link pre-filled (One-Click send from inventario.energycpy@gmail.com or energycpy@gmail.com)
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1` +
-        `&to=${encodeURIComponent(consultant.internalEmail)}` +
-        `&cc=${encodeURIComponent("inventario.energycpy@gmail.com,energycpy@gmail.com")}` +
-        `&su=${encodeURIComponent(emailSubject)}` +
-        `&body=${encodeURIComponent(emailBodyText)}`;
-
-    // 2. Direct WhatsApp chat link
-    const wspText = encodeURIComponent(
-        `Hola ${consultant.name}, mi nombre es ${name}${company ? ' (' + company + ')' : ''} (Email: ${email}, Tel: ${phone}). Estoy interesado en el proyecto/temática: "${topic}". Deseo coordinar una reunión o solicitar el dossier de inversión.` +
-        (message ? ` Detalle: "${message}"` : "")
-    );
-    const wspUrl = `https://wa.me/${consultant.phoneClean}?text=${wspText}`;
-
-    // 3. Automated background dispatch via FormSubmit API to central mailbox with CC to assigned consultant & secondary account
+    // Despacho asíncrono silencioso vía FormSubmit a inventario.energycpy@gmail.com con CC al consultor
     try {
         fetch("https://formsubmit.co/ajax/inventario.energycpy@gmail.com", {
             method: "POST",
@@ -3147,85 +3164,133 @@ ENRUTAMIENTO Y RESPALDO INSTITUCIONAL:
                 _subject: emailSubject,
                 _cc: `${consultant.internalEmail},energycpy@gmail.com`,
                 _replyto: email,
+                ticket_id: leadId,
                 nombre_interesado: name,
                 empresa_interesado: company || "No especificada",
                 email_interesado: email,
                 telefono_interesado: phone,
                 proyecto_interes: topic,
                 consultor_asignado: `${consultant.name} (${consultant.internalEmail})`,
+                cuenta_origen: "inventario.energycpy@gmail.com",
                 mensaje_consulta: message || "Sin observaciones adicionales",
-                fecha_registro: new Date().toLocaleString('es-AR')
+                fecha_registro: leadRecord.dateFormatted
             })
-        }).catch(e => console.log("FormSubmit background dispatch handled:", e));
+        }).catch(e => console.log("FormSubmit central dispatch:", e));
     } catch (e) {
         console.warn("Silent background fetch:", e);
     }
 
-    // 4. Fallback hidden mailto iframe trigger
+    // Secondary dispatch directly to consultant's mailbox
     try {
-        const mailtoUri = `mailto:${consultant.internalEmail}?cc=inventario.energycpy@gmail.com,energycpy@gmail.com&subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyText)}`;
-        const hiddenIframe = document.createElement("iframe");
-        hiddenIframe.style.display = "none";
-        hiddenIframe.src = mailtoUri;
-        document.body.appendChild(hiddenIframe);
-        setTimeout(() => hiddenIframe.remove(), 2500);
+        fetch(`https://formsubmit.co/ajax/${consultant.internalEmail}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                _subject: `[Urgente - Asignación Consultor] ${emailSubject}`,
+                _replyto: "inventario.energycpy@gmail.com",
+                ticket_id: leadId,
+                aviso: `Estimado/a ${consultant.name}, se le ha asignado una nueva consulta recibida en el Showroom de Inversiones Energy CPY.`,
+                nombre_interesado: name,
+                empresa_interesado: company || "No especificada",
+                email_interesado: email,
+                telefono_interesado: phone,
+                proyecto_interes: topic,
+                mensaje_consulta: message || "Sin observaciones adicionales",
+                fecha_registro: leadRecord.dateFormatted
+            })
+        }).catch(e => console.log("FormSubmit consultant direct dispatch:", e));
     } catch (e) {}
 
-    // 5. Hide form and display executive confirmation summary card
+    // Enlace interno Gmail (para apertura administrativa desde inventario.energycpy@gmail.com)
+    const internalGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1` +
+        `&to=${encodeURIComponent(consultant.internalEmail)}` +
+        `&cc=${encodeURIComponent("inventario.energycpy@gmail.com,energycpy@gmail.com")}` +
+        `&su=${encodeURIComponent(emailSubject)}` +
+        `&body=${encodeURIComponent(emailBodyText)}`;
+
+    // 3. AVISAR AL CLIENTE: Notificación formal de confirmación y espera de respuesta
     const formEl = document.getElementById("contactForm");
     const successDiv = document.getElementById("formSuccessMessage");
     if (formEl) formEl.style.display = "none";
     if (successDiv) {
         successDiv.style.display = "block";
         successDiv.innerHTML = `
-            <div class="success-alert-card">
-                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-                <h3>${dict.success_title || "¡Consulta Registrada con Éxito!"}</h3>
-                <p>${dict.success_body || "Su consulta ha sido procesada y derivada al consultor especialista asignado con copia de respaldo a la administración central de Energy CPY."}</p>
-                
-                <div class="success-specialist-info">
-                    <span class="specialist-pill"><i class="fa-solid fa-user-tie"></i> ${consultant.name}</span>
-                    <span class="specialist-phone"><i class="fa-brands fa-whatsapp icon-green"></i> ${consultant.phone}</span>
-                </div>
-
-                <!-- Executive Summary Box -->
-                <div class="success-summary-box">
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Interesado:</span>
-                        <span class="success-summary-value">${name}${company ? ' (' + company + ')' : ''}</span>
+            <div class="success-alert-card" style="text-align: left; padding: 24px; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(245, 208, 97, 0.35); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+                <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                    <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); color: #22c55e; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                        <i class="fa-solid fa-circle-check"></i>
                     </div>
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Email de Contacto:</span>
-                        <span class="success-summary-value">${email}</span>
-                    </div>
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Teléfono / WhatsApp:</span>
-                        <span class="success-summary-value">${phone}</span>
-                    </div>
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Proyecto / Temática:</span>
-                        <span class="success-summary-value">${topic}</span>
-                    </div>
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Consultor Derivado:</span>
-                        <span class="success-summary-value" style="color: var(--accent-gold);">${consultant.name}</span>
-                    </div>
-                    <div class="success-summary-row">
-                        <span class="success-summary-label">Cuentas de Monitoreo:</span>
-                        <span class="success-summary-value" style="font-size: 0.78rem;">inventario.energycpy@gmail.com | energycpy@gmail.com</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.25rem; color: #f8fafc; font-weight: 800;">
+                            ${isEn ? 'Inquiry Sent Successfully!' : '¡Su consulta ha sido enviada con éxito!'}
+                        </h3>
+                        <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 700;">Ticket Ref: ${leadId}</span>
                     </div>
                 </div>
 
-                <div class="success-actions" style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="${gmailUrl}" target="_blank" rel="noopener" class="btn btn-gmail btn-block">
-                        <i class="fa-solid fa-envelope-open-text"></i> Abrir en Gmail (Enviar desde inventario.energycpy / energycpy)
-                    </a>
-                    <a href="${wspUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
-                        <i class="fa-brands fa-whatsapp"></i> Chat Directo en WhatsApp con ${consultant.name}
-                    </a>
-                    <button type="button" onclick="resetContactForm()" class="btn btn-outline-gold btn-block mt-2">
-                        <i class="fa-solid fa-rotate-left"></i> ${dict.success_btn_another || "Enviar otra consulta"}
+                <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 16px;">
+                    ${isEn 
+                      ? 'We have successfully received your information request and meeting schedule. <strong>All your information has been securely and confidentially registered in our systems.</strong>' 
+                      : 'Hemos recibido correctamente su solicitud de información y coordinación para el proyecto. <strong>Todos sus datos han sido registrados de forma confidencial y segura en nuestros sistemas.</strong>'}
+                </p>
+
+                <div style="background: rgba(56, 189, 248, 0.08); border-left: 4px solid var(--accent-cyan); padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 18px; font-size: 0.88rem; color: #e0f2fe; display: flex; align-items: flex-start; gap: 10px;">
+                    <i class="fa-solid fa-clock" style="margin-top: 3px; color: var(--accent-cyan);"></i>
+                    <span>
+                        ${isEn 
+                          ? '<strong>Please expect a prompt response.</strong> Our specialist consultant for this investment sector has already been notified and will contact you shortly via email or phone.' 
+                          : '<strong>Por favor espere una respuesta a la brevedad.</strong> Nuestro consultor especialista asignado para este sector ya ha sido notificado y se comunicará con usted a través del correo o teléfono suministrado.'}
+                    </span>
+                </div>
+
+                <!-- Resumen de Datos Registrados para el Cliente -->
+                <div style="background: rgba(2, 6, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.05em;">
+                        ${isEn ? 'Registered Inquiry Details' : 'Constancia de Solicitud Registrada'}:
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+                            <span style="color: #94a3b8;">${isEn ? 'Client / Investor' : 'Interesado'}:</span>
+                            <span style="color: #f8fafc; font-weight: 600;">${name}${company ? ' (' + company + ')' : ''}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+                            <span style="color: #94a3b8;">Email:</span>
+                            <span style="color: #f8fafc;">${email}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+                            <span style="color: #94a3b8;">Teléfono / WhatsApp:</span>
+                            <span style="color: #f8fafc;">${phone}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;">
+                            <span style="color: #94a3b8;">${isEn ? 'Opportunity' : 'Proyecto'}:</span>
+                            <span style="color: var(--accent-gold); font-weight: 700;">${topic}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding-top: 2px;">
+                            <span style="color: #94a3b8;">${isEn ? 'Assigned Desk' : 'Consultor Notificado'}:</span>
+                            <span style="color: #38bdf8; font-weight: 600;">${consultant.name} (${consultant.specialties_es.split(',')[0]})</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button type="button" onclick="resetContactForm()" class="btn btn-outline-gold btn-block" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> ${isEn ? 'Submit another inquiry' : 'Enviar otra consulta o consultar otro proyecto'}
                     </button>
+                    
+                    <!-- Nota Interna de Respaldo Institucional -->
+                    <div style="font-size: 0.72rem; color: #64748b; text-align: center; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 10px; margin-top: 6px;">
+                        <i class="fa-solid fa-shield-halved"></i> ${isEn 
+                          ? `Internal dispatch routed to ${consultant.name} via inventario.energycpy@gmail.com` 
+                          : `Notificación interna derivada a ${consultant.name} (${consultant.internalEmail}) vía inventario.energycpy@gmail.com`}
+                        <br>
+                        <a href="${internalGmailUrl}" target="_blank" rel="noopener" style="color: #38bdf8; text-decoration: underline; margin-top: 4px; display: inline-block;">
+                            [Acceso Consultor/Admin] Abrir confirmación interna en Gmail
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
@@ -3355,10 +3420,17 @@ function openProjectModal(projectId) {
         modalStatus.innerHTML = `<span class="status-indicator-dot"></span> ${statusText}`;
     }
 
-    // Set PDF & WhatsApp Links
+    // Set One-Pager & WhatsApp Links (Presentation PDF download disabled - only 1-page executive summary enabled)
+    const onePagerBtn = document.getElementById("modalOnePagerBtn");
+    if (onePagerBtn) {
+        onePagerBtn.onclick = () => openOnePager(projectId);
+    }
     const pdfBtn = document.getElementById("modalPdfBtn");
-    pdfBtn.href = project.pdfPath;
-    pdfBtn.setAttribute("download", langData.title + ".pdf");
+    if (pdfBtn) {
+        pdfBtn.removeAttribute("href");
+        pdfBtn.removeAttribute("download");
+        pdfBtn.onclick = (e) => { e.preventDefault(); openOnePager(projectId); };
+    }
 
     const wspDiazBtn = document.getElementById("modalWspDiaz");
     const wspGonzalezBtn = document.getElementById("modalWspGonzalez");
