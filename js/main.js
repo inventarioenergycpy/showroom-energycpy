@@ -2673,6 +2673,8 @@ const TRANSLATIONS = {
         filter_cat_asesoramiento: "Asesoramiento Financiero",
         card_btn_onepager: "Resumen Ejecutivo (1 Pág)",
         card_btn_presentation: "Ver Presentación",
+        toggle_obs_hide: "Ocultar Observaciones",
+        toggle_obs_show: "Ver Observaciones",
         card_metric_ticket: "Inversión",
         card_metric_deal: "Tipo Oferta",
         card_metric_roi: "Rentabilidad",
@@ -2811,6 +2813,8 @@ const TRANSLATIONS = {
         filter_cat_petroleo: "Oil, Gas & Infrastructure",
         filter_cat_asesoramiento: "Financial Advisory & Structuring",
         card_btn_onepager: "Executive Summary (1 Page)",
+        toggle_obs_hide: "Hide Notes",
+        toggle_obs_show: "Show Notes",
         card_badge_private: "🔒 Private Placement / Off-Market",
         card_cta_private: "Request Invitation & NDA",
         private_amount: "Exclusive Invitation Only",
@@ -3007,6 +3011,9 @@ function setLanguage(lang) {
 
 function applyLanguage(lang) {
     const dict = TRANSLATIONS[lang] || TRANSLATIONS.es;
+    if (typeof togglePresentationObservations === "function") {
+        togglePresentationObservations(isObservationsPanelVisible);
+    }
 
     // Update active class on language buttons
     const esBtn = document.getElementById("langBtnEs");
@@ -3656,6 +3663,50 @@ function saveAdminChangesAndClose() {
 /* ==========================================================================
    6. Modal & Slide Viewer Functions
    ========================================================================== */
+let isObservationsPanelVisible = true;
+
+function togglePresentationObservations(forceState) {
+    const container = document.getElementById("projectModalContainer");
+    const toggleBtn = document.getElementById("toggleObservationsBtn");
+    const toggleIcon = document.getElementById("toggleObservationsIcon");
+    const toggleText = document.getElementById("toggleObservationsText");
+    const edgeBtn = document.getElementById("edgeToggleBtn");
+    const edgeIcon = document.getElementById("edgeToggleIcon");
+    if (!container) return;
+
+    if (typeof forceState === "boolean") {
+        isObservationsPanelVisible = forceState;
+    } else {
+        isObservationsPanelVisible = !isObservationsPanelVisible;
+    }
+
+    const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.es;
+    const hideText = (dict && dict.toggle_obs_hide) ? dict.toggle_obs_hide : "Ocultar Observaciones";
+    const showText = (dict && dict.toggle_obs_show) ? dict.toggle_obs_show : "Ver Observaciones";
+
+    if (isObservationsPanelVisible) {
+        container.classList.remove("observations-collapsed");
+        if (toggleText) toggleText.innerText = hideText;
+        if (toggleIcon) toggleIcon.className = "fa-solid fa-table-columns";
+        if (toggleBtn) {
+            toggleBtn.setAttribute("title", `${hideText} y Ficha Técnica (Tecla O)`);
+            toggleBtn.setAttribute("aria-expanded", "true");
+        }
+        if (edgeIcon) edgeIcon.className = "fa-solid fa-chevron-right";
+        if (edgeBtn) edgeBtn.setAttribute("title", hideText);
+    } else {
+        container.classList.add("observations-collapsed");
+        if (toggleText) toggleText.innerText = showText;
+        if (toggleIcon) toggleIcon.className = "fa-solid fa-bars-staggered";
+        if (toggleBtn) {
+            toggleBtn.setAttribute("title", `${showText} y Ficha Técnica (Tecla O)`);
+            toggleBtn.setAttribute("aria-expanded", "false");
+        }
+        if (edgeIcon) edgeIcon.className = "fa-solid fa-chevron-left";
+        if (edgeBtn) edgeBtn.setAttribute("title", showText);
+    }
+}
+
 function openProjectModal(projectId) {
     const project = PROJECTS_DATA[projectId];
     if (!project) return;
@@ -3722,6 +3773,9 @@ function openProjectModal(projectId) {
     // Render Slide Image, Counter & Thumbnails
     updateSlideDisplay();
     renderThumbnails();
+
+    // Sincronizar estado del panel de observaciones
+    togglePresentationObservations(isObservationsPanelVisible);
 
     // Show Modal
     const modal = document.getElementById("projectModal");
@@ -3805,6 +3859,7 @@ function initKeyboardNavigation() {
             if (e.key === "ArrowLeft") changeSlide(-1);
             else if (e.key === "ArrowRight") changeSlide(1);
             else if (e.key === "Escape") closeProjectModal();
+            else if (e.key === "o" || e.key === "O") togglePresentationObservations();
         }
 
         if (adminModal && adminModal.classList.contains("active") && e.key === "Escape") {

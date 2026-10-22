@@ -451,7 +451,7 @@
 
     <!-- Interactive Project & Slide Viewer Modal -->
     <div class="modal-backdrop" id="projectModal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-container">
+        <div class="modal-container" id="projectModalContainer">
             <div class="modal-header">
                 <div class="modal-title-group">
                     <span class="modal-tag" id="modalTag">Categoría</span>
@@ -460,9 +460,15 @@
                     </span>
                     <h2 class="modal-title" id="modalTitle">Título del Proyecto</h2>
                 </div>
-                <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Cerrar Modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <div class="modal-header-actions">
+                    <button type="button" class="btn-toggle-observations" id="toggleObservationsBtn" onclick="togglePresentationObservations()" title="Mostrar u Ocultar Observaciones y Ficha Técnica">
+                        <i class="fa-solid fa-table-columns" id="toggleObservationsIcon"></i>
+                        <span id="toggleObservationsText">Ocultar Observaciones</span>
+                    </button>
+                    <button type="button" class="modal-close-btn" onclick="closeProjectModal()" aria-label="Cerrar Modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="modal-body">
@@ -477,6 +483,11 @@
                         
                         <button class="slide-nav-btn next-btn" id="slideNextBtn" onclick="changeSlide(1)" aria-label="Diapositiva Siguiente">
                             <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <!-- Botón flotante para alternar observaciones -->
+                        <button type="button" class="slide-stage-edge-toggle" id="edgeToggleBtn" onclick="togglePresentationObservations()" title="Desplegar u Ocultar Observaciones">
+                            <i class="fa-solid fa-chevron-right" id="edgeToggleIcon"></i>
                         </button>
                         
                         <div class="slide-counter-badge" id="slideCounter">
