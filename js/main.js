@@ -3379,7 +3379,7 @@ function handleFormSubmit(event) {
         assignedConsultantEmail: consultant.internalEmail,
         assignedConsultantPhone: consultant.phone,
         senderAccount: "inventario.energycpy@gmail.com",
-        status: "recibido_esperando_respuesta"
+        status: "pendiente"
     };
 
     try {
@@ -3391,40 +3391,38 @@ function handleFormSubmit(event) {
         console.warn("Error guardando lead en storage local:", err);
     }
 
-    // 2. DISPATCH INTERNO: Usar inventario.energycpy@gmail.com para notificar al consultor
-    const emailSubject = `[Showroom Inversiones Energy CPY] Consulta: ${topic} - ${name}${company ? ' (' + company + ')' : ''}`;
+    // 2. DISPATCH INTERNO: Asunto y mensaje en español con aclaraciones de sistema
+    const emailSubject = `Te han enviado una consulta desde el showroom web - ${topic}`;
     
     const emailBodyText = 
-`SOLICITUD DE INVERSIÓN - SHOWROOM WEB ENERGY CPY 2026
+`TE HAN ENVIADO UNA CONSULTA DESDE EL SHOWROOM WEB
 ============================================================
-REF TICKET: ${leadId}
-FECHA Y HORA: ${leadRecord.dateFormatted}
+PROYECTO SELECCIONADO: ${topic}
+TICKET ÚNICO DE SEGUIMIENTO: ${leadId}
+FECHA Y HORA DE REGISTRO: ${leadRecord.dateFormatted}
 
 DATOS DEL INTERESADO / INVERSOR:
 ------------------------------------------------------------
 • Nombre Completo: ${name}
-• Empresa / Fondo: ${company || '(No especificada)'}
-• Correo Electrónico: ${email}
+• Empresa / Fondo / Organización: ${company || '(No especificada)'}
+• Correo Electrónico de Contacto: ${email}
 • Teléfono / WhatsApp: ${phone}
 
-PROYECTO O SECTOR DE INTERÉS:
+DETALLE DE LA CONSULTA / MENSAJE:
 ------------------------------------------------------------
-• Proyecto Seleccionado: ${topic}
-• Consultor Especialista Asignado: ${consultant.name} (${consultant.specialties_es})
-• Correo Consultor Asignado: ${consultant.internalEmail}
-• Teléfono / WhatsApp Consultor: ${consultant.phone}
+${message || '(El interesado no agregó un mensaje adicional; solicita contacto y dossier del proyecto)'}
 
-MENSAJE O REQUERIMIENTO ESPECÍFICO:
+ACLARACIONES DEL SISTEMA Y ENRUTAMIENTO INSTITUCIONAL:
 ------------------------------------------------------------
-${message || '(Sin mensaje adicional provisto por el interesado)'}
-
-ENRUTAMIENTO Y RESPALDO INSTITUCIONAL:
-------------------------------------------------------------
-• Cuenta Emisora Central: inventario.energycpy@gmail.com
-• Destinatario Principal (Consultor Asignado): ${consultant.name} <${consultant.internalEmail}>
+• Consultor Especialista Asignado: ${consultant.name}
+• Especialidad del Consultor: ${consultant.specialties_es}
+• Casilla del Consultor Asignado: ${consultant.internalEmail}
+• Teléfono de Contacto del Consultor: ${consultant.phone}
+• Estado Inicial de la Solicitud: Pendiente
+• Canal de Ingreso: Showroom Oficial de Inversiones Energy CPY (inventarioenergycpy.github.io/showroom-energycpy/)
+• Casilla Emisora Central: inventario.energycpy@gmail.com
 • Copia Central (CC): inventario.energycpy@gmail.com, energycpy@gmail.com
-• Canal Web: inventarioenergycpy.github.io/showroom-energycpy/
-• Idioma de Consulta: ${currentLang.toUpperCase()}
+• Aviso de Confidencialidad: Esta consulta contiene información comercial confidencial destinada exclusivamente al equipo de consultores de Energy CPY.
 ============================================================`;
 
     // Despacho asíncrono silencioso vía FormSubmit a inventario.energycpy@gmail.com con CC al consultor
@@ -3464,7 +3462,7 @@ ENRUTAMIENTO Y RESPALDO INSTITUCIONAL:
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                _subject: `[Urgente - Asignación Consultor] ${emailSubject}`,
+                _subject: emailSubject,
                 _replyto: "inventario.energycpy@gmail.com",
                 ticket_id: leadId,
                 aviso: `Estimado/a ${consultant.name}, se le ha asignado una nueva consulta recibida en el Showroom de Inversiones Energy CPY.`,
