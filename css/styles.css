@@ -1,3 +1,7 @@
+html {
+    scrollbar-gutter: stable;
+}
+
 /* ==========================================================================
    Styles for Energy CPY Investment Showroom 2026
    Inspiración estética: desarrollosas.com.ar & Dark Mode Ejecutivo
@@ -2700,4 +2704,144 @@ body {
 .card-image-wrapper.has-white-bg .card-img {
     background: #ffffff !important;
     object-fit: cover;
+}
+
+
+/* ==========================================================================
+   Financial Analyst Protocol & TIR Hurdle Rate Styling
+   ========================================================================== */
+.card-financial-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: 4px 0 8px 0;
+}
+
+.card-financial-tag strong {
+    color: #f5d061;
+}
+
+.op-financial-protocol-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(245, 208, 97, 0.25);
+    border-left: 3px solid #f5d061;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+}
+
+.op-financial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+
+.op-fin-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.op-fin-lbl {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.op-fin-val {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.op-fin-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    color: #bae6fd;
+    line-height: 1.35;
+}
+
+.op-fin-note i {
+    color: #38bdf8;
+    margin-top: 2px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Ensure no second page in print */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 6mm 8mm !important;
+    }
+
+    html, body {
+        height: 100% !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+    }
+
+    .one-pager-sheet {
+        max-height: 282mm !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        padding: 6mm 10mm !important;
+    }
+
+    .op-header {
+        margin-bottom: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .op-title-section {
+        margin-bottom: 8px !important;
+    }
+
+    .op-deal-bar {
+        margin-bottom: 8px !important;
+        padding: 6px 10px !important;
+    }
+
+    .op-body-grid {
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .op-financial-protocol-box {
+        margin-bottom: 8px !important;
+        padding: 6px 10px !important;
+    }
+
+    .op-market-trend-container {
+        margin-bottom: 8px !important;
+    }
+
+    .op-metrics-grid {
+        margin-bottom: 8px !important;
+        gap: 6px !important;
+    }
+
+    .op-footer-box {
+        margin-top: 6px !important;
+        padding: 6px 10px !important;
+    }
 }
