@@ -3115,6 +3115,7 @@ function renderProjectCards() {
         const amountText = p.isPrivatePlacement ? (dict.private_amount || "A Invitación Exclusiva") : p.amountDisplay;
         const dealTypeText = p.dealType || p.modality || (isEn ? "Direct Deal" : "Venta / Socio Inversor");
         const tirValueText = p.tir && p.tir !== "Consulte" ? p.tir : ">9%";
+        const tirCategory = getTirCategory(p.tir, isEn);
 
         // Market trend micro-snippet
         const trendSnippet = (langData.marketTrend && langData.marketTrend.local) 
