@@ -2674,7 +2674,7 @@ const TRANSLATIONS = {
         card_btn_presentation: "Ver Presentación",
         card_metric_ticket: "Inversión",
         card_metric_deal: "Tipo Oferta",
-        card_metric_roi: "TIR Objetivo: >9%",
+        card_metric_roi: "Rentabilidad",
         deal_metric_tir_lbl: "TIR Objetivo: >9%",
         card_badge_private: "🔒 Private Placement / Off-Market",
         card_cta_private: "Solicitar Invitación & NDA",
@@ -3168,9 +3168,9 @@ function renderProjectCards() {
                         <span class="metric-val text-cyan">${dealTypeText}</span>
                         <span class="metric-lbl">${dict.card_metric_deal || 'Tipo Oferta'}</span>
                     </div>
-                    <div class="metric-item" title="Tasa Interna de Retorno modelada (${getTirCategory(p.tir, isEn)})">
-                        <span class="metric-val text-green">${tirValueText}</span>
-                        <span class="metric-lbl" style="color: #34d399; font-weight: 700;">${getTirCategory(p.tir, isEn)}</span>
+                    <div class="metric-item" title="Tasa Interna de Retorno: ${tirCategory}">
+                        <span class="metric-val text-green">${tirCategory}</span>
+                        <span class="metric-lbl">${dict.card_metric_roi || (isEn ? 'Target Return' : 'Rentabilidad')}</span>
                     </div>
                 </div>
 
