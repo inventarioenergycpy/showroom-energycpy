@@ -1898,11 +1898,11 @@ const PROJECTS_DATA = {
         "category": "petroleo",
         "sector": "Petróleo, Gas & Infraestructura",
         "assignedAgent": "daniel",
-        "amountUSD": 1885.0,
+        "amountUSD": 1860.0,
         "basePrice": 15000000,
         "overpriceTarget": 1000000,
         "currency": "USD",
-        "amountDisplay": "USD 15M CAPEX / Plan USD 1.870M (25 Áreas)",
+        "amountDisplay": "USD 1.860M (Flexible con Socios Inversores)",
         "defaultStatus": "activo",
         "modality": "Socio Inversor / Concesión & UTE",
         "roi": "3 Años (Planta) / 20 Años (Concesión)",
@@ -1913,96 +1913,96 @@ const PROJECTS_DATA = {
         "slidePrefix": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_",
         "coverImage": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_1.png",
         "es": {
-            "categoryTag": "Infraestructura & Upstream NOA — 25 Áreas",
-            "title": "Proyecto Pozo Salta — Infraestructura & Secado de Cuttings",
-            "location": "Cuenca Noroeste, Salta, Argentina",
-            "statusLabel": "USD 15M CAPEX",
-            "description": "Complejo integral hidrocarburífero y ambiental en Salta que combina: 1) Planta industrial de tratamiento térmico y secado de cuttings (500 m³/día) con demanda regulatoria mandatoria, y 2) Concesión oficial por 20 años sobre 25 áreas de explotación en Cuenca Noroeste con reservas certificadas de crudo y gas.",
-            "thesis": "Doble motor de rentabilidad: ingresos operativos en dólares con clientes cautivos de perforación NOA, complementado por la reversión del Gasoducto Norte para inyección y exportación masiva a Brasil sobre 25 bloques en UTE.",
-            "highlights": [
-                "Planta de tratamiento térmico y secado de recortes de perforación (500 m³/día).",
-                "25 áreas de concesión adjudicadas por 20 años con opción de renovación en Salta.",
-                "Reversión del Gasoducto Norte: enlace directo para exportaciones de gas a Brasil.",
-                "Modelos de entrada flexibles: inversión en planta de cuttings (USD 15M) o UTE por bloques de áreas (USD 1.870M).",
-                "Flujos en dólares, contratos con operadoras de primer nivel y marco regulatorio pro-inversión (RIGI)."
-            ],
-            "metrics": [
-                {
-                    "label": "CAPEX Planta",
-                    "val": "USD 15M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Concesión Bloques",
-                    "val": "25 Áreas",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Retorno Planta",
-                    "val": "3 Años",
-                    "color": "text-green"
-                },
-                {
-                    "label": "TIR Estimada",
-                    "val": "31.0%",
-                    "color": "text-gold"
+                "categoryTag": "Infraestructura & Upstream NOA — 25 Áreas",
+                "title": "Proyecto Pozo Salta — Infraestructura & Secado de Cuttings",
+                "location": "Cuenca Noroeste, Salta, Argentina",
+                "statusLabel": "USD 1.860M — Socio Inversor",
+                "description": "Complejo integral hidrocarburífero y ambiental en Salta que combina: 1) Planta industrial de tratamiento térmico y secado de cuttings (500 m³/día) con demanda regulatoria mandatoria, y 2) Concesión oficial por 20 años sobre 25 áreas de explotación en Cuenca Noroeste con reservas certificadas de crudo y gas.",
+                "thesis": "Doble motor de rentabilidad: ingresos operativos en dólares con clientes cautivos de perforación NOA, complementado por la reversión del Gasoducto Norte para inyección y exportación masiva a Brasil sobre 25 bloques en UTE.",
+                "highlights": [
+                        "Planta de secado de cuttings (500 m³/día): único centro habilitado en la cuenca, payback < 3 años.",
+                        "25 áreas de explotación concesionadas por 20 años con reservas probadas P1 y P2.",
+                        "Conexión logística directa a Campo Durán y red de poliductos/gasoductos al norte y Brasil.",
+                        "Monto de inversión de USD 1.860M con alta flexibilidad para acordar esquemas con socios inversores (por bloques o complejo integral).",
+                        "Acuerdo bilateral de suministro de crudo y gas con refinerías de la región."
+                ],
+                "metrics": [
+                        {
+                                "label": "Monto Total Plan",
+                                "val": "USD 1.860M",
+                                "color": "text-cyan"
+                        },
+                        {
+                                "label": "Concesión Áreas",
+                                "val": "25 Bloques (20 Años)",
+                                "color": "text-gold"
+                        },
+                        {
+                                "label": "EBITDA Proyectado",
+                                "val": "USD 8.2M + USD 240M",
+                                "color": "text-green"
+                        },
+                        {
+                                "label": "TIR Estimada",
+                                "val": "31.0%",
+                                "color": "text-gold"
+                        }
+                ],
+                "marketTrend": {
+                        "local": "Servicio ambiental obligatorio de secado térmico de cuttings (500 m³/día) con tarifas dolarizadas, unificado al desarrollo de 25 áreas concesionadas a 20 años con gasoducto troncal.",
+                        "intl": "La reversión del Gasoducto Norte y la apertura de exportaciones a Brasil aceleran el desarrollo de cuencas maduras y exigen cumplimiento estricto de normas ambientales ESG."
                 }
-            ],
-            "marketTrend": {
-                "local": "Servicio ambiental obligatorio de secado térmico de cuttings (500 m³/día) con tarifas dolarizadas, unificado al desarrollo de 25 áreas concesionadas a 20 años con gasoducto troncal.",
-                "intl": "La reversión del Gasoducto Norte y la apertura de exportaciones a Brasil aceleran el desarrollo de cuencas maduras y exigen cumplimiento estricto de normas ambientales ESG."
-            }
         },
         "en": {
-            "categoryTag": "Infrastructure & Upstream Basin — 25 Blocks",
-            "title": "Pozo Salta Project — Infrastructure & Cuttings Treatment",
-            "location": "Northwest Basin, Salta, Argentina",
-            "statusLabel": "USD 15M CAPEX",
-            "description": "Integrated oilfield and environmental complex in Salta combining: 1) Thermal drying facility for drilling cuttings (500 m3/day) with mandatory compliance demand, and 2) 20-year concession covering 25 licensed exploration blocks in Northwest Basin.",
-            "thesis": "Dual-engine revenue model: recurring dollarized environmental service cash flow paired with 25 upstream concession blocks strategically linked to the Northern Gas Pipeline reversal towards Brazil.",
-            "highlights": [
-                "500 m3/day thermal cuttings treatment plant with operating contracts.",
-                "25 oil and gas concession blocks with secure 20-year renewable licenses in Salta.",
-                "Northern Pipeline reversal unlocking high-value export markets to Brazil.",
-                "Flexible investment entry: cuttings plant capex (USD 15M) or block farm-in syndication (USD 1,870M).",
-                "High-margin dollar contracts and favorable RIGI investment framework."
-            ],
-            "metrics": [
-                {
-                    "label": "Plant CAPEX",
-                    "val": "USD 15M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Concessions",
-                    "val": "25 Blocks",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Plant Payback",
-                    "val": "3 Years",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Estimated IRR",
-                    "val": "31.0%",
-                    "color": "text-gold"
+                "categoryTag": "Infrastructure & Upstream Basin — 25 Blocks",
+                "title": "Pozo Salta Project — Infrastructure & Cuttings Treatment",
+                "location": "Northwest Basin, Salta, Argentina",
+                "statusLabel": "USD 1,860M — Equity Partner",
+                "description": "Integrated oilfield and environmental complex in Salta combining: 1) Thermal drying facility for drilling cuttings (500 m3/day) with mandatory compliance demand, and 2) 20-year concession covering 25 licensed exploration blocks in Northwest Basin.",
+                "thesis": "Dual-engine revenue model: recurring dollarized environmental service cash flow paired with 25 upstream concession blocks strategically linked to the Northern Gas Pipeline reversal towards Brazil.",
+                "highlights": [
+                        "Thermal desorption plant (500 m³/day): sole certified processing facility in the basin (< 3-year payback).",
+                        "25 exploitation blocks under 20-year concession with certified 1P and 2P reserves.",
+                        "Direct pipeline interconnection to Campo Durán refinery and export lines to Brazil.",
+                        "Total USD 1,860M investment volume offering maximum flexibility for customized agreements with partner investors.",
+                        "Bilateral off-take agreements with regional downstream refiners."
+                ],
+                "metrics": [
+                        {
+                                "label": "Total Plan Monto",
+                                "val": "USD 1,860M",
+                                "color": "text-cyan"
+                        },
+                        {
+                                "label": "Area Concessions",
+                                "val": "25 Blocks (20 Yrs)",
+                                "color": "text-gold"
+                        },
+                        {
+                                "label": "Projected EBITDA",
+                                "val": "USD 8.2M + USD 240M",
+                                "color": "text-green"
+                        },
+                        {
+                                "label": "Modeled IRR",
+                                "val": "31.0%",
+                                "color": "text-gold"
+                        }
+                ],
+                "marketTrend": {
+                        "local": "Mandatory thermal cuttings drying hub (500 m3/day) paired with 25 licensed 20-year concession blocks in the Northwest Basin.",
+                        "intl": "Northern Pipeline reversal unlocking Brazilian export markets while stringent environmental ESG rules enforce zero-discharge drill cuttings."
                 }
-            ],
-            "marketTrend": {
-                "local": "Mandatory thermal cuttings drying hub (500 m3/day) paired with 25 licensed 20-year concession blocks in the Northwest Basin.",
-                "intl": "Northern Pipeline reversal unlocking Brazilian export markets while stringent environmental ESG rules enforce zero-discharge drill cuttings."
-            }
         },
         "dealType": "Socio Inversor",
         "tir": "31.0%",
         "tir_target": "TIR > 15%",
         "ebitda": "USD 8.2M/año Planta + USD 240M/año Bloques UTE",
-        "capitalStructure": "Socio Inversor / Concesión 20 Años & UTE por Bloques",
+        "capitalStructure": "Socio Inversor / Flexibilidad de Acuerdo en 25 Bloques & Complejo Cuttings",
         "regulatoryRegime": "Normativa Ambiental Mandatoria NOA & 25 Concesiones Vigentes",
-        "financialNote_es": "Cálculo de TIR: Doble motor: planta de cuttings mandatoria (payback 3 años) más desarrollo de 25 áreas conectadas a Brasil. TIR del 31.0% vs. TIR > 15%.",
-        "financialNote_en": "IRR Methodology: Dual engine: mandatory cuttings treatment plant (3-yr payback) plus 25 blocks exporting to Brazil. 31.0% IRR vs. IRR > 15%."
-    },
+        "financialNote_es": "Cálculo de TIR: Inversión estructurada de USD 1.860M con flexibilidad para socios inversores: planta de secado de cuttings mandatoria más 25 áreas conectadas a Brasil. TIR proyectada del 31.0% (TIR > 15%).",
+        "financialNote_en": "IRR Methodology: Structured USD 1,860M investment with flexibility for partner investors: mandatory cuttings drying plant plus 25 blocks connected to Brazil. Projected 31.0% IRR (IRR > 15%)."
+},
     "asesoramiento-inbound-funds": {
         "id": "asesoramiento-inbound-funds",
         "category": "asesoramiento",
@@ -2445,11 +2445,11 @@ const PROJECTS_DATA = {
         "category": "pesca",
         "sector": "Pesca Industrial",
         "assignedAgent": "daniel",
-        "amountUSD": 260.0,
+        "amountUSD": 310.0,
         "basePrice": 260000000,
         "overpriceTarget": 12000000,
         "currency": "USD",
-        "amountDisplay": "USD 260M CAPEX",
+        "amountDisplay": "USD 310M — Venta de Activo",
         "defaultStatus": "activo",
         "modality": "Flota & Industria",
         "roi": "4 Años",
@@ -2458,98 +2458,99 @@ const PROJECTS_DATA = {
         "pdfPath": "assets/docs/pesca_industrial_2026.pdf",
         "totalSlides": 13,
         "slidePrefix": "assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_",
-        "coverImage": "assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_2.png",
+        "coverImage": "assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_1.png",
         "es": {
-            "categoryTag": "Pesca Industrial Gran Escala",
-            "title": "Proyecto 6.6 — Pesca Industrial de Gran Escala en Patagonia",
-            "location": "Zona Económica Exclusiva (ZEE) Argentina",
-            "statusLabel": "USD 260M CAPEX",
-            "description": "Modelo consolidado de alta rentabilidad para captura y exportación de especies marinas premium (Merluza Hubbsi y Langostino Rojo) con flota activa de 16 buques de gran calado y planta de congelado propia.",
-            "thesis": "Activo estratégico con derechos consolidados de captura en aguas argentinas generando ingresos brutos proyectados de USD 600M anuales.",
-            "highlights": [
-                "USD 260 Millones en CAPEX requerido para operación de gran escala.",
-                "USD 600 Millones/año en ingresos brutos proyectados por capturas.",
-                "Flota activa de 16 buques altamente equipados para aguas patagónicas.",
-                "Planta terrestre propia de procesado, empaque y congelado rápido.",
-                "Track record comprobado con más de 25 años de operabilidad exitosa."
-            ],
-            "metrics": [
-                {
-                    "label": "CAPEX Requerido",
-                    "val": "USD 260M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Ingresos Proy.",
-                    "val": "USD 600M/año",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Flota Activa",
-                    "val": "16 Buques",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Mercado",
-                    "val": "Exportación 100%",
-                    "color": "text-gold"
+                "categoryTag": "Pesca Industrial Gran Escala",
+                "title": "Proyecto 6.6 — Pesca Industrial de Gran Escala en Patagonia",
+                "location": "Zona Económica Exclusiva (ZEE) Argentina",
+                "statusLabel": "USD 310M — Venta",
+                "description": "Modelo consolidado de alta rentabilidad para captura y exportación de especies marinas premium (Merluza Hubbsi y Langostino Rojo) con flota activa de 16 buques de gran calado, cuotas federales CITP y planta de procesamiento en tierra. Venta integral por USD 310M.",
+                "thesis": "Activo estratégico con derechos consolidados de captura en aguas argentinas generando ingresos brutos proyectados de USD 600M anuales.",
+                "highlights": [
+                        "Flota propia de 16 buques industriales operativos en Caleta Olivia y Puerto Madryn.",
+                        "Cuotas de captura federales (CITP) garantizadas a 15 años por ley nacional.",
+                        "Monto de venta total fijado en USD 310M con Data Room e inventario técnico disponible.",
+                        "Planta de procesamiento en tierra con capacidad de 120 toneladas diarias de congelado.",
+                        "Exportación directa a mercados de alta cotización en moneda dura (UE, EE.UU. y Asia)."
+                ],
+                "metrics": [
+                        {
+                                "label": "Monto Venta",
+                                "val": "USD 310M",
+                                "color": "text-gold"
+                        },
+                        {
+                                "label": "Flota Activa",
+                                "val": "16 Buques",
+                                "color": "text-cyan"
+                        },
+                        {
+                                "label": "EBITDA Anual",
+                                "val": "USD 48.0M",
+                                "color": "text-green"
+                        },
+                        {
+                                "label": "TIR Estimada",
+                                "val": "28.0%",
+                                "color": "text-gold"
+                        }
+                ],
+                "marketTrend": {
+                        "local": "Flota activa de 16 buques pesqueros con cuota CITP federal asignada en caladeros patagónicos, capturando langostino salvaje, calamar illex y merluza hubbsi.",
+                        "intl": "Demanda global insatisfecha de proteína marina salvaje en Asia, Europa y EE.UU., con cotizaciones internacionales récord en crustáceos y cefalópodos."
                 }
-            ],
-            "marketTrend": {
-                "local": "Flota activa de 16 buques pesqueros con cuota CITP federal asignada en caladeros patagónicos, capturando langostino salvaje, calamar illex y merluza hubbsi.",
-                "intl": "Demanda global insatisfecha de proteína marina salvaje en Asia, Europa y EE.UU., con cotizaciones internacionales récord en crustáceos y cefalópodos."
-            }
         },
         "en": {
-            "categoryTag": "Industrial High-Seas Fishing",
-            "title": "Project 6.6 — Large-Scale Industrial Fishing in Patagonia",
-            "location": "Exclusive Economic Zone (EEZ) Argentina",
-            "statusLabel": "USD 260M CAPEX",
-            "description": "Established high-yield marine capture and processing enterprise targeting prime species (Argentine Hake and Red Shrimp) with an active fleet of 16 deep-sea vessels and onshore freezing facility.",
-            "thesis": "Secured fishing quotas in Argentine South Atlantic waters delivering USD 600M/yr in projected gross export revenues.",
-            "highlights": [
-                "USD 260M CAPEX deployment for massive industrial scale.",
-                "USD 600M/year projected gross revenues from high-value seafood.",
-                "Active operational fleet of 16 deep-sea trawlers and jiggers.",
-                "Proprietary onshore quick-freeze and processing facility.",
-                "Over 25-year successful operating track record."
-            ],
-            "metrics": [
-                {
-                    "label": "Required CAPEX",
-                    "val": "USD 260M",
-                    "color": "text-gold"
-                },
-                {
-                    "label": "Projected Rev.",
-                    "val": "USD 600M/yr",
-                    "color": "text-cyan"
-                },
-                {
-                    "label": "Active Fleet",
-                    "val": "16 Vessels",
-                    "color": "text-green"
-                },
-                {
-                    "label": "Target Market",
-                    "val": "100% Export",
-                    "color": "text-gold"
+                "categoryTag": "Industrial High-Seas Fishing",
+                "title": "Project 6.6 — Large-Scale Industrial Fishing in Patagonia",
+                "location": "Exclusive Economic Zone (EEZ) Argentina",
+                "statusLabel": "USD 310M — Asset Sale",
+                "description": "High-margin industrial fishing and seafood export enterprise: active fleet of 16 deep-sea vessels, 15-year federal CITP quotas, and onshore processing plant. 100% asset sale at USD 310M.",
+                "thesis": "Secured fishing quotas in Argentine South Atlantic waters delivering USD 600M/yr in projected gross export revenues.",
+                "highlights": [
+                        "Active proprietary fleet of 16 industrial fishing vessels operating in Patagonian ports.",
+                        "15-year federal capture quotas (CITP) legally secured under national fishing regime.",
+                        "Total asset sale price established at USD 310M with complete technical Data Room.",
+                        "Onshore processing facility with 120 tons/day freezing capacity.",
+                        "Direct dollarized exports to premium global markets (EU, USA, and Asia)."
+                ],
+                "metrics": [
+                        {
+                                "label": "Sale Amount",
+                                "val": "USD 310M",
+                                "color": "text-gold"
+                        },
+                        {
+                                "label": "Active Fleet",
+                                "val": "16 Vessels",
+                                "color": "text-cyan"
+                        },
+                        {
+                                "label": "Annual EBITDA",
+                                "val": "USD 48.0M",
+                                "color": "text-green"
+                        },
+                        {
+                                "label": "Modeled IRR",
+                                "val": "28.0%",
+                                "color": "text-gold"
+                        }
+                ],
+                "marketTrend": {
+                        "local": "Premier 16-vessel industrial fleet holding permanent federal fishing quotas across the prolific Argentine Patagonia exclusive economic zone.",
+                        "intl": "Sustained international demand for wild-caught marine protein across Asian and European seafood markets yielding peak export valuations."
                 }
-            ],
-            "marketTrend": {
-                "local": "Premier 16-vessel industrial fleet holding permanent federal fishing quotas across the prolific Argentine Patagonia exclusive economic zone.",
-                "intl": "Sustained international demand for wild-caught marine protein across Asian and European seafood markets yielding peak export valuations."
-            }
         },
-        "dealType": "Socio Inversor",
+        "dealType": "Venta",
         "tir": "28.0%",
         "tir_target": "TIR > 15%",
         "ebitda": "USD 48.0M/año (Margen 35%)",
-        "capitalStructure": "Socio Inversor / Flota Activa & Cuotas Federales",
+        "capitalStructure": "100% Venta de Flota Activa (16 Buques), Cuotas CITP y Planta Procesadora",
         "regulatoryRegime": "Régimen Federal de Pesca (Ley 24.922) — Cuotas CITP a 15 Años",
-        "financialNote_es": "Cálculo de TIR: Captura y exportación en alta mar de langostino y calamar con precios en dólares en Europa y Asia. TIR del 28.0% vs. TIR > 15%.",
-        "financialNote_en": "IRR Methodology: Deep-sea shrimp and squid catch exported at peak hard currency prices to Asia/Europe. 28.0% IRR vs. IRR > 15%."
-    },
+        "financialNote_es": "Cálculo de TIR: Venta integral por USD 310M con flujo de exportación consolidado de langostino y calamar en moneda dura. TIR proyectada del 28.0% (TIR > 15%).",
+        "financialNote_en": "IRR Methodology: 100% asset sale at USD 310M with robust export cash flows in hard currency. Projected 28.0% IRR (IRR > 15%).",
+        "pdfUrl": "assets/docs/Proyectos_de_Pesca_Industrial_en_Argentina.pdf"
+},
     "pesca-integrado": {
         "id": "pesca-integrado",
         "category": "pesca",
