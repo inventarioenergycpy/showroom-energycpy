@@ -922,10 +922,10 @@ const PROJECTS_DATA = {
         "overpriceTarget": 3500000,
         "currency": "USD",
         "amountDisplay": "USD 60M",
-        "defaultStatus": "activo",
+        "defaultStatus": "tramite",
         "modality": "Venta",
         "roi": "Activo Minero",
-        "statusProgress": "Yacimiento aurífero a certificar bajo estándar internacional NI 43-101",
+        "statusProgress": "En negociación avanzada y exclusividad / Bloqueado por Gestión",
         "isPrivatePlacement": false,
         "coverImage": "assets/images/logo_energy_cpy_cover_white.png",
         "totalSlides": 5,
@@ -1371,14 +1371,14 @@ const PROJECTS_DATA = {
             "title": "Proyecto Minero de Oro 'Mina San Antonio'",
             "location": "San Juan, Argentina",
             "statusLabel": "USD 3.500M (USD 3.5B) — Venta / Socio Inversor",
-            "description": "Propiedad minera aurífera de gran escala (> 2.700 hectáreas, 150 pertenencias) emplazada en el prolífico cinturón aurífero andino de San Juan (Cordillera Frontal). Cuenta con informe técnico bajo estándar NI 43-101, leyes de hasta 65,7 g/t Au certificadas por laboratorio internacional con oro visible comprobado, amparo minero y canon al día, plan de inversiones aprobado por la autoridad e IIA vigente.",
+            "description": "Propiedad minera aurífera de 2.708,12 hectáreas (150 pertenencias) en el prolífico cinturón El Indio / Cordillera Frontal. Cuenta con informe técnico bajo estándar NI 43-101, leyes de hasta 65,7 g/t Au en ALS Global con oro visible comprobado, canon 2025 al día, mensura en trámite, plan de inversiones Art. 217 aprobado e IIA integrado.",
             "thesis": "Oportunidad de adquisición total (USD 3.500M) o incorporación de socio inversor estratégico en un megayacimiento aurífero de clase mundial con potencial de 35,68 millones de Onzas Troy in-situ en el cinturón Veladero - Del Carmen. Valuación de USD 98/oz in-situ (3,8% del metal contenido a USD 2.600/oz) con estabilidad fiscal RIGI a 30 años.",
             "highlights": [
-                "Concesión minera de 1ª categoría que consolida más de 2.700 ha (150 pertenencias). Titularidad 100% saneada bajo mandato exclusivo, libre de litigios y gravámenes.",
-                "Ensayos certificados por laboratorio internacional independiente (ISO 17025) con leyes excepcionales de hasta 65,7 g/t Au y presencia de oro visible dendrítico.",
-                "Cumplimiento legal pleno: Canon minero y amparo 100% al día, Plan de Inversiones (Art. 217 CM) ratificado por la autoridad minera e IIA aprobado y vigente.",
-                "Emplazamiento estratégico en el cinturón aurífero andino de San Juan (Cordillera Frontal / Corredor El Indio - Veladero) con acceso logístico troncal y RIGI 30 años.",
-                "Presupuesto técnico de exploración Fases 1 y 2 modelado en ~USD 1.240.000 (con 1.500m de perforación diamantina HQ) listo para ejecutar."
+                "Concesión minera de 1ª categoría (Expte. 1124.011-P-2011, 2.708,12 ha, 150 pertenencias) 100% titularidad de CBR Compañía Minera S.A.",
+                "Ensayos certificados por ALS Global Lima con leyes excepcionales de hasta 65,7 g/t Au (Au-SCR21) y 9,98 g/t Au con presencia de oro visible dendrítico.",
+                "Cumplimiento legal pleno: Canon 2º semestre 2025 pago ($1.013.332,50), Plan de Inversiones Art. 217 aprobado por Resolución e IIA Integrado.",
+                "Ubicación estratégica a solo 20 km del acceso al Túnel de Agua Negra y 22 km de la frontera con Chile, en el corredor Veladero - El Indio.",
+                "Presupuesto técnico de exploración Fases 1 y 2 modelado en USD 1.242.000 (con 1.500m de perforación diamantina HQ) listo para ejecutar."
             ],
             "metrics": [
                 {
@@ -1393,7 +1393,7 @@ const PROJECTS_DATA = {
                 },
                 {
                     "label": "Superficie",
-                    "val": "> 2.700 Hectáreas",
+                    "val": "2.708 Hectáreas",
                     "color": "text-green"
                 },
                 {
@@ -1412,14 +1412,14 @@ const PROJECTS_DATA = {
             "title": "'San Antonio' Gold Mining Project",
             "location": "San Juan, Argentina",
             "statusLabel": "USD 3.5B (USD 3,500M) — Asset Sale / Equity Partner",
-            "description": "Large-scale gold mining asset (> 2,700 hectares across 150 claims) located in San Juan's world-class Andean gold belt (Frontal Cordillera). Features NI 43-101 technical report, certified assays up to 65.7 g/t Au with confirmed visible gold, statutory mining fees in full standing, approved investment plan, and active environmental baseline.",
+            "description": "Premium 2,708.12-hectare gold property (150 mining claims) in the world-class El Indio / Frontal Cordillera metallogenic belt. Features NI 43-101 technical report, assays up to 65.7 g/t Au at ALS Global with confirmed visible gold, 2025 mining fees fully paid, official boundary survey filed, Art. 217 investment plan approved, and integrated environmental baseline.",
             "thesis": "100% asset sale (USD 3.5 Billion) or strategic joint-venture partnership in a Tier-1 world-class gold deposit boasting 35.68 million Troy Ounces of in-situ gold potential along the Veladero - Del Carmen metallogenic trend. Attractively valued at USD 98/oz in-situ (3.8% of gross contained gold at USD 2,600/oz) with 30-year RIGI investment protections.",
             "highlights": [
-                "First-category mining concession consolidating over 2,700 ha (150 claims). 100% clean corporate ownership under exclusive mandate, free of liens and litigation.",
-                "Assays certified by an independent international laboratory (ISO 17025) with bonanza grades up to 65.7 g/t Au and confirmed dendritic visible gold.",
-                "Full statutory compliance: mining cadastre fees 100% up to date, formal Investment Plan (Mining Code Art. 217) approved, and active EIA in good standing.",
-                "Strategic setting in San Juan's world-class Andean gold belt (Frontal Cordillera / El Indio - Veladero trend) with arterial logistics and 30-year RIGI stability.",
-                "Phases 1 & 2 technical exploration budget modeled at ~USD 1.24M (including 1,500m of HQ diamond drilling) ready for immediate deployment."
+                "First-category mining concession (File 1124.011-P-2011, 2,708.12 ha, 150 claims) 100% owned by CBR Compañía Minera S.A.",
+                "Certified ALS Global assays returning high-grade gold up to 65.7 g/t Au (metallic screen) and 9.98 g/t Au with dendritic visible gold.",
+                "Full legal standing: 2nd half 2025 canon paid ($1,013,332.50 ARS), Art. 217 Investment Plan approved, and active Environmental Impact Report.",
+                "Strategic logistics: 20 km to Agua Negra International Tunnel portal, 22 km to Chilean border on the Veladero-El Indio trend.",
+                "Phases 1 & 2 exploration program budgeted at USD 1,242,000 (including 1,500m HQ diamond core drilling) ready for deployment."
             ],
             "metrics": [
                 {
@@ -1434,7 +1434,7 @@ const PROJECTS_DATA = {
                 },
                 {
                     "label": "Surface Area",
-                    "val": "> 2,700 Hectares",
+                    "val": "2,708 Hectares",
                     "color": "text-green"
                 },
                 {
@@ -1455,7 +1455,9 @@ const PROJECTS_DATA = {
         "capitalStructure": "100% Venta de Concesión Minera o Joint Venture (Earn-in exploratorio)",
         "regulatoryRegime": "Código de Minería de la Nación, Ley 24.196 & Régimen RIGI (Ley 27.742)",
         "financialNote_es": "Valuación de USD 3.500M sustentada en el potencial in-situ de 35,68M Oz Au estimadas por dictamen mineralógico sobre 37 Mt a 30 g/t Au promedio. Múltiplo de USD 98/oz in-situ en el corredor aurífero más rico de Latinoamérica. Modelo de mega-operación escalable a 500.000 Oz Au/año generando > USD 650M EBITDA/año.",
-        "financialNote_en": "USD 3.5 Billion valuation underpinned by 35.68M Oz Au in-situ resource potential based on mineralogical assessment of 37 Mt at 30 g/t Au. Benchmark multiple of USD 98/oz in-situ along South America's premier gold belt. Scalable to a Tier-1 500k Oz Au/year operation generating > USD 650M EBITDA/year."
+        "financialNote_en": "USD 3.5 Billion valuation underpinned by 35.68M Oz Au in-situ resource potential based on mineralogical assessment of 37 Mt at 30 g/t Au. Benchmark multiple of USD 98/oz in-situ along South America's premier gold belt. Scalable to a Tier-1 500k Oz Au/year operation generating > USD 650M EBITDA/year.",
+        "title": "Proyecto Minero de Oro 'Mina San Antonio'",
+        "description": "Propiedad minera aurífera de gran escala (> 2.700 hectáreas, 150 pertenencias) emplazada en el prolífico cinturón aurífero andino de San Juan (Cordillera Frontal). Cuenta con informe técnico bajo estándar NI 43-101, leyes de hasta 65,7 g/t Au certificadas por laboratorio internacional con oro visible comprobado, canon al día, plan de inversiones aprobado e IIA vigente."
     },
     "refipampa-medanito": {
         "id": "refipampa-medanito",
@@ -2022,86 +2024,86 @@ const PROJECTS_DATA = {
         "slidePrefix": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_",
         "coverImage": "assets/slides/Proyecto_Pozo_Salta___Argentina__2026_page_1.png",
         "es": {
-                "categoryTag": "Infraestructura & Upstream NOA — 25 Áreas",
-                "title": "Proyecto Pozo Salta — Infraestructura & Secado de Cuttings",
-                "location": "Cuenca Noroeste, Salta, Argentina",
-                "statusLabel": "USD 1.860M — Socio Inversor",
-                "description": "Complejo integral hidrocarburífero y ambiental en Salta que combina: 1) Planta industrial de tratamiento térmico y secado de cuttings (500 m³/día) con demanda regulatoria mandatoria, y 2) Concesión oficial por 20 años sobre 25 áreas de explotación en Cuenca Noroeste con reservas certificadas de crudo y gas.",
-                "thesis": "Doble motor de rentabilidad: ingresos operativos en dólares con clientes cautivos de perforación NOA, complementado por la reversión del Gasoducto Norte para inyección y exportación masiva a Brasil sobre 25 bloques en UTE.",
-                "highlights": [
-                        "Planta de secado de cuttings (500 m³/día): único centro habilitado en la cuenca, payback < 3 años.",
-                        "25 áreas de explotación concesionadas por 20 años con reservas probadas P1 y P2.",
-                        "Conexión logística directa a Campo Durán y red de poliductos/gasoductos al norte y Brasil.",
-                        "Monto de inversión de USD 1.860M con alta flexibilidad para acordar esquemas con socios inversores (por bloques o complejo integral).",
-                        "Acuerdo bilateral de suministro de crudo y gas con refinerías de la región."
-                ],
-                "metrics": [
-                        {
-                                "label": "Monto Total Plan",
-                                "val": "USD 1.860M",
-                                "color": "text-cyan"
-                        },
-                        {
-                                "label": "Concesión Áreas",
-                                "val": "25 Bloques (20 Años)",
-                                "color": "text-gold"
-                        },
-                        {
-                                "label": "EBITDA Proyectado",
-                                "val": "USD 8.2M + USD 240M",
-                                "color": "text-green"
-                        },
-                        {
-                                "label": "TIR Estimada",
-                                "val": "31.0%",
-                                "color": "text-gold"
-                        }
-                ],
-                "marketTrend": {
-                        "local": "Servicio ambiental obligatorio de secado térmico de cuttings (500 m³/día) con tarifas dolarizadas, unificado al desarrollo de 25 áreas concesionadas a 20 años con gasoducto troncal.",
-                        "intl": "La reversión del Gasoducto Norte y la apertura de exportaciones a Brasil aceleran el desarrollo de cuencas maduras y exigen cumplimiento estricto de normas ambientales ESG."
+            "categoryTag": "Infraestructura & Upstream NOA — 25 Áreas",
+            "title": "Proyecto Pozo Salta — Infraestructura & Secado de Cuttings",
+            "location": "Cuenca Noroeste, Salta, Argentina",
+            "statusLabel": "USD 1.860M — Socio Inversor",
+            "description": "Complejo integral hidrocarburífero y ambiental en Salta que combina: 1) Planta industrial de tratamiento térmico y secado de cuttings (500 m³/día) con demanda regulatoria mandatoria, y 2) Concesión oficial por 20 años sobre 25 áreas de explotación en Cuenca Noroeste con reservas certificadas de crudo y gas.",
+            "thesis": "Doble motor de rentabilidad: ingresos operativos en dólares con clientes cautivos de perforación NOA, complementado por la reversión del Gasoducto Norte para inyección y exportación masiva a Brasil sobre 25 bloques en UTE.",
+            "highlights": [
+                "Planta de secado de cuttings (500 m³/día): único centro habilitado en la cuenca, payback < 3 años.",
+                "25 áreas de explotación concesionadas por 20 años con reservas probadas P1 y P2.",
+                "Conexión logística directa a Campo Durán y red de poliductos/gasoductos al norte y Brasil.",
+                "Monto de inversión de USD 1.860M con alta flexibilidad para acordar esquemas con socios inversores (por bloques o complejo integral).",
+                "Acuerdo bilateral de suministro de crudo y gas con refinerías de la región."
+            ],
+            "metrics": [
+                {
+                    "label": "Monto Total Plan",
+                    "val": "USD 1.860M",
+                    "color": "text-cyan"
+                },
+                {
+                    "label": "Concesión Áreas",
+                    "val": "25 Bloques (20 Años)",
+                    "color": "text-gold"
+                },
+                {
+                    "label": "EBITDA Proyectado",
+                    "val": "USD 8.2M + USD 240M",
+                    "color": "text-green"
+                },
+                {
+                    "label": "TIR Estimada",
+                    "val": "31.0%",
+                    "color": "text-gold"
                 }
+            ],
+            "marketTrend": {
+                "local": "Servicio ambiental obligatorio de secado térmico de cuttings (500 m³/día) con tarifas dolarizadas, unificado al desarrollo de 25 áreas concesionadas a 20 años con gasoducto troncal.",
+                "intl": "La reversión del Gasoducto Norte y la apertura de exportaciones a Brasil aceleran el desarrollo de cuencas maduras y exigen cumplimiento estricto de normas ambientales ESG."
+            }
         },
         "en": {
-                "categoryTag": "Infrastructure & Upstream Basin — 25 Blocks",
-                "title": "Pozo Salta Project — Infrastructure & Cuttings Treatment",
-                "location": "Northwest Basin, Salta, Argentina",
-                "statusLabel": "USD 1,860M — Equity Partner",
-                "description": "Integrated oilfield and environmental complex in Salta combining: 1) Thermal drying facility for drilling cuttings (500 m3/day) with mandatory compliance demand, and 2) 20-year concession covering 25 licensed exploration blocks in Northwest Basin.",
-                "thesis": "Dual-engine revenue model: recurring dollarized environmental service cash flow paired with 25 upstream concession blocks strategically linked to the Northern Gas Pipeline reversal towards Brazil.",
-                "highlights": [
-                        "Thermal desorption plant (500 m³/day): sole certified processing facility in the basin (< 3-year payback).",
-                        "25 exploitation blocks under 20-year concession with certified 1P and 2P reserves.",
-                        "Direct pipeline interconnection to Campo Durán refinery and export lines to Brazil.",
-                        "Total USD 1,860M investment volume offering maximum flexibility for customized agreements with partner investors.",
-                        "Bilateral off-take agreements with regional downstream refiners."
-                ],
-                "metrics": [
-                        {
-                                "label": "Total Plan Monto",
-                                "val": "USD 1,860M",
-                                "color": "text-cyan"
-                        },
-                        {
-                                "label": "Area Concessions",
-                                "val": "25 Blocks (20 Yrs)",
-                                "color": "text-gold"
-                        },
-                        {
-                                "label": "Projected EBITDA",
-                                "val": "USD 8.2M + USD 240M",
-                                "color": "text-green"
-                        },
-                        {
-                                "label": "Modeled IRR",
-                                "val": "31.0%",
-                                "color": "text-gold"
-                        }
-                ],
-                "marketTrend": {
-                        "local": "Mandatory thermal cuttings drying hub (500 m3/day) paired with 25 licensed 20-year concession blocks in the Northwest Basin.",
-                        "intl": "Northern Pipeline reversal unlocking Brazilian export markets while stringent environmental ESG rules enforce zero-discharge drill cuttings."
+            "categoryTag": "Infrastructure & Upstream Basin — 25 Blocks",
+            "title": "Pozo Salta Project — Infrastructure & Cuttings Treatment",
+            "location": "Northwest Basin, Salta, Argentina",
+            "statusLabel": "USD 1,860M — Equity Partner",
+            "description": "Integrated oilfield and environmental complex in Salta combining: 1) Thermal drying facility for drilling cuttings (500 m3/day) with mandatory compliance demand, and 2) 20-year concession covering 25 licensed exploration blocks in Northwest Basin.",
+            "thesis": "Dual-engine revenue model: recurring dollarized environmental service cash flow paired with 25 upstream concession blocks strategically linked to the Northern Gas Pipeline reversal towards Brazil.",
+            "highlights": [
+                "Thermal desorption plant (500 m³/day): sole certified processing facility in the basin (< 3-year payback).",
+                "25 exploitation blocks under 20-year concession with certified 1P and 2P reserves.",
+                "Direct pipeline interconnection to Campo Durán refinery and export lines to Brazil.",
+                "Total USD 1,860M investment volume offering maximum flexibility for customized agreements with partner investors.",
+                "Bilateral off-take agreements with regional downstream refiners."
+            ],
+            "metrics": [
+                {
+                    "label": "Total Plan Monto",
+                    "val": "USD 1,860M",
+                    "color": "text-cyan"
+                },
+                {
+                    "label": "Area Concessions",
+                    "val": "25 Blocks (20 Yrs)",
+                    "color": "text-gold"
+                },
+                {
+                    "label": "Projected EBITDA",
+                    "val": "USD 8.2M + USD 240M",
+                    "color": "text-green"
+                },
+                {
+                    "label": "Modeled IRR",
+                    "val": "31.0%",
+                    "color": "text-gold"
                 }
+            ],
+            "marketTrend": {
+                "local": "Mandatory thermal cuttings drying hub (500 m3/day) paired with 25 licensed 20-year concession blocks in the Northwest Basin.",
+                "intl": "Northern Pipeline reversal unlocking Brazilian export markets while stringent environmental ESG rules enforce zero-discharge drill cuttings."
+            }
         },
         "dealType": "Socio Inversor",
         "tir": "31.0%",
@@ -2111,7 +2113,7 @@ const PROJECTS_DATA = {
         "regulatoryRegime": "Normativa Ambiental Mandatoria NOA & 25 Concesiones Vigentes",
         "financialNote_es": "Cálculo de TIR: Inversión estructurada de USD 1.860M con flexibilidad para socios inversores: planta de secado de cuttings mandatoria más 25 áreas conectadas a Brasil. TIR proyectada del 31.0% (TIR > 15%).",
         "financialNote_en": "IRR Methodology: Structured USD 1,860M investment with flexibility for partner investors: mandatory cuttings drying plant plus 25 blocks connected to Brazil. Projected 31.0% IRR (IRR > 15%)."
-},
+    },
     "asesoramiento-inbound-funds": {
         "id": "asesoramiento-inbound-funds",
         "category": "asesoramiento",
@@ -2569,86 +2571,86 @@ const PROJECTS_DATA = {
         "slidePrefix": "assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_",
         "coverImage": "assets/slides/Proyectos_de_Pesca_Industrial_en_Argentina_2026_page_1.png",
         "es": {
-                "categoryTag": "Pesca Industrial Gran Escala",
-                "title": "Proyecto 6.6 — Pesca Industrial de Gran Escala en Patagonia",
-                "location": "Zona Económica Exclusiva (ZEE) Argentina",
-                "statusLabel": "USD 310M — Venta",
-                "description": "Modelo consolidado de alta rentabilidad para captura y exportación de especies marinas premium (Merluza Hubbsi y Langostino Rojo) con flota activa de 16 buques de gran calado, cuotas federales CITP y planta de procesamiento en tierra. Venta integral por USD 310M.",
-                "thesis": "Activo estratégico con derechos consolidados de captura en aguas argentinas generando ingresos brutos proyectados de USD 600M anuales.",
-                "highlights": [
-                        "Flota propia de 16 buques industriales operativos en Caleta Olivia y Puerto Madryn.",
-                        "Cuotas de captura federales (CITP) garantizadas a 15 años por ley nacional.",
-                        "Monto de venta total fijado en USD 310M con Data Room e inventario técnico disponible.",
-                        "Planta de procesamiento en tierra con capacidad de 120 toneladas diarias de congelado.",
-                        "Exportación directa a mercados de alta cotización en moneda dura (UE, EE.UU. y Asia)."
-                ],
-                "metrics": [
-                        {
-                                "label": "Monto Venta",
-                                "val": "USD 310M",
-                                "color": "text-gold"
-                        },
-                        {
-                                "label": "Flota Activa",
-                                "val": "16 Buques",
-                                "color": "text-cyan"
-                        },
-                        {
-                                "label": "EBITDA Anual",
-                                "val": "USD 48.0M",
-                                "color": "text-green"
-                        },
-                        {
-                                "label": "TIR Estimada",
-                                "val": "28.0%",
-                                "color": "text-gold"
-                        }
-                ],
-                "marketTrend": {
-                        "local": "Flota activa de 16 buques pesqueros con cuota CITP federal asignada en caladeros patagónicos, capturando langostino salvaje, calamar illex y merluza hubbsi.",
-                        "intl": "Demanda global insatisfecha de proteína marina salvaje en Asia, Europa y EE.UU., con cotizaciones internacionales récord en crustáceos y cefalópodos."
+            "categoryTag": "Pesca Industrial Gran Escala",
+            "title": "Proyecto 6.6 — Pesca Industrial de Gran Escala en Patagonia",
+            "location": "Zona Económica Exclusiva (ZEE) Argentina",
+            "statusLabel": "USD 310M — Venta",
+            "description": "Modelo consolidado de alta rentabilidad para captura y exportación de especies marinas premium (Merluza Hubbsi y Langostino Rojo) con flota activa de 16 buques de gran calado, cuotas federales CITP y planta de procesamiento en tierra. Venta integral por USD 310M.",
+            "thesis": "Activo estratégico con derechos consolidados de captura en aguas argentinas generando ingresos brutos proyectados de USD 600M anuales.",
+            "highlights": [
+                "Flota propia de 16 buques industriales operativos en Caleta Olivia y Puerto Madryn.",
+                "Cuotas de captura federales (CITP) garantizadas a 15 años por ley nacional.",
+                "Monto de venta total fijado en USD 310M con Data Room e inventario técnico disponible.",
+                "Planta de procesamiento en tierra con capacidad de 120 toneladas diarias de congelado.",
+                "Exportación directa a mercados de alta cotización en moneda dura (UE, EE.UU. y Asia)."
+            ],
+            "metrics": [
+                {
+                    "label": "Monto Venta",
+                    "val": "USD 310M",
+                    "color": "text-gold"
+                },
+                {
+                    "label": "Flota Activa",
+                    "val": "16 Buques",
+                    "color": "text-cyan"
+                },
+                {
+                    "label": "EBITDA Anual",
+                    "val": "USD 48.0M",
+                    "color": "text-green"
+                },
+                {
+                    "label": "TIR Estimada",
+                    "val": "28.0%",
+                    "color": "text-gold"
                 }
+            ],
+            "marketTrend": {
+                "local": "Flota activa de 16 buques pesqueros con cuota CITP federal asignada en caladeros patagónicos, capturando langostino salvaje, calamar illex y merluza hubbsi.",
+                "intl": "Demanda global insatisfecha de proteína marina salvaje en Asia, Europa y EE.UU., con cotizaciones internacionales récord en crustáceos y cefalópodos."
+            }
         },
         "en": {
-                "categoryTag": "Industrial High-Seas Fishing",
-                "title": "Project 6.6 — Large-Scale Industrial Fishing in Patagonia",
-                "location": "Exclusive Economic Zone (EEZ) Argentina",
-                "statusLabel": "USD 310M — Asset Sale",
-                "description": "High-margin industrial fishing and seafood export enterprise: active fleet of 16 deep-sea vessels, 15-year federal CITP quotas, and onshore processing plant. 100% asset sale at USD 310M.",
-                "thesis": "Secured fishing quotas in Argentine South Atlantic waters delivering USD 600M/yr in projected gross export revenues.",
-                "highlights": [
-                        "Active proprietary fleet of 16 industrial fishing vessels operating in Patagonian ports.",
-                        "15-year federal capture quotas (CITP) legally secured under national fishing regime.",
-                        "Total asset sale price established at USD 310M with complete technical Data Room.",
-                        "Onshore processing facility with 120 tons/day freezing capacity.",
-                        "Direct dollarized exports to premium global markets (EU, USA, and Asia)."
-                ],
-                "metrics": [
-                        {
-                                "label": "Sale Amount",
-                                "val": "USD 310M",
-                                "color": "text-gold"
-                        },
-                        {
-                                "label": "Active Fleet",
-                                "val": "16 Vessels",
-                                "color": "text-cyan"
-                        },
-                        {
-                                "label": "Annual EBITDA",
-                                "val": "USD 48.0M",
-                                "color": "text-green"
-                        },
-                        {
-                                "label": "Modeled IRR",
-                                "val": "28.0%",
-                                "color": "text-gold"
-                        }
-                ],
-                "marketTrend": {
-                        "local": "Premier 16-vessel industrial fleet holding permanent federal fishing quotas across the prolific Argentine Patagonia exclusive economic zone.",
-                        "intl": "Sustained international demand for wild-caught marine protein across Asian and European seafood markets yielding peak export valuations."
+            "categoryTag": "Industrial High-Seas Fishing",
+            "title": "Project 6.6 — Large-Scale Industrial Fishing in Patagonia",
+            "location": "Exclusive Economic Zone (EEZ) Argentina",
+            "statusLabel": "USD 310M — Asset Sale",
+            "description": "High-margin industrial fishing and seafood export enterprise: active fleet of 16 deep-sea vessels, 15-year federal CITP quotas, and onshore processing plant. 100% asset sale at USD 310M.",
+            "thesis": "Secured fishing quotas in Argentine South Atlantic waters delivering USD 600M/yr in projected gross export revenues.",
+            "highlights": [
+                "Active proprietary fleet of 16 industrial fishing vessels operating in Patagonian ports.",
+                "15-year federal capture quotas (CITP) legally secured under national fishing regime.",
+                "Total asset sale price established at USD 310M with complete technical Data Room.",
+                "Onshore processing facility with 120 tons/day freezing capacity.",
+                "Direct dollarized exports to premium global markets (EU, USA, and Asia)."
+            ],
+            "metrics": [
+                {
+                    "label": "Sale Amount",
+                    "val": "USD 310M",
+                    "color": "text-gold"
+                },
+                {
+                    "label": "Active Fleet",
+                    "val": "16 Vessels",
+                    "color": "text-cyan"
+                },
+                {
+                    "label": "Annual EBITDA",
+                    "val": "USD 48.0M",
+                    "color": "text-green"
+                },
+                {
+                    "label": "Modeled IRR",
+                    "val": "28.0%",
+                    "color": "text-gold"
                 }
+            ],
+            "marketTrend": {
+                "local": "Premier 16-vessel industrial fleet holding permanent federal fishing quotas across the prolific Argentine Patagonia exclusive economic zone.",
+                "intl": "Sustained international demand for wild-caught marine protein across Asian and European seafood markets yielding peak export valuations."
+            }
         },
         "dealType": "Venta",
         "tir": "28.0%",
@@ -2659,7 +2661,7 @@ const PROJECTS_DATA = {
         "financialNote_es": "Cálculo de TIR: Venta integral por USD 310M con flujo de exportación consolidado de langostino y calamar en moneda dura. TIR proyectada del 28.0% (TIR > 15%).",
         "financialNote_en": "IRR Methodology: 100% asset sale at USD 310M with robust export cash flows in hard currency. Projected 28.0% IRR (IRR > 15%).",
         "pdfUrl": "assets/docs/Proyectos_de_Pesca_Industrial_en_Argentina.pdf"
-},
+    },
     "pesca-integrado": {
         "id": "pesca-integrado",
         "category": "pesca",
@@ -3087,6 +3089,56 @@ function saveProjectStatusesToStorage() {
     }
 }
 
+// Listener de Sincronización Automática con Dashboard vía BroadcastChannel y Storage Event
+function initProjectsBroadcastListener() {
+    if (typeof BroadcastChannel !== 'undefined') {
+        try {
+            const projectChannel = new BroadcastChannel('energycpy_projects_channel');
+            projectChannel.onmessage = (event) => {
+                const data = event.data;
+                if (!data) return;
+                console.log('⚡ [Showroom] Evento recibido vía BroadcastChannel:', data.type);
+                if (data.type === 'PROJECT_STATUS_UPDATED' && data.projectId) {
+                    projectStatuses[data.projectId] = data.mappedStatus || 'activo';
+                    saveProjectStatusesToStorage();
+                    renderProjectCards();
+                    applyFilters();
+                    if (typeof renderAdminProjectRows === 'function') {
+                        renderAdminProjectRows();
+                    }
+                } else if (data.type === 'PROJECTS_SYNC_ALL' && data.allStatuses) {
+                    projectStatuses = { ...projectStatuses, ...data.allStatuses };
+                    saveProjectStatusesToStorage();
+                    renderProjectCards();
+                    applyFilters();
+                    if (typeof renderAdminProjectRows === 'function') {
+                        renderAdminProjectRows();
+                    }
+                }
+            };
+        } catch (err) {
+            console.warn('Error inicializando BroadcastChannel en Showroom:', err);
+        }
+    }
+
+    // Sincronización multi-pestaña por evento storage nativo
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'energycpy_project_statuses' && event.newValue) {
+            try {
+                console.log('⚡ [Showroom] Storage event detectado en energycpy_project_statuses');
+                projectStatuses = JSON.parse(event.newValue);
+                renderProjectCards();
+                applyFilters();
+                if (typeof renderAdminProjectRows === 'function') {
+                    renderAdminProjectRows();
+                }
+            } catch (e) {
+                console.warn('Error parseando storage event en Showroom:', e);
+            }
+        }
+    });
+}
+
 // Initialization on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
     initLanguageSwitcher();
@@ -3097,6 +3149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initMobileMenu();
     initKeyboardNavigation();
     initContactFormRouting();
+    initProjectsBroadcastListener();
 });
 
 /* ==========================================================================
