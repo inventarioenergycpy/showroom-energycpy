@@ -207,6 +207,101 @@ function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn,
                 </table>
             </div>
 
+            ${p.equipmentLots && p.auditedOffersMatrix ? `
+            <!-- 6 LOTES DE LICITACIONES PARCIALES DE EQUIPOS (SUPPLY-ONLY) -->
+            <div class="print-transposed-card" style="margin-top: 10px;">
+                <div class="print-transposed-header">
+                    <span><i class="fa-solid fa-boxes-stacked"></i> ${isEn ? "PARTIAL EQUIPMENT TENDER LOTS (SUPPLY-ONLY)" : "6 LOTES DE PROVISIÓN DE EQUIPAMIENTO PARA LICITACIONES PARCIALES (SUPPLY-ONLY)"}</span>
+                    <span>${isEn ? "DIRECT FACTORY + 50% VENDOR FINANCING" : "PRECIOS DIRECTOS DE FÁBRICA + FINANCIACIÓN 50%"}</span>
+                </div>
+                <table class="print-transposed-table">
+                    <tbody>
+                        ${p.equipmentLots.map(l => `
+                            <tr>
+                                <th>Lote ${l.lote}: ${l.title}</th>
+                                <td><strong>${l.financing}</strong> | Margen CIF: <strong>${l.minMargin}</strong><br><small>${l.description}</small></td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- MATRIZ AUDITADA DE RENTABILIDAD: 7 TABLAS INDIVIDUALES TRANSPUESTAS P50 VS P90 -->
+            <div style="margin-top: 12px;">
+                <div class="print-transposed-header" style="border-radius: 5px; margin: 0 0 8px 0; background: rgba(245, 208, 97, 0.35);">
+                    <span><i class="fa-solid fa-scale-balanced"></i> ${isEn ? "AUDITED PROFITABILITY MATRIX: 7 INDIVIDUAL TRANSPOSED TABLES (BASE P50 VS. STRESS P90)" : "MATRIZ AUDITADA DE RENTABILIDAD: 7 TABLAS INDIVIDUALES TRANSPUESTAS (CASO BASE P50 VS. PEOR CASO P90)"}</span>
+                    <span>${isEn ? "MINIMUM MARGIN FLOOR" : "PISO CON MARGEN MÍNIMO"}</span>
+                </div>
+                ${p.auditedOffersMatrix.map(o => `
+                    <div class="print-transposed-card" style="margin-bottom: 8px;">
+                        <div class="print-transposed-header">
+                            <span>OFERTA ${o.id}: ${o.name.toUpperCase()}</span>
+                            <span>${o.client.toUpperCase()}</span>
+                        </div>
+                        <table class="print-transposed-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;">${isEn ? "Audited Metric" : "Indicador Auditado"}</th>
+                                    <th style="width: 30%;">${isEn ? "Realistic Base Case (P50)" : "Caso Base Realista (P50)"}</th>
+                                    <th style="width: 30%;">${isEn ? "Stress Case (P90 Floor)" : "Peor Caso Admisible (P90 Mín.)"}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>CAPEX All-In Total</strong></td><td>${o.capex_p50}</td><td>${o.capex_p90}</td></tr>
+                                <tr><td><strong>Financiación 50% Turquía (12a)</strong></td><td>${o.fin_p50}</td><td>${o.fin_p90}</td></tr>
+                                <tr><td><strong>EBITDA Operativo Año 1</strong></td><td><strong>${o.ebitda_p50}</strong></td><td><strong>${o.ebitda_p90}</strong></td></tr>
+                                <tr style="background: rgba(245, 208, 97, 0.15);"><td><strong>Margen Neto Contable Año 1</strong></td><td><strong>${o.margin_p50}</strong></td><td><strong>${o.margin_p90} (Mínimo)</strong></td></tr>
+                                <tr><td><strong>Payback del Proyecto</strong></td><td><strong>${o.payback_proj_p50}</strong></td><td><strong>${o.payback_proj_p90}</strong></td></tr>
+                                <tr style="background: rgba(245, 208, 97, 0.15);"><td><strong>Payback del Capital (Equity)</strong></td><td><strong>${o.payback_eq_p50}</strong></td><td><strong>${o.payback_eq_p90}</strong></td></tr>
+                                <tr><td><strong>TIR del Proyecto (USD)</strong></td><td><strong>${o.tir_proj_p50}</strong></td><td><strong>${o.tir_proj_p90}</strong></td></tr>
+                                <tr style="background: rgba(245, 208, 97, 0.15);"><td><strong>TIR del Capital Equity (USD)</strong></td><td><strong>${o.tir_eq_p50}</strong></td><td><strong>${o.tir_eq_p90}</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `).join("")}
+            </div>
+
+            <!-- TABLA RESUMEN COMPARATIVA DE TOTALES Y PROMEDIOS PONDERADOS DEL PORTAFOLIO (1 A 7) -->
+            <div class="print-summary-totals-card" style="margin-top: 10px;">
+                <div class="print-summary-header">
+                    <span><i class="fa-solid fa-chart-pie"></i> ${isEn ? "PORTFOLIO TOTALS AND WEIGHTED AVERAGES SUMMARY TABLE" : "TABLA RESUMEN COMPARATIVA DE TOTALES Y PROMEDIOS PONDERADOS DEL PORTAFOLIO (1 A 7)"}</span>
+                    <span>CONSOLIDADO GENERAL</span>
+                </div>
+                <table class="print-transposed-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 28%;">${isEn ? "Offer / Service Line" : "Línea de Oferta / Servicio"}</th>
+                            <th style="width: 15%;">CAPEX All-In<br><small>(P50 / P90)</small></th>
+                            <th style="width: 14%;">Financ. 50%<br><small>(P50 / P90)</small></th>
+                            <th style="width: 14%;">EBITDA Año 1<br><small>(P50 / P90)</small></th>
+                            <th style="width: 14%;">Margen Neto<br><small>(P90 Mín. / P50)</small></th>
+                            <th style="width: 15%;">Payback & TIR Eq.<br><small>(Base P50 vs. Peor P90)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${p.auditedOffersMatrix.map(o => `
+                            <tr>
+                                <td><strong>${o.id}. ${o.name}</strong></td>
+                                <td>${o.capex_p50.replace('USD ', '').replace(' M', 'M')} / ${o.capex_p90.replace('USD ', '').replace(' M', 'M')}</td>
+                                <td>${o.fin_p50.split(' ')[1]} / ${o.fin_p90.split(' ')[1]}</td>
+                                <td>${o.ebitda_p50.split(' ')[1]} / ${o.ebitda_p90.split(' ')[1]}</td>
+                                <td><strong>${o.margin_p90}</strong> / ${o.margin_p50}</td>
+                                <td><strong>${o.payback_eq_p50.split(' ')[0]}a (${o.tir_eq_p50})</strong> / ${o.payback_eq_p90.split(' ')[0]}a (${o.tir_eq_p90})</td>
+                            </tr>
+                        `).join("")}
+                        <tr style="background: rgba(245, 208, 97, 0.25); font-weight: 800; border-top: 2px solid #000000;">
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.name) || "TOTALES / PROMEDIOS PORTAFOLIO"}</strong></td>
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.capex_p50.replace('USD ', '').replace(' M', 'M')) || 'USD 887,0M'} / ${(p.portfolioTotals && p.portfolioTotals.capex_p90.replace('USD ', '').replace(' M', 'M')) || '931,0M'}</strong></td>
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.fin_p50.replace('USD ', '').replace(' M', 'M')) || 'USD 443,5M'} / ${(p.portfolioTotals && p.portfolioTotals.fin_p90.replace('USD ', '').replace(' M', 'M')) || '465,5M'}</strong></td>
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.ebitda_p50.replace('USD ', '').replace(' M', 'M')) || 'USD 146,1M'} / ${(p.portfolioTotals && p.portfolioTotals.ebitda_p90.replace('USD ', '').replace(' M', 'M')) || '111,4M'}</strong></td>
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.margin_p90) || '19,21% Mín.'}</strong> / ${(p.portfolioTotals && p.portfolioTotals.margin_p50) || '31,08%'}</td>
+                            <td><strong>${(p.portfolioTotals && p.portfolioTotals.payback_eq_p50.split(' ')[0]) || '4,58'}a (${(p.portfolioTotals && p.portfolioTotals.tir_eq_p50) || '20,6%'}) / ${(p.portfolioTotals && p.portfolioTotals.payback_eq_p90.split(' ')[0]) || '7,32'}a (${(p.portfolioTotals && p.portfolioTotals.tir_eq_p90) || '12,8%'})</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            ` : ""}
+
             <!-- TABLA RESUMEN DE TOTALES DEL PROYECTO SELECCIONADO -->
             <div class="print-summary-totals-card">
                 <div class="print-summary-header">

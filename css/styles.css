@@ -774,6 +774,32 @@ body {
     transform: translateY(-1px);
 }
 
+.btn-interactive-pres {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.22) 0%, rgba(59, 130, 246, 0.25) 100%);
+    border: 1px solid rgba(6, 182, 212, 0.6);
+    color: #67e8f9;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+}
+
+.btn-interactive-pres:hover {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.38) 0%, rgba(59, 130, 246, 0.45) 100%);
+    border-color: #22d3ee;
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+    transform: translateY(-1px);
+}
+
 /* --- Project Grid & Cards --- */
 .projects-grid {
     display: grid;

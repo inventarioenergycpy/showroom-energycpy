@@ -586,6 +586,99 @@ for i, p in enumerate(projects):
     proj_amt = float(p.get("amountUSD") or 0)
     share_pct = f"{(proj_amt / total_usd) * 100:.2f}%" if (not p.get("isPrivatePlacement") and proj_amt > 0) else "Private Placement"
 
+    solar_extra_html = ""
+    if p.get("equipmentLots") and p.get("auditedOffersMatrix"):
+        lots_rows = "".join(
+            f"<tr><th>Lote {l['lote']}: {l['title']}</th><td><strong>{l['financing']}</strong> | Margen CIF: <strong>{l['minMargin']}</strong><br><small>{l['description']}</small></td></tr>"
+            for l in p["equipmentLots"]
+        )
+        offers_cards = "".join(
+            f"""
+            <div class="transposed-card" style="margin-top: 6px;">
+                <div class="transposed-header">
+                    <span>OFERTA {o['id']}: {o['name'].upper()}</span>
+                    <span>{o['client'].upper()}</span>
+                </div>
+                <table class="transposed-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Indicador Auditado</th>
+                            <th style="width: 30%;">Caso Base (P50)</th>
+                            <th style="width: 30%;">Peor Caso (P90 Mín.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>CAPEX All-In Total</strong></td><td>{o['capex_p50']}</td><td>{o['capex_p90']}</td></tr>
+                        <tr><td><strong>Financiación 50% Turquía</strong></td><td>{o['fin_p50']}</td><td>{o['fin_p90']}</td></tr>
+                        <tr><td><strong>EBITDA Operativo Año 1</strong></td><td><strong>{o['ebitda_p50']}</strong></td><td><strong>{o['ebitda_p90']}</strong></td></tr>
+                        <tr style="background: rgba(245, 208, 97, 0.2);"><td><strong>Margen Neto Contable Año 1</strong></td><td><strong>{o['margin_p50']}</strong></td><td><strong>{o['margin_p90']} (Mín.)</strong></td></tr>
+                        <tr><td><strong>Payback del Proyecto</strong></td><td><strong>{o['payback_proj_p50']}</strong></td><td><strong>{o['payback_proj_p90']}</strong></td></tr>
+                        <tr style="background: rgba(245, 208, 97, 0.2);"><td><strong>Payback Capital Equity</strong></td><td><strong>{o['payback_eq_p50']}</strong></td><td><strong>{o['payback_eq_p90']}</strong></td></tr>
+                        <tr><td><strong>TIR del Proyecto (USD)</strong></td><td><strong>{o['tir_proj_p50']}</strong></td><td><strong>{o['tir_proj_p90']}</strong></td></tr>
+                        <tr style="background: rgba(245, 208, 97, 0.2);"><td><strong>TIR del Capital Equity (USD)</strong></td><td><strong>{o['tir_eq_p50']}</strong></td><td><strong>{o['tir_eq_p90']}</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            """
+            for o in p["auditedOffersMatrix"]
+        )
+        pt = p.get("portfolioTotals", {})
+        summary_rows = "".join(
+            f"<tr><td><strong>{o['id']}. {o['name']}</strong></td><td>{o['capex_p50'].replace('USD ', '').replace(' M', 'M')} / {o['capex_p90'].replace('USD ', '').replace(' M', 'M')}</td><td>{o['fin_p50'].split(' ')[1]} / {o['fin_p90'].split(' ')[1]}</td><td>{o['ebitda_p50'].split(' ')[1]} / {o['ebitda_p90'].split(' ')[1]}</td><td><strong>{o['margin_p90']}</strong> / {o['margin_p50']}</td><td><strong>{o['payback_eq_p50'].split(' ')[0]}a ({o['tir_eq_p50']})</strong> / {o['payback_eq_p90'].split(' ')[0]}a ({o['tir_eq_p90']})</td></tr>"
+            for o in p["auditedOffersMatrix"]
+        )
+        solar_extra_html = f"""
+        <div class="transposed-card" style="margin-top: 8px;">
+            <div class="transposed-header">
+                <span>6 LOTES DE PROVISIÓN DE EQUIPAMIENTO PARA LICITACIONES PARCIALES (SUPPLY-ONLY)</span>
+                <span>PRECIOS DIRECTOS DE FÁBRICA + FINANCIACIÓN 50%</span>
+            </div>
+            <table class="transposed-table">
+                <tbody>
+                    {lots_rows}
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <div class="transposed-header" style="background: rgba(245, 208, 97, 0.35);">
+                <span>MATRIZ AUDITADA DE RENTABILIDAD: 7 TABLAS INDIVIDUALES TRANSPUESTAS (CASO BASE P50 VS. PEOR CASO P90)</span>
+                <span>MARGEN MÍNIMO GARANTIZADO</span>
+            </div>
+            {offers_cards}
+        </div>
+
+        <div class="transposed-card" style="margin-top: 8px; border: 2px solid #000000;">
+            <div class="transposed-header">
+                <span>TABLA RESUMEN COMPARATIVA DE TOTALES Y PROMEDIOS PONDERADOS DEL PORTAFOLIO (1 A 7)</span>
+                <span>TOTALES CONSOLIDADOS</span>
+            </div>
+            <table class="transposed-table">
+                <thead>
+                    <tr>
+                        <th style="width: 28%;">Línea de Oferta / Servicio</th>
+                        <th style="width: 15%;">CAPEX All-In (P50/P90)</th>
+                        <th style="width: 14%;">Financ. 50% (P50/P90)</th>
+                        <th style="width: 14%;">EBITDA Año 1 (P50/P90)</th>
+                        <th style="width: 14%;">Margen Neto (P90/P50)</th>
+                        <th style="width: 15%;">Payback & TIR Eq. (P50 vs P90)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {summary_rows}
+                    <tr style="background: rgba(245, 208, 97, 0.25); font-weight: 800; border-top: 2px solid #000000;">
+                        <td><strong>{pt.get('name', 'TOTALES PORTAFOLIO (1-7)')}</strong></td>
+                        <td><strong>{pt.get('capex_p50', 'USD 887,0M')} / {pt.get('capex_p90', '931,0M')}</strong></td>
+                        <td><strong>{pt.get('fin_p50', 'USD 443,5M')} / {pt.get('fin_p90', '465,5M')}</strong></td>
+                        <td><strong>{pt.get('ebitda_p50', 'USD 146,1M')} / {pt.get('ebitda_p90', '111,4M')}</strong></td>
+                        <td><strong>{pt.get('margin_p90', '19,21% Mín.')} / {pt.get('margin_p50', '31,08%')}</strong></td>
+                        <td><strong>{pt.get('payback_eq_p50', '4,58a')} ({pt.get('tir_eq_p50', '20,6%')}) / {pt.get('payback_eq_p90', '7,32a')} ({pt.get('tir_eq_p90', '12,8%')})</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        """
+
     op_html = f"""
     <div class="page">
         <div class="page-watermark"><img src="{LOGO_B64}" alt="Marca de Agua Energy CPY" /></div>
@@ -667,6 +760,8 @@ for i, p in enumerate(projects):
                         </tbody>
                     </table>
                 </div>
+
+                {solar_extra_html}
 
                 <div class="transposed-card">
                     <div class="transposed-header">
