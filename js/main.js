@@ -2830,7 +2830,8 @@ const TRANSLATIONS = {
         filter_cat_mineria: "Minería & Metales",
         filter_cat_petroleo: "Petróleo, Gas & Infraestructura",
         filter_cat_asesoramiento: "Asesoramiento Financiero",
-        card_btn_onepager: "Resumen Ejecutivo (1 Pág)",
+        card_btn_onepager: "Imprimir Resumen Ejecutivo",
+        btn_print_selected_projects: "Imprimir Resumen Ejecutivo de Proyectos Seleccionados",
         card_btn_presentation: "Ver Presentación",
         toggle_obs_hide: "Ocultar Observaciones",
         toggle_obs_show: "Ver Observaciones",
@@ -2971,7 +2972,8 @@ const TRANSLATIONS = {
         filter_cat_mineria: "Mining & Critical Minerals",
         filter_cat_petroleo: "Oil, Gas & Infrastructure",
         filter_cat_asesoramiento: "Financial Advisory & Structuring",
-        card_btn_onepager: "Executive Summary (1 Page)",
+        card_btn_onepager: "Print Executive Summary",
+        btn_print_selected_projects: "Print Executive Summary of Selected Projects",
         toggle_obs_hide: "Hide Notes",
         toggle_obs_show: "Show Notes",
         card_badge_private: "🔒 Private Placement / Off-Market",
@@ -3358,7 +3360,7 @@ function renderProjectCards() {
                 </span>
                 <img src="${p.coverImage || 'assets/images/logo_energy_cpy_cover_white.png'}" alt="${cardTitle}" class="card-img" loading="lazy">
                 <div class="card-overlay" onclick="event.stopPropagation(); openOnePager('${p.id}', event);">
-                    <span class="overlay-btn"><i class="fa-solid fa-file-contract"></i> ${dict.card_btn_onepager || 'Resumen Ejecutivo (1 Pág)'}</span>
+                    <span class="overlay-btn"><i class="fa-solid fa-print"></i> ${dict.card_btn_onepager || 'Imprimir Resumen Ejecutivo'}</span>
                 </div>
             </div>
             <div class="card-body">
@@ -3403,7 +3405,7 @@ function renderProjectCards() {
 
                 <div class="card-footer-actions">
                     <button type="button" class="btn btn-card-op ${hasPresentation ? '' : 'btn-card-op-full'}" onclick="event.stopPropagation(); openOnePager('${p.id}', event);">
-                        <i class="fa-solid fa-file-contract"></i> ${dict.card_btn_onepager || 'Resumen (1 Pág)'}
+                        <i class="fa-solid fa-print"></i> ${dict.card_btn_onepager || 'Imprimir Resumen Ejecutivo'}
                     </button>
                     ${hasPresentation ? `
                         <button type="button" class="btn btn-card btn-card-pres" onclick="event.stopPropagation(); openProjectModal('${p.id}');" title="${dict.card_btn_presentation || 'Ver Presentación'}">

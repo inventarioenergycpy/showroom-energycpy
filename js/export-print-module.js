@@ -125,17 +125,18 @@ function toggleOnePagerPrintPreview(forceState) {
 }
 
 /**
- * Genera el bloque de tablas individuales transpuestas + tabla resumen comparativa
+ * Genera el bloque de tabla individual transpuesta + resumen exclusivo del proyecto seleccionado
  * y el registro corporativo para el Resumen Ejecutivo de un proyecto individual (One-Pager).
+ * NOTA: Se abstiene estrictamente de mostrar otros proyectos; solo muestra el proyecto seleccionado.
  */
 function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn, tirCategory, tirProjectVal, amountLabel, dealTypeLabel, roiLabel) {
     const reg = ENERGY_CPY_EXPORT_REGISTRY;
-    const totalPortfolioUSD = 4116.5;
-    const projAmount = Number(p.amountUSD || 0);
-    const sharePct = projAmount > 0 ? ((projAmount / totalPortfolioUSD) * 100).toFixed(2) + "%" : "Private Placement";
+    const singleTitle = (langData && langData.title) || p.title || p.id;
+    const singleCategory = (langData && langData.categoryTag) || p.sector || "Inversión";
+    const singleLocation = (langData && langData.location) || "Argentina";
 
-    // Construimos filas adicionales a partir de langData.metrics
-    const extraMetricsRows = (langData.metrics || []).map(m => `
+    // Construimos filas adicionales a partir de langData.metrics del proyecto seleccionado
+    const extraMetricsRows = ((langData && langData.metrics) || []).map(m => `
         <tr>
             <th>${m.label}</th>
             <td><strong>${m.val}</strong></td>
@@ -143,22 +144,22 @@ function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn,
     `).join("");
 
     return `
-        <!-- SECCIÓN EXCLUSIVA VERSIÓN IMPRIMIBLE: TABLA INDIVIDUAL TRANSPUESTA + TABLA RESUMEN COMPARATIVA DE TOTALES -->
+        <!-- SECCIÓN EXCLUSIVA VERSIÓN IMPRIMIBLE: TABLA TRANSPUESTA DEL PROYECTO SELECCIONADO -->
         <div class="print-only-transposed-wrapper">
             <div class="print-transposed-card">
                 <div class="print-transposed-header">
-                    <span><i class="fa-solid fa-table-list"></i> ${isEn ? "TRANSPOSED EXECUTIVE DATA SHEET (OFFER PARAMETERS)" : "FICHA TÉCNICA Y FINANCIERA TRANSPUESTA DE LA OFERTA"}</span>
+                    <span><i class="fa-solid fa-table-list"></i> ${isEn ? "TRANSPOSED EXECUTIVE DATA SHEET (SELECTED PROJECT)" : "FICHA TÉCNICA Y FINANCIERA TRANSPUESTA DEL PROYECTO SELECCIONADO"}</span>
                     <span>REF: ECPY-${p.id.toUpperCase()}</span>
                 </div>
                 <table class="print-transposed-table">
                     <tbody>
                         <tr>
-                            <th>${isEn ? "Project / Asset Title" : "Denominación del Proyecto / Activo"}</th>
-                            <td><strong>${langData.title}</strong> (${langData.categoryTag})</td>
+                            <th>${isEn ? "Selected Project / Asset" : "Denominación del Proyecto Seleccionado"}</th>
+                            <td><strong>${singleTitle}</strong> (${singleCategory})</td>
                         </tr>
                         <tr>
                             <th>${isEn ? "Geographic Jurisdiction" : "Ubicación y Jurisdicción"}</th>
-                            <td>${langData.location}</td>
+                            <td>${singleLocation}</td>
                         </tr>
                         <tr>
                             <th>${isEn ? "Investment Ticket (CAPEX / Valuation)" : "Monto de Inversión (Ticket / Valuación)"}</th>
@@ -169,7 +170,7 @@ function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn,
                             <td><strong>${dealTypeLabel}</strong> — ${p.capitalStructure || "Estructuración Directa"}</td>
                         </tr>
                         <tr>
-                            <th>${isEn ? "Modeled IRR & Hurdle Benchmark" : "Rentabilidad Proyectada (TIR vs. Tasa de Corte)"}</th>
+                            <th>${isEn ? "Modeled IRR & Hurdle Benchmark" : "Rentabilidad Proyectada (TIR del Proyecto)"}</th>
                             <td><strong>TIR Proyectada: ${tirProjectVal}</strong> (${tirCategory})</td>
                         </tr>
                         <tr>
@@ -178,7 +179,7 @@ function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn,
                         </tr>
                         <tr>
                             <th>${isEn ? "Estimated Payback / Horizon" : "Plazo de Recupero Estimado (Payback)"}</th>
-                            <td><strong>${roiLabel}</strong> (${p.statusProgress || "Activo en Cartera"})</td>
+                            <td><strong>${roiLabel}</strong> (${p.statusProgress || "Activo"})</td>
                         </tr>
                         <tr>
                             <th>${isEn ? "Applicable Legal & Tax Framework" : "Marco Regulatorio y Estabilidad Fiscal"}</th>
@@ -189,56 +190,131 @@ function buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn,
                 </table>
             </div>
 
-            <!-- TABLA RESUMEN COMPARATIVA DE LOS TOTALES AL FINAL -->
+            <!-- TABLA RESUMEN DE TOTALES DEL PROYECTO SELECCIONADO -->
             <div class="print-summary-totals-card">
                 <div class="print-summary-header">
-                    <span><i class="fa-solid fa-scale-balanced"></i> ${isEn ? "COMPARATIVE SUMMARY TABLE: OFFER VS. TOTAL PORTFOLIO" : "TABLA RESUMEN COMPARATIVA DE TOTALES: OFERTA VS. CARTERA CONSOLIDADA ENERGY CPY"}</span>
-                    <span>16 PROYECTOS ACTIVOS</span>
+                    <span><i class="fa-solid fa-file-signature"></i> ${isEn ? "EXECUTIVE SUMMARY TOTALS — SELECTED PROJECT" : "TABLA RESUMEN DE INDICADORES CONSOLIDADOS DEL PROYECTO SELECCIONADO"}</span>
+                    <span>REF: ECPY-${p.id.toUpperCase()}</span>
                 </div>
                 <table class="print-transposed-table">
                     <tbody>
                         <tr>
-                            <th>${isEn ? "Evaluated Asset Ticket vs. Total Portfolio" : "Ticket del Activo Evaluado vs. Total Cartera Energy CPY"}</th>
-                            <td><strong>${amountLabel}</strong> sobre Cartera Total Auditada de <strong>USD 4.116,5M (USD 4.12B)</strong></td>
+                            <th>${isEn ? "Total Investment Ticket & Modality" : "Ticket Total de la Oferta y Modalidad"}</th>
+                            <td><strong>${amountLabel}</strong> (${dealTypeLabel})</td>
                         </tr>
                         <tr>
-                            <th>${isEn ? "Portfolio Weight / Relative Share" : "Ponderación / Participación sobre Volumen Total"}</th>
-                            <td><strong>${sharePct}</strong> del volumen consolidado (16 Proyectos en 6 Sectores Estratégicos)</td>
+                            <th>${isEn ? "Project Modeled IRR & Annual EBITDA" : "Rentabilidad (TIR) y Flujo Anual (EBITDA) del Proyecto"}</th>
+                            <td><strong>TIR: ${tirProjectVal}</strong> (${tirCategory}) | <strong>EBITDA: ${p.ebitda || "Auditado"}</strong> | Payback: <strong>${roiLabel}</strong></td>
                         </tr>
                         <tr>
-                            <th>${isEn ? "Return Comparison (Asset IRR vs. Portfolio Average)" : "Comparativa de Retorno (TIR Activo vs. Piso Institucional)"}</th>
-                            <td>Activo: <strong>${tirProjectVal}</strong> | Piso Mínimo Cartera: <strong>TIR &gt; 9% a &gt; 15% anual en USD</strong></td>
-                        </tr>
-                        <tr>
-                            <th>${isEn ? "Assigned Specialist Consultant & Official Contact" : "Consultor Especialista Asignado y Contacto Oficial Directo"}</th>
-                            <td><strong>${consultant.name}</strong> (${isEn ? consultant.role_en : consultant.role_es}) — WhatsApp Oficial: <strong>${consultant.phoneDisplay}</strong></td>
+                            <th>${isEn ? "Assigned Specialist Consultant & Direct Contact" : "Consultor Especialista Asignado al Proyecto"}</th>
+                            <td><strong>${consultant.name}</strong> (${isEn ? consultant.role_en : consultant.role_es}) — WhatsApp Oficial: <strong>${consultant.phoneDisplay || consultant.phone}</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- REGISTRO CORPORATIVO IMPRIMIBLE (DATOS OFICIALES DE LA EMPRESA Y CONSULTORES) -->
+        <!-- REGISTRO CORPORATIVO IMPRIMIBLE (DATOS OFICIALES DE LA EMPRESA Y CONSULTOR DEL PROYECTO) -->
         <div class="op-print-company-registry">
             <div class="op-print-reg-col">
                 <strong>${reg.company.brandName} — ${isEn ? reg.company.division_en : reg.company.division_es}</strong><br>
                 <span>${isEn ? reg.company.legalScope_en : reg.company.legalScope_es}</span><br>
-                <span>Web Showroom: <strong>${reg.company.showroomUrl}</strong> | Hub RIGI: <strong>${reg.company.turnkeyRigiUrl}</strong></span>
+                <span>Web Showroom: <strong>${reg.company.showroomUrl}</strong></span>
             </div>
             <div class="op-print-reg-col op-print-reg-right">
-                <strong>${isEn ? "Official Advisory Desk (Zero-Email-Exposure):" : "Mesa Oficial de Consultores (Contacto Directo WhatsApp):"}</strong><br>
-                <span>• <strong>${reg.consultants.javier.name}:</strong> ${reg.consultants.javier.phoneDisplay} (Energía, Minería, Agro & Ing.)</span><br>
-                <span>• <strong>${reg.consultants.daniel.name}:</strong> ${reg.consultants.daniel.phoneDisplay} (Petróleo, Pesca, Hotelería & REIT)</span>
+                <strong>${isEn ? "Assigned Specialist Consultant (WhatsApp Direct):" : "Consultor Especialista del Proyecto (Contacto Directo):"}</strong><br>
+                <span>• <strong>${consultant.name}:</strong> ${consultant.phoneDisplay || consultant.phone}</span><br>
+                <span>${isEn ? consultant.role_en : consultant.role_es}</span>
             </div>
         </div>
     `;
 }
 
 /**
- * Abre el Modal de Resumen Ejecutivo Consolidado de Cartera (16 Proyectos — USD 4.116,5M)
- * aplicando el Módulo de Exportación Imprimible con Marca de Agua al 60% y Tablas Transpuestas.
+ * Obtiene la lista de IDs de proyectos actualmente seleccionados por los filtros del banner
+ * (Monto Desde-Hasta, Sector/Categoría, Estado y Búsqueda por palabra clave).
  */
-function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
+function getSelectedFilteredProjectIds() {
+    if (typeof PROJECTS_DATA === "undefined") return [];
+
+    const visibleCards = Array.from(document.querySelectorAll("#projectsGrid .project-card"))
+        .filter(card => card.style.display !== "none");
+
+    if (visibleCards.length > 0) {
+        return visibleCards
+            .map(card => card.getAttribute("data-id"))
+            .filter(id => id && PROJECTS_DATA[id]);
+    }
+
+    // Si por algún motivo las tarjetas aún no se filtraron en el DOM, evaluamos los controles del filtro
+    const query = (document.getElementById("filterSearch")?.value || "").toLowerCase().trim();
+    const category = document.getElementById("filterCategory")?.value || "all";
+    const minVal = parseFloat(document.getElementById("filterMinAmount")?.value) || 0;
+    const maxVal = parseFloat(document.getElementById("filterMaxAmount")?.value) || Infinity;
+    const status = document.getElementById("filterStatus")?.value || "all";
+
+    return Object.keys(PROJECTS_DATA).filter(pid => {
+        const p = PROJECTS_DATA[pid];
+        if (!p) return false;
+        const langData = p[typeof currentLang !== "undefined" ? currentLang : "es"] || p.es || {};
+        const pCategory = p.category;
+        const pAmount = parseFloat(p.amountUSD) || 0;
+        const pStatus = (typeof projectStatuses !== "undefined" && projectStatuses[pid]) || p.defaultStatus || "activo";
+        const textContent = `${langData.title || p.title || ""} ${langData.description || p.description || ""} ${langData.location || ""} ${langData.categoryTag || ""}`.toLowerCase();
+
+        const matchesQuery = !query || textContent.includes(query);
+        const matchesCategory = category === "all" || pCategory === category;
+        const matchesAmount = pAmount >= minVal && pAmount <= maxVal;
+        const matchesStatus = status === "all" || pStatus === status;
+
+        return matchesQuery && matchesCategory && matchesAmount && matchesStatus;
+    });
+}
+
+/**
+ * Construye una descripción legible de los filtros activos en el banner (Sector, Estado, Monto, Búsqueda)
+ */
+function getActiveFilterCriteriaDescription(isEn) {
+    const categorySelect = document.getElementById("filterCategory");
+    const statusSelect = document.getElementById("filterStatus");
+    const minVal = document.getElementById("filterMinAmount")?.value;
+    const maxVal = document.getElementById("filterMaxAmount")?.value;
+    const searchVal = (document.getElementById("filterSearch")?.value || "").trim();
+
+    const catText = categorySelect && categorySelect.selectedIndex >= 0
+        ? categorySelect.options[categorySelect.selectedIndex].text
+        : (isEn ? "All Sectors" : "Todos los Sectores");
+    const statusText = statusSelect && statusSelect.selectedIndex >= 0
+        ? statusSelect.options[statusSelect.selectedIndex].text
+        : (isEn ? "All Statuses" : "Todos los Estados");
+
+    let amountDesc = isEn ? "All Amounts" : "Todos los Montos";
+    if (minVal && maxVal) {
+        amountDesc = `USD ${minVal}M — USD ${maxVal}M`;
+    } else if (minVal) {
+        amountDesc = `>= USD ${minVal}M`;
+    } else if (maxVal) {
+        amountDesc = `<= USD ${maxVal}M`;
+    }
+
+    const parts = [
+        `${isEn ? "Sector" : "Sector"}: ${catText}`,
+        `${isEn ? "Status" : "Estado"}: ${statusText}`,
+        `${isEn ? "Amount" : "Monto"}: ${amountDesc}`
+    ];
+    if (searchVal) {
+        parts.push(`${isEn ? "Keyword" : "Búsqueda"}: "${searchVal}"`);
+    }
+    return parts.join(" | ");
+}
+
+/**
+ * Abre el Modal de Resumen Ejecutivo exclusivamente para los Proyectos Seleccionados
+ * mediante los filtros del banner (Monto, Sector, Estado y Búsqueda), aplicando
+ * Marca de Agua al 60%, Fuentes Negras #000000 y Tablas Transpuestas + Tabla Resumen de Totales.
+ */
+function openSelectedProjectsExecutiveSummaryPrint(event, autoPrint) {
     if (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -248,26 +324,40 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
     const container = document.getElementById("onePagerContent");
     if (!modal || !container || typeof PROJECTS_DATA === "undefined") return;
 
+    const isEn = (typeof currentLang !== "undefined" && currentLang === "en");
+    const selectedIds = getSelectedFilteredProjectIds();
+
+    if (selectedIds.length === 0) {
+        alert(isEn
+            ? "No projects match the currently selected filters. Please adjust the filters to print an executive summary."
+            : "No hay proyectos seleccionados con los filtros actuales. Por favor ajuste los filtros de monto, sector o estado.");
+        return;
+    }
+
     injectRegisteredWatermark();
 
-    const isEn = (typeof currentLang !== "undefined" && currentLang === "en");
     const reg = ENERGY_CPY_EXPORT_REGISTRY;
-    const projectIds = Object.keys(PROJECTS_DATA);
+    const filterSummaryText = getActiveFilterCriteriaDescription(isEn);
 
     // 1. Filas para la tabla ancha de pantalla (.screen-only-wide-table)
     let wideTableRowsHtml = "";
     // 2. Tablas individuales transpuestas para la versión imprimible (.print-only-transposed-wrapper)
     let transposedCardsHtml = "";
 
-    // Acumuladores por sector para la Tabla Resumen Comparativa de Totales al final
+    // Acumuladores por sector exclusivamente de los proyectos seleccionados
     const sectorTotals = {};
     let totalProjectsCount = 0;
     let totalAmountUSD = 0;
+    let privateCountTotal = 0;
 
-    projectIds.forEach((pid, idx) => {
+    selectedIds.forEach((pid, idx) => {
         const p = PROJECTS_DATA[pid];
         if (!p) return;
-        const langData = p[isEn ? "en" : "es"] || p.es;
+        const langData = p[isEn ? "en" : "es"] || p.es || {};
+        const projTitle = langData.title || p.title || p.id;
+        const projLoc = langData.location || "Argentina";
+        const projCatTag = langData.categoryTag || p.sector || "Inversión";
+        const projDesc = langData.thesis || langData.description || p.description || "";
         const consultant = reg.consultants[p.assignedAgent] || reg.consultants.javier;
         const num = String(idx + 1).padStart(2, "0");
 
@@ -282,11 +372,13 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
 
         totalProjectsCount++;
         const amt = Number(p.amountUSD || 0);
-        if (!p.isPrivatePlacement && amt > 0) {
+        if (p.isPrivatePlacement) {
+            privateCountTotal++;
+        } else if (amt > 0) {
             totalAmountUSD += amt;
         }
 
-        const sectorKey = p.sector || langData.categoryTag || "Otros";
+        const sectorKey = p.sector || projCatTag || "Otros";
         if (!sectorTotals[sectorKey]) {
             sectorTotals[sectorKey] = { count: 0, sumUSD: 0, privateCount: 0, consultantName: consultant.name };
         }
@@ -300,8 +392,8 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
         wideTableRowsHtml += `
             <tr>
                 <td><strong>#${num}</strong></td>
-                <td><strong>${langData.title}</strong><br><small>${langData.location}</small></td>
-                <td>${langData.categoryTag}</td>
+                <td><strong>${projTitle}</strong><br><small>${projLoc}</small></td>
+                <td>${projCatTag}</td>
                 <td><strong>${amountText}</strong></td>
                 <td>${dealTypeText}</td>
                 <td><strong>${tirVal}</strong> (${tirCat})</td>
@@ -313,14 +405,14 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
         transposedCardsHtml += `
             <div class="print-transposed-card">
                 <div class="print-transposed-header">
-                    <span>OFERTA #${num} — ${langData.title.toUpperCase()}</span>
-                    <span>REF: ECPY-${p.id.toUpperCase()} | ${langData.categoryTag.toUpperCase()}</span>
+                    <span>PROYECTO SELECCIONADO #${num} — ${projTitle.toUpperCase()}</span>
+                    <span>REF: ECPY-${p.id.toUpperCase()} | ${projCatTag.toUpperCase()}</span>
                 </div>
                 <table class="print-transposed-table">
                     <tbody>
                         <tr>
                             <th>${isEn ? "Sector & Location" : "Sector y Ubicación Geográfica"}</th>
-                            <td><strong>${langData.categoryTag}</strong> — ${langData.location}</td>
+                            <td><strong>${projCatTag}</strong> — ${projLoc}</td>
                         </tr>
                         <tr>
                             <th>${isEn ? "Investment Ticket & Modality" : "Monto de Inversión (Ticket) y Modalidad"}</th>
@@ -336,7 +428,7 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
                         </tr>
                         <tr>
                             <th>${isEn ? "Executive Thesis & Regulatory Framework" : "Tesis Ejecutiva y Marco Normativo"}</th>
-                            <td>${langData.thesis || langData.description} <em>(${p.regulatoryRegime || "Marco Legal Vigente"})</em></td>
+                            <td>${projDesc} <em>(${p.regulatoryRegime || "Marco Legal Vigente"})</em></td>
                         </tr>
                         <tr>
                             <th>${isEn ? "Assigned Specialist Consultant" : "Consultor Especialista Asignado"}</th>
@@ -353,16 +445,17 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
         const sumFormatted = st.sumUSD > 0
             ? `USD ${st.sumUSD.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })}M`
             : "";
-        const privNote = st.privateCount > 0 ? ` (+ ${st.privateCount} Private Placement)` : "";
+        const privNote = st.privateCount > 0 ? `${sumFormatted ? " + " : ""}${st.privateCount} Private Placement` : "";
         return `
             <tr>
-                <th>Sector: ${sec} (${st.count} ${st.count === 1 ? "Proyecto" : "Proyectos"})</th>
+                <th>Sector: ${sec} (${st.count} ${st.count === 1 ? "Proyecto Seleccionado" : "Proyectos Seleccionados"})</th>
                 <td><strong>${sumFormatted}${privNote}</strong> — Especialista Líder: <strong>${st.consultantName}</strong></td>
             </tr>
         `;
     }).join("");
 
     const totalFormatted = totalAmountUSD.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const totalPrivNote = privateCountTotal > 0 ? ` (+ ${privateCountTotal} Private Placement)` : "";
 
     container.innerHTML = `
         <!-- Header Institucional -->
@@ -372,43 +465,47 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
                 <div class="op-brand-sub">${isEn ? reg.company.division_en : reg.company.division_es}</div>
             </div>
             <div class="op-meta-box">
-                <div class="op-ref-code">REF: ECPY-PORTFOLIO-2026 (${totalProjectsCount} OFERTAS)</div>
-                <div class="op-confidential-badge">${isEn ? "CONFIDENTIAL / MASTER PORTFOLIO SUMMARY" : "CONFIDENCIAL / RESUMEN EJECUTIVO DE CARTERA"}</div>
+                <div class="op-ref-code">REF: ECPY-SELECCIONADOS (${totalProjectsCount} ${totalProjectsCount === 1 ? "PROYECTO" : "PROYECTOS"})</div>
+                <div class="op-confidential-badge">${isEn ? "SELECTED PROJECTS EXECUTIVE SUMMARY" : "RESUMEN EJECUTIVO DE PROYECTOS SELECCIONADOS"}</div>
             </div>
         </div>
 
         <div class="op-title-section">
-            <span class="op-tag-pill tag-energia">${isEn ? "CONSOLIDATED INVESTMENT PORTFOLIO" : "MATRIZ CONSOLIDADA DE INVERSIÓN"}</span>
-            <h1 class="op-project-title">${isEn ? "Executive Summary of Active Investment Portfolio (16 Projects)" : "Resumen Ejecutivo General de Cartera de Inversiones (16 Proyectos)"}</h1>
+            <span class="op-tag-pill tag-energia">${isEn ? "FILTERED PORTFOLIO SELECTION" : "SELECCIÓN PERSONALIZADA DE CARTERA"}</span>
+            <h1 class="op-project-title">${isEn
+                ? `Executive Summary of Selected Investment Projects (${totalProjectsCount})`
+                : `Resumen Ejecutivo de Proyectos de Inversión Seleccionados (${totalProjectsCount})`}</h1>
             <div class="op-location">
-                <i class="fa-solid fa-location-dot"></i> ${reg.company.country} — Volumen Auditado: <strong>USD ${totalFormatted}M (USD 4.12B)</strong>
+                <i class="fa-solid fa-filter"></i> <strong>${isEn ? "Applied Filters:" : "Filtros Aplicados:"}</strong> ${filterSummaryText}
             </div>
         </div>
 
-        <!-- Barra de Totales de Cartera -->
+        <!-- Barra de Totales de los Proyectos Seleccionados -->
         <div class="op-deal-bar">
             <div class="op-deal-col">
-                <span class="op-deal-lbl">${isEn ? "Total Portfolio Volume" : "Volumen Total en Cartera"}</span>
-                <span class="op-deal-val">USD ${totalFormatted}M</span>
+                <span class="op-deal-lbl">${isEn ? "Selected Volume (USD)" : "Volumen Seleccionado (USD)"}</span>
+                <span class="op-deal-val">${totalAmountUSD > 0 ? `USD ${totalFormatted}M` : "Private Placement"}</span>
             </div>
             <div class="op-deal-col">
-                <span class="op-deal-lbl">${isEn ? "Active Opportunities" : "Ofertas Auditadas"}</span>
-                <span class="op-deal-val">${totalProjectsCount} Proyectos</span>
+                <span class="op-deal-lbl">${isEn ? "Selected Projects" : "Proyectos Seleccionados"}</span>
+                <span class="op-deal-val">${totalProjectsCount} ${totalProjectsCount === 1 ? "Proyecto" : "Proyectos"}</span>
             </div>
             <div class="op-deal-col">
                 <span class="op-deal-lbl">${isEn ? "Target IRR Hurdle" : "Tasa de Corte (Hurdle)"}</span>
                 <span class="op-deal-val text-green">TIR &gt; 9% a &gt; 15% USD</span>
             </div>
             <div class="op-deal-col">
-                <span class="op-deal-lbl">${isEn ? "Strategic Sectors" : "Sectores Estratégicos"}</span>
-                <span class="op-deal-val">6 Sectores Reales</span>
+                <span class="op-deal-lbl">${isEn ? "Included Sectors" : "Sectores en Selección"}</span>
+                <span class="op-deal-val">${Object.keys(sectorTotals).length} ${Object.keys(sectorTotals).length === 1 ? "Sector" : "Sectores"}</span>
             </div>
         </div>
 
         <!-- VISTA DE PANTALLA ANCHA: TABLA MATRICIAL DE 8 COLUMNAS (Se oculta automáticamente al imprimir porque excede el margen de hoja) -->
         <div class="screen-only-wide-table op-card-block" style="overflow-x: auto; margin-bottom: 16px;">
             <div class="op-block-title">
-                <i class="fa-solid fa-table"></i> ${isEn ? "Master Portfolio Matrix (Screen View — Automatically Transposed in Print Mode)" : "Matriz Maestra de Cartera (Vista Pantalla — Se transpone automáticamente en versión imprimible)"}
+                <i class="fa-solid fa-table"></i> ${isEn
+                    ? "Selected Projects Matrix (Screen View — Automatically Transposed in Print Mode)"
+                    : "Matriz de Proyectos Seleccionados (Vista Pantalla — Se transpone automáticamente en versión imprimible)"}
             </div>
             <table class="op-wide-portfolio-table">
                 <thead>
@@ -429,29 +526,35 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
             </table>
         </div>
 
-        <!-- VISTA IMPRIMIBLE: TABLAS INDIVIDUALES TRANSPUESTAS POR OFERTA + TABLA RESUMEN COMPARATIVA DE TOTALES AL FINAL -->
+        <!-- VISTA IMPRIMIBLE: TABLAS INDIVIDUALES TRANSPUESTAS POR PROYECTO SELECCIONADO + TABLA RESUMEN COMPARATIVA DE LOS TOTALES AL FINAL -->
         <div class="print-only-transposed-wrapper">
             <div class="op-block-title" style="margin-bottom: 8px;">
-                <i class="fa-solid fa-layer-group"></i> ${isEn ? "Individual Transposed Offer Tables (Formatted for A4 Margin Fit)" : "Fichas Individuales Transpuestas por Oferta (Diseño Imprimible A4 sin Desborde de Margen)"}
+                <i class="fa-solid fa-layer-group"></i> ${isEn
+                    ? "Individual Transposed Tables per Selected Project (Formatted for A4 Margin Fit)"
+                    : "Tablas Individuales Transpuestas por Proyecto Seleccionado (Diseño Imprimible A4 sin Desborde de Margen)"}
             </div>
             ${transposedCardsHtml}
 
-            <!-- TABLA RESUMEN COMPARATIVA DE LOS TOTALES AL FINAL -->
+            <!-- TABLA RESUMEN COMPARATIVA DE LOS TOTALES DE LOS PROYECTOS SELECCIONADOS AL FINAL -->
             <div class="print-summary-totals-card">
                 <div class="print-summary-header">
-                    <span><i class="fa-solid fa-chart-pie"></i> ${isEn ? "FINAL COMPARATIVE SUMMARY TABLE OF PORTFOLIO TOTALS" : "TABLA RESUMEN COMPARATIVA DE LOS TOTALES DE CARTERA AL FINAL"}</span>
-                    <span>CONSOLIDADO GENERAL ENERGY CPY</span>
+                    <span><i class="fa-solid fa-chart-pie"></i> ${isEn
+                        ? "COMPARATIVE SUMMARY TABLE OF SELECTED PROJECTS TOTALS"
+                        : "TABLA RESUMEN COMPARATIVA DE LOS TOTALES DE LOS PROYECTOS SELECCIONADOS"}</span>
+                    <span>TOTAL SELECCIÓN: ${totalProjectsCount} ${totalProjectsCount === 1 ? "PROYECTO" : "PROYECTOS"}</span>
                 </div>
                 <table class="print-transposed-table">
                     <tbody>
+                        <tr>
+                            <th>${isEn ? "Selection Criteria Applied" : "Criterio de Selección Aplicado en Filtros"}</th>
+                            <td>${filterSummaryText}</td>
+                        </tr>
                         ${sectorSummaryRowsHtml}
                         <tr>
-                            <th>${isEn ? "TOTAL AUDITED PORTFOLIO CAPEX / VALUATION (16 PROJECTS)" : "TOTAL GENERAL AUDITADO DE CARTERA (16 PROYECTOS EN 6 SECTORES)"}</th>
-                            <td><strong>USD ${totalFormatted}M (USD 4.116.500.000) + 1 Activo Private Placement</strong></td>
-                        </tr>
-                        <tr>
-                            <th>${isEn ? "PORTFOLIO IRR RANGE & HURDLE BENCHMARK" : "RANGO DE RENTABILIDAD (TIR) Y TASA DE CORTE INSTITUCIONAL"}</th>
-                            <td><strong>TIR Proyectada entre 18.0% y 42.0% anual en USD</strong> (Superando Tasa de Corte de &gt;9% y &gt;15% anual)</td>
+                            <th>${isEn
+                                ? `TOTAL SELECTED CAPEX / VALUATION (${totalProjectsCount} SELECTED PROJECTS)`
+                                : `TOTAL CONSOLIDADO DE PROYECTOS SELECCIONADOS (${totalProjectsCount} ${totalProjectsCount === 1 ? "PROYECTO" : "PROYECTOS"})`}</th>
+                            <td><strong>${totalAmountUSD > 0 ? `USD ${totalFormatted}M` : ""}${totalPrivNote}</strong></td>
                         </tr>
                         <tr>
                             <th>${isEn ? "APPLICABLE LEGAL & INVESTMENT PROTECTION FRAMEWORKS" : "MARCO NORMATIVO Y PROTECCIÓN DE INVERSIONES"}</th>
@@ -491,6 +594,9 @@ function openPortfolioExecutiveSummaryPrint(event, autoPrint) {
         }, 250);
     }
 }
+
+// Alias de compatibilidad
+const openPortfolioExecutiveSummaryPrint = openSelectedProjectsExecutiveSummaryPrint;
 
 document.addEventListener("DOMContentLoaded", () => {
     injectRegisteredWatermark();
