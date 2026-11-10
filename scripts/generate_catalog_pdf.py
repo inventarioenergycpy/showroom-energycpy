@@ -1,30 +1,47 @@
 # -*- coding: utf-8 -*-
+"""
+Generador Oficial del Catálogo de Resúmenes Ejecutivos Imprimibles — Showroom Energy CPY 2026
+Implementa el Módulo: exportacion-imprimible-marca-agua-energycpy (v2026.11)
+Agente Responsable: Agente 03 — Desarrollador Web Showroom (desarrollador-web-showroom)
+"""
+import base64
 import json
 import os
-import subprocess
+import pathlib
 import re
+import shutil
+import subprocess
 
-json_path = r"C:\Users\majon\.gemini\antigravity-ide\scratch\showroom-energycpy\data\projects-master.json"
-with open(json_path, "r", encoding="utf-8") as f:
-    projects = json.load(f)
+BASE_DIR = pathlib.Path(r"C:\Users\majon\.gemini\antigravity-ide\scratch\showroom-energycpy")
+JSON_PATH = BASE_DIR / "data" / "projects-master.json"
+LOGO_PATH = BASE_DIR / "assets" / "images" / "logo-energy-cpy-4v-transparente.png"
+if not LOGO_PATH.exists():
+    LOGO_PATH = pathlib.Path(r"C:\Users\majon\Downloads\logo Energy CPY 4v fondo transparente_.png")
+
+with open(JSON_PATH, "r", encoding="utf-8") as f:
+    raw_data = json.load(f)
+
+if isinstance(raw_data, dict):
+    projects = list(raw_data.values())
+else:
+    projects = list(raw_data)
+
+logo_bytes = LOGO_PATH.read_bytes()
+LOGO_B64 = "data:image/png;base64," + base64.b64encode(logo_bytes).decode("ascii")
 
 CONSULTANTS = {
     "javier": {
         "id": "javier",
         "name": "Javier Ignacio Díaz",
-        "role": "Consultor Capital Introducer & Finder",
-        "specialties": "Minería, Energía Renovable, Proyectos de Ingeniería & Cross-Border Deals",
+        "role": "Consultor Especialista — Energía Solar, BESS, Minería, Agroindustria & Ingeniería",
         "phone": "+54 9 351 2064791",
-        "email": "areasostenible.consultorespyme@gmail.com",
         "avatar": "J"
     },
     "daniel": {
         "id": "daniel",
         "name": "Daniel González",
-        "role": "Consultor Capital Introducer & Finder",
-        "specialties": "Hotelería, Pesca, Petróleo & Gas, TRUST Real Estate, REIT & Finanzas",
+        "role": "Consultor Especialista — Petróleo & Gas, Pesca Industrial, Hotelería & Real Estate (REIT)",
         "phone": "+54 9 2974 23-3028",
-        "email": "gonzalezmarcelo2105ypf@gmail.com",
         "avatar": "D"
     }
 }
@@ -40,6 +57,7 @@ SECTOR_ICONS = {
     "Pesca Industrial": "🚢"
 }
 
+
 def get_tir_category(tir_val):
     if not tir_val or tir_val == "Consulte":
         return "TIR Objetivo > 9%"
@@ -52,7 +70,11 @@ def get_tir_category(tir_val):
             return "Aprobada (TIR > 9%)"
     return "TIR Objetivo > 9%"
 
-# Build CSS
+
+total_projects = len(projects)
+total_usd = sum(float(p.get("amountUSD") or 0) for p in projects if not p.get("isPrivatePlacement"))
+total_usd_str = f"USD {total_usd:,.1f}M".replace(",", "X").replace(".", ",").replace("X", ".")
+
 css = """
 @page {
     size: A4 portrait;
@@ -65,8 +87,8 @@ css = """
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #080c16;
-    color: #e2e8f0;
+    background-color: #ffffff;
+    color: #000000;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
@@ -75,7 +97,7 @@ body {
     width: 210mm;
     height: 297mm;
     max-height: 297mm;
-    padding: 10mm 13mm 8mm 13mm;
+    padding: 10mm 13mm 9mm 13mm;
     position: relative;
     overflow: hidden;
     page-break-after: always;
@@ -83,982 +105,599 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: radial-gradient(circle at 85% 12%, rgba(56, 189, 248, 0.04), transparent 45%),
-                radial-gradient(circle at 12% 88%, rgba(245, 208, 97, 0.04), transparent 45%),
-                #0b0f19;
+    background: #ffffff;
+    color: #000000;
 }
 
-/* Front Cover */
-.cover-page {
-    width: 210mm;
-    height: 297mm;
-    padding: 18mm 18mm 14mm 18mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    page-break-after: always;
-    break-after: page;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(145deg, #060911 0%, #0c1322 40%, #080e1b 100%);
-    border: 1px solid rgba(245, 208, 97, 0.3);
-}
-.cover-border-inner {
+/* Marca de Agua Oficial Energy CPY 4v Centrada al Medio con 60% de Transparencia (opacity: 0.40) */
+.page-watermark {
     position: absolute;
-    top: 8mm;
-    left: 8mm;
-    right: 8mm;
-    bottom: 8mm;
-    border: 1px solid rgba(245, 208, 97, 0.2);
-    pointer-events: none;
-}
-.cover-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-.cover-brand-title {
-    font-size: 28pt;
-    font-weight: 900;
-    letter-spacing: 4px;
-    color: #f5d061;
-}
-.cover-brand-sub {
-    font-size: 9pt;
-    color: #94a3b8;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 4px;
-}
-.cover-badge {
-    background: rgba(245, 208, 97, 0.12);
-    border: 1px solid rgba(245, 208, 97, 0.4);
-    color: #f5d061;
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 8pt;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.cover-hero {
-    margin: 20px 0;
-}
-.cover-hero-tag {
-    color: #38bdf8;
-    font-size: 11pt;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-.cover-title {
-    font-size: 32pt;
-    font-weight: 900;
-    line-height: 1.15;
-    color: #ffffff;
-    margin-bottom: 12px;
-}
-.cover-title span {
-    color: #f5d061;
-}
-.cover-desc {
-    font-size: 11pt;
-    line-height: 1.5;
-    color: #cbd5e1;
-    max-width: 90%;
-}
-.cover-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin: 20px 0;
-}
-.cover-stat-box {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(245, 208, 97, 0.25);
-    border-radius: 8px;
-    padding: 12px 14px;
-    text-align: center;
-}
-.cover-stat-val {
-    font-size: 17pt;
-    font-weight: 900;
-    color: #f5d061;
-}
-.cover-stat-lbl {
-    font-size: 7.5pt;
-    color: #94a3b8;
-    text-transform: uppercase;
-    margin-top: 3px;
-    font-weight: 600;
-}
-.cover-sectors-list {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 14px 18px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 16px;
-}
-.cover-sector-item {
-    font-size: 8.5pt;
-    color: #e2e8f0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    height: 88%;
+    max-width: 92%;
+    max-height: 88%;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
 }
-.cover-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 14px;
-    border-top: 1px solid rgba(245, 208, 97, 0.3);
-}
-.cover-consultants {
-    display: flex;
-    gap: 24px;
-}
-.cover-c-col {
-    font-size: 8pt;
-}
-.cover-c-name {
-    font-weight: 800;
-    color: #ffffff;
-}
-.cover-c-role {
-    color: #94a3b8;
-    font-size: 7pt;
-}
-.cover-c-spec {
-    color: #f5d061;
-    font-size: 6.8pt;
-    margin-top: 2px;
-}
-.cover-legal-notice {
-    font-size: 7pt;
-    color: #64748b;
-    text-align: right;
-    max-width: 200px;
-    line-height: 1.3;
+.page-watermark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.40;
 }
 
-/* Table of Contents */
-.toc-page {
-    width: 210mm;
-    height: 297mm;
-    padding: 12mm 14mm 10mm 14mm;
+.page-content {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    page-break-after: always;
-    break-after: page;
-    background: #0b0f19;
-}
-.toc-title {
-    font-size: 18pt;
-    font-weight: 900;
-    color: #f5d061;
-    letter-spacing: 1px;
-}
-.toc-sub {
-    font-size: 8pt;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 2px;
-    margin-bottom: 10px;
-}
-.toc-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 7pt;
-}
-.toc-table th {
-    background: rgba(15, 23, 42, 0.9);
-    color: #f5d061;
-    text-transform: uppercase;
-    font-weight: 800;
-    padding: 5px 6px;
-    border-bottom: 1.5px solid rgba(245, 208, 97, 0.4);
-    text-align: left;
-}
-.toc-table td {
-    padding: 4px 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: #cbd5e1;
-}
-.toc-table tr:hover {{
-    background: rgba(255, 255, 255, 0.02);
-}}
-.toc-ref {
-    color: #38bdf8;
-    font-weight: 700;
-    font-family: monospace;
-}
-.toc-pname {
-    font-weight: 700;
-    color: #ffffff;
-}
-.toc-val {
-    font-weight: 800;
-    color: #f5d061;
-}
-.toc-tir {
-    font-weight: 700;
-    color: #10b981;
-}
-.toc-pag {
-    font-weight: 800;
-    color: #38bdf8;
-    text-align: right;
+    height: 100%;
 }
 
-/* One-Pager Page Elements */
+/* Header Institucional */
 .op-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 6px;
-    border-bottom: 1.5px solid rgba(245, 208, 97, 0.35);
+    border-bottom: 2px solid #000000;
+    margin-bottom: 8px;
 }
 .op-brand-title {
-    font-size: 15pt;
+    font-size: 13pt;
     font-weight: 900;
-    letter-spacing: 2px;
-    color: #f5d061;
-    line-height: 1;
+    letter-spacing: 0.06em;
+    color: #000000;
 }
 .op-brand-sub {
     font-size: 6.8pt;
-    font-weight: 600;
-    color: #94a3b8;
-    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-top: 2px;
 }
 .op-ref-code {
-    font-size: 8.5pt;
+    font-size: 8pt;
     font-weight: 800;
-    color: #38bdf8;
-    text-align: right;
-    letter-spacing: 0.5px;
+    color: #000000;
 }
 .op-badge {
     display: inline-block;
-    padding: 2px 7px;
-    background: rgba(244, 63, 94, 0.15);
-    border: 1px solid rgba(244, 63, 94, 0.4);
-    color: #fb7185;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.2px solid #000000;
+    color: #000000;
     border-radius: 4px;
     font-size: 6.2pt;
     font-weight: 800;
     text-transform: uppercase;
     margin-top: 2px;
 }
-.op-title-section {
-    margin-top: 6px;
-}
+
+/* Títulos y Cajas Translúcidas para no tapar la Marca de Agua */
 .op-tag {
     display: inline-block;
-    padding: 2px 7px;
-    background: rgba(245, 208, 97, 0.12);
-    border: 1px solid rgba(245, 208, 97, 0.35);
-    color: #f5d061;
-    border-radius: 10px;
-    font-size: 6.5pt;
-    font-weight: 700;
+    padding: 2px 8px;
+    border: 1px solid #000000;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    font-size: 6.8pt;
+    font-weight: 800;
+    color: #000000;
     text-transform: uppercase;
     margin-bottom: 3px;
 }
 .op-title {
-    font-size: 13pt;
-    font-weight: 800;
-    color: #ffffff;
+    font-size: 13.5pt;
+    font-weight: 900;
+    color: #000000;
     line-height: 1.2;
+    margin-bottom: 2px;
 }
 .op-loc {
     font-size: 7.5pt;
-    color: #94a3b8;
-    margin-top: 2px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
 }
 
 .op-deal-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(245, 208, 97, 0.25);
+    background: rgba(255, 255, 255, 0.20);
+    border: 1.5px solid #000000;
     border-radius: 6px;
     padding: 6px 10px;
-    margin-top: 6px;
+    margin-bottom: 7px;
 }
 .op-deal-lbl {
-    font-size: 6pt;
-    color: #94a3b8;
+    font-size: 6.2pt;
+    font-weight: 700;
+    color: #111827;
     text-transform: uppercase;
-    font-weight: 600;
+    display: block;
 }
 .op-deal-val {
-    font-size: 9pt;
-    font-weight: 800;
-    color: #f5d061;
-    margin-top: 1px;
+    font-size: 8.8pt;
+    font-weight: 900;
+    color: #000000;
 }
-.text-green { color: #10b981 !important; }
-.text-cyan { color: #38bdf8 !important; }
-.text-gold { color: #f5d061 !important; }
 
-.op-body-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 8px;
-    margin-top: 6px;
-}
 .op-card {
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.20);
+    border: 1.2px solid #1e293b;
     border-radius: 6px;
-    padding: 8px 10px;
+    padding: 7px 10px;
+    margin-bottom: 6px;
 }
 .op-card-title {
     font-size: 7.5pt;
-    font-weight: 800;
-    color: #f5d061;
+    font-weight: 900;
+    color: #000000;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding-bottom: 3px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
 }
 .op-desc {
-    font-size: 6.8pt;
-    line-height: 1.34;
-    color: #cbd5e1;
-    text-align: justify;
+    font-size: 7.4pt;
+    line-height: 1.35;
+    color: #000000;
+    font-weight: 500;
+    margin-bottom: 4px;
 }
 .op-thesis {
-    margin-top: 5px;
-    padding: 5px 7px;
-    background: rgba(56, 189, 248, 0.07);
-    border-left: 2px solid #38bdf8;
-    border-radius: 0 4px 4px 0;
-    font-size: 6.6pt;
-    line-height: 1.32;
-    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.22);
+    border-left: 3px solid #000000;
+    padding: 4px 8px;
+    font-size: 7.1pt;
+    color: #000000;
+    font-weight: 600;
 }
 .op-highlights {
     list-style: none;
 }
 .op-highlights li {
-    font-size: 6.5pt;
+    font-size: 7.1pt;
     line-height: 1.3;
-    color: #cbd5e1;
-    margin-bottom: 3px;
-    display: flex;
-    align-items: flex-start;
-    gap: 5px;
+    color: #000000;
+    font-weight: 500;
+    margin-bottom: 2.5px;
 }
-.op-check {
-    color: #10b981;
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-top: 1px;
+
+/* Tablas Individuales Transpuestas (Filas x Columnas) */
+.transposed-card {
+    background: rgba(255, 255, 255, 0.20);
+    border: 1.4px solid #000000;
+    border-radius: 6px;
+    padding: 5px 8px;
+    margin-bottom: 6px;
+}
+.transposed-header {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(226, 232, 240, 0.40);
+    border-bottom: 1.2px solid #000000;
+    padding: 3px 6px;
+    margin: -5px -8px 4px -8px;
+    border-radius: 4px 4px 0 0;
     font-size: 7pt;
-}
-
-.op-proto-box {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(245, 208, 97, 0.22);
-    border-radius: 6px;
-    padding: 6px 10px;
-    margin-top: 6px;
-}
-.op-proto-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin-top: 3px;
-}
-.op-proto-item {
-    display: flex;
-    flex-direction: column;
-}
-.op-proto-lbl {
-    font-size: 5.8pt;
-    color: #94a3b8;
+    font-weight: 900;
+    color: #000000;
     text-transform: uppercase;
 }
-.op-proto-val {
-    font-size: 7.6pt;
-    font-weight: 700;
-    color: #ffffff;
-    margin-top: 1px;
+.transposed-table {
+    width: 100%;
+    border-collapse: collapse;
 }
-.op-proto-note {
-    margin-top: 4px;
-    padding-top: 3px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.08);
-    font-size: 6.2pt;
+.transposed-table th,
+.transposed-table td {
+    padding: 2.5px 5px;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    font-size: 6.9pt;
     line-height: 1.25;
-    color: #94a3b8;
+    color: #000000;
+    text-align: left;
+    vertical-align: top;
 }
-.op-proto-note strong { color: #cbd5e1; }
-
-.op-market-box {
-    margin-top: 6px;
-    background: rgba(15, 23, 42, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    padding: 6px 10px;
+.transposed-table th {
+    width: 35%;
+    font-weight: 800;
+    background: rgba(241, 245, 249, 0.22);
+    border-right: 1px solid rgba(51, 65, 85, 0.5);
 }
-.op-market-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 3px;
-}
-.op-market-col {
-    padding: 5px 7px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.25);
-}
-.op-market-tag {
-    font-size: 6pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #38bdf8;
-    margin-bottom: 2px;
-}
-.op-market-text {
-    font-size: 6.4pt;
-    line-height: 1.28;
-    color: #cbd5e1;
+.transposed-table td {
+    width: 65%;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.14);
 }
 
-.op-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin-top: 6px;
-}
-.op-metric-card {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    padding: 5px 7px;
-    text-align: center;
-}
-.op-metric-val {
-    font-size: 9pt;
-    font-weight: 900;
-}
-.op-metric-lbl {
-    font-size: 5.8pt;
-    color: #94a3b8;
-    text-transform: uppercase;
-    margin-top: 1px;
-}
-
+/* Pie de Registro Corporativo (Zero-Email-Exposure) */
 .op-footer {
+    border-top: 2px solid #000000;
+    padding-top: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 6px;
-}
-.op-consultant {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-.op-avatar {
-    width: 22px;
-    height: 22px;
-    background: linear-gradient(135deg, #f5d061, #eab308);
-    color: #0b0f19;
-    font-weight: 900;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 7.5pt;
-}
-.op-cname {
-    font-size: 7.2pt;
-    font-weight: 800;
-    color: #ffffff;
-}
-.op-crole {
-    font-size: 5.8pt;
-    color: #94a3b8;
-}
-.op-contact {
-    font-size: 6.4pt;
-    color: #cbd5e1;
-    text-align: right;
-}
-.op-contact span {
-    color: #f5d061;
-    font-weight: 700;
-}
-
-/* Back Cover */
-.back-cover-page {
-    width: 210mm;
-    height: 297mm;
-    padding: 16mm 18mm 14mm 18mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    page-break-after: always;
-    break-after: page;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(145deg, #0c1322 0%, #060911 50%, #080e1b 100%);
-    border: 1px solid rgba(245, 208, 97, 0.3);
-}
-.back-title {
-    font-size: 20pt;
-    font-weight: 900;
-    color: #f5d061;
-    margin-bottom: 8px;
-}
-.back-sub {
-    font-size: 9pt;
-    color: #cbd5e1;
-    line-height: 1.4;
-    margin-bottom: 20px;
-}
-.back-card {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 14px;
-}
-.back-card-title {
-    font-size: 9.5pt;
-    font-weight: 800;
-    color: #f5d061;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.back-card-text {
-    font-size: 7.8pt;
-    line-height: 1.45;
-    color: #cbd5e1;
-}
-.back-card-text ul {
-    margin-left: 16px;
-    margin-top: 6px;
-}
-.back-card-text li {
-    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.22);
+    font-size: 6.8pt;
+    color: #000000;
 }
 """
 
-print("Building HTML...")
 html_parts = [
     "<!DOCTYPE html>",
     "<html lang='es'>",
     "<head>",
     "<meta charset='UTF-8'>",
-    "<title>Energy CPY — Catálogo de Resúmenes Ejecutivos 2026</title>",
+    "<title>Energy CPY — Catálogo Oficial de Resúmenes Ejecutivos Imprimibles 2026</title>",
     f"<style>{css}</style>",
     "</head>",
     "<body>"
 ]
 
-# 1. FRONT COVER
+# 1. PORTADA EJECUTIVA IMPRIMIBLE (FONDO BLANCO, FUENTES NEGRAS #000000, MARCA DE AGUA 60%)
+sector_totals = {}
+for p in projects:
+    sec = p.get("sector") or p.get("es", {}).get("categoryTag") or "Otros"
+    if sec not in sector_totals:
+        sector_totals[sec] = {"count": 0, "usd": 0.0, "priv": 0}
+    sector_totals[sec]["count"] += 1
+    if p.get("isPrivatePlacement"):
+        sector_totals[sec]["priv"] += 1
+    else:
+        sector_totals[sec]["usd"] += float(p.get("amountUSD") or 0)
+
+sector_rows_html = ""
+for sec, st in sector_totals.items():
+    usd_fmt = f"USD {st['usd']:,.1f}M".replace(",", "X").replace(".", ",").replace("X", ".") if st["usd"] > 0 else ""
+    priv_fmt = f" (+ {st['priv']} Private Placement)" if st["priv"] > 0 else ""
+    sector_rows_html += f"""
+    <tr>
+        <th>{SECTOR_ICONS.get(sec, '📌')} {sec} ({st['count']} Ofertas)</th>
+        <td><strong>{usd_fmt}{priv_fmt}</strong></td>
+    </tr>
+    """
+
 cover_html = f"""
-<div class="cover-page">
-    <div class="cover-border-inner"></div>
-    <div class="cover-header">
+<div class="page">
+    <div class="page-watermark"><img src="{LOGO_B64}" alt="Marca de Agua Energy CPY" /></div>
+    <div class="page-content">
         <div>
-            <div class="cover-brand-title">ENERGY CPY</div>
-            <div class="cover-brand-sub">ASESORAMIENTO PRIVADO DE INVERSIONES — ARGENTINA</div>
-        </div>
-        <div class="cover-badge">CARTERA EJECUTIVA 2026</div>
-    </div>
-
-    <div class="cover-hero">
-        <div class="cover-hero-tag">DOSSIER CONSOLIDADO DE INVERSIONES</div>
-        <div class="cover-title">Catálogo Oficial de <span>Resúmenes Ejecutivos</span></div>
-        <div class="cover-desc">
-            Compendio exhaustivo de One-Pagers y fichas de inversión publicadas en el Showroom de Inversiones de Energy CPY. 
-            Activos de clase mundial con estructuración financiera (DCF), mitigación legal en tres capas y elegibilidad plena 
-            bajo el Régimen de Incentivo para Grandes Inversiones (RIGI - Ley 27.742).
-        </div>
-    </div>
-
-    <div class="cover-stats-grid">
-        <div class="cover-stat-box">
-            <div class="cover-stat-val">25</div>
-            <div class="cover-stat-lbl">Proyectos Activos</div>
-        </div>
-        <div class="cover-stat-box">
-            <div class="cover-stat-val">&gt; USD 7.5B</div>
-            <div class="cover-stat-lbl">Volumen Cartera</div>
-        </div>
-        <div class="cover-stat-box">
-            <div class="cover-stat-val">8</div>
-            <div class="cover-stat-lbl">Sectores Clave</div>
-        </div>
-        <div class="cover-stat-box">
-            <div class="cover-stat-val">&gt; 15%</div>
-            <div class="cover-stat-lbl">TIR Promedio Ponderada</div>
-        </div>
-    </div>
-
-    <div class="cover-sectors-list">
-        <div class="cover-sector-item">☀️ <strong>Energía Solar & Renovable</strong> (Sol de los Cuatro Vientos, Vaca Muerta, Llave en Mano)</div>
-        <div class="cover-sector-item">⛏️ <strong>Minería & Metales Críticos</strong> (Oro San Antonio USD 3.5B, San Juan, Diente Oro Verde, Litio, Mármol)</div>
-        <div class="cover-sector-item">🛢️ <strong>Petróleo, Gas & Infraestructura</strong> (Refipampa, REFINOR, 3 Refinerías VM, 15 Concesiones, Pozo Salta)</div>
-        <div class="cover-sector-item">🏨 <strong>Hotelería, Casinos & Renta</strong> (Hotel 3★ & 5★ Mendoza, Hoteles de Lujo Bariloche y Córdoba)</div>
-        <div class="cover-sector-item">🌾 <strong>Agro, Campo & Industria</strong> (Estancia 17.000 ha con Riego)</div>
-        <div class="cover-sector-item">🏢 <strong>Real Estate & Fondos</strong> (Fondo Inmobiliario REIT Energy CPY USD 30M)</div>
-        <div class="cover-sector-item">🚢 <strong>Pesca Industrial de Gran Escala</strong> (Pesca de Altura en Patagonia, Ecosistema Integrado)</div>
-        <div class="cover-sector-item">💼 <strong>Asesoramiento Financiero</strong> (Inbound Funds, Gobiernos & PPP, Real Estate)</div>
-    </div>
-
-    <div class="cover-footer">
-        <div class="cover-consultants">
-            <div class="cover-c-col">
-                <div class="cover-c-name">Javier Ignacio Díaz</div>
-                <div class="cover-c-role">Consultor Capital Introducer & Finder</div>
-                <div class="cover-c-spec">Minería, Energía Renovable, Proyectos de Ingeniería</div>
-                <div style="color: #cbd5e1; font-size: 6.8pt; margin-top: 2px;">+54 9 351 2064791</div>
+            <div class="op-header">
+                <div>
+                    <div class="op-brand-title">ENERGY CPY — ÁREA DESARROLLO SOSTENIBLE</div>
+                    <div class="op-brand-sub">PRIVATE INVESTMENT ADVISORY & PROJECT FINANCE — REPÚBLICA ARGENTINA</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="op-ref-code">CATÁLOGO EJECUTIVO 2026</div>
+                    <div class="op-badge">VERSIÓN IMPRIMIBLE AUDITADA</div>
+                </div>
             </div>
-            <div class="cover-c-col">
-                <div class="cover-c-name">Daniel González</div>
-                <div class="cover-c-role">Consultor Capital Introducer & Finder</div>
-                <div class="cover-c-spec">Hotelería, Pesca, Petróleo, REIT, Real Estate & Finanzas</div>
-                <div style="color: #cbd5e1; font-size: 6.8pt; margin-top: 2px;">+54 9 2974 23-3028</div>
+
+            <div style="margin: 12px 0 10px 0;">
+                <span class="op-tag">DOSSIER CONSOLIDADO DE INVERSIONES (LEY RIGI 27.742 & MATER 27.191)</span>
+                <h1 style="font-size: 20pt; font-weight: 900; color: #000000; line-height: 1.15; margin: 6px 0;">
+                    Catálogo Oficial de Resúmenes Ejecutivos (One-Pagers)
+                </h1>
+                <p class="op-desc" style="font-size: 8.5pt;">
+                    Compendio auditado de las <strong>{total_projects} oportunidades estratégicas de inversión</strong> activas en el Showroom Oficial de Energy CPY
+                    (<code>inventarioenergycpy.github.io/showroom-energycpy/</code>), estructuradas con ingeniería financiera DCF, elegibilidad bajo el
+                    Régimen de Incentivo para Grandes Inversiones (RIGI — 30 años de estabilidad fiscal y cambiaria) y protección legal en tres capas.
+                </p>
+            </div>
+
+            <div class="op-deal-bar" style="margin-bottom: 12px;">
+                <div>
+                    <span class="op-deal-lbl">Ofertas Auditadas</span>
+                    <span class="op-deal-val">{total_projects} Proyectos Activos</span>
+                </div>
+                <div>
+                    <span class="op-deal-lbl">Volumen Consolidado</span>
+                    <span class="op-deal-val">{total_usd_str}</span>
+                </div>
+                <div>
+                    <span class="op-deal-lbl">Sectores Reales</span>
+                    <span class="op-deal-val">{len(sector_totals)} Sectores Clave</span>
+                </div>
+                <div>
+                    <span class="op-deal-lbl">Tasa de Corte (Hurdle)</span>
+                    <span class="op-deal-val">TIR &gt; 9% a &gt; 15% USD</span>
+                </div>
+            </div>
+
+            <div class="transposed-card">
+                <div class="transposed-header">
+                    <span>TABLA RESUMEN COMPARATIVA DE LOS TOTALES DE CARTERA POR SECTOR</span>
+                    <span>CONSOLIDADO GENERAL ENERGY CPY</span>
+                </div>
+                <table class="transposed-table">
+                    <tbody>
+                        {sector_rows_html}
+                        <tr>
+                            <th>TOTAL GENERAL AUDITADO EN CARTERA ({total_projects} PROYECTOS)</th>
+                            <td><strong>{total_usd_str} (USD 4.116.500.000) + 1 Activo en Private Placement</strong></td>
+                        </tr>
+                        <tr>
+                            <th>RANGO DE RENTABILIDAD PROYECTADA (TIR ANUAL EN USD)</th>
+                            <td><strong>18,0% a 42,0% anual en USD</strong> (Superando piso institucional de TIR &gt; 9% y &gt; 15%)</td>
+                        </tr>
+                        <tr>
+                            <th>PLATAFORMAS WEB OFICIALES</th>
+                            <td>Showroom: <strong>https://inventarioenergycpy.github.io/showroom-energycpy/</strong><br>Hub Renovable RIGI: <strong>https://inventarioenergycpy.github.io/hub-renovable-rigi-llave-en-mano/</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="transposed-card">
+                <div class="transposed-header">
+                    <span>REGISTRO OFICIAL DE LA EMPRESA Y CONSULTORES ESPECIALISTAS (ZERO-EMAIL-EXPOSURE)</span>
+                    <span>CONTACTO DIRECTO WHATSAPP</span>
+                </div>
+                <table class="transposed-table">
+                    <tbody>
+                        <tr>
+                            <th>Javier Ignacio Díaz</th>
+                            <td><strong>{CONSULTANTS['javier']['role']}</strong><br>WhatsApp Oficial Directo: <strong>{CONSULTANTS['javier']['phone']}</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Daniel González</th>
+                            <td><strong>{CONSULTANTS['daniel']['role']}</strong><br>WhatsApp Oficial Directo: <strong>{CONSULTANTS['daniel']['phone']}</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Cláusula de Confidencialidad</th>
+                            <td>Documento informativo de Grado de Inversión. La apertura de Data Room y memorias técnicas detalladas requiere suscripción previa de Acuerdo de Confidencialidad (NDA).</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="cover-legal-notice">
-            CONFIDENCIAL & PRIVADO<br>
-            Material destinado exclusivamente a inversores calificados y contrapartes autorizadas bajo NDA.
+
+        <div class="op-footer">
+            <div><strong>ENERGY CPY — Área Desarrollo Sostenible</strong> | República Argentina</div>
+            <div><strong>Página 1 — Portada y Tabla Resumen Comparativa de Totales</strong></div>
         </div>
     </div>
 </div>
 """
 html_parts.append(cover_html)
 
-# 2. TABLE OF CONTENTS
-toc_rows = []
-for i, p in enumerate(projects):
-    es = p.get("es", {})
-    title = es.get("title", p.get("title"))
-    page_num = i + 3  # Cover = 1, TOC = 2, First Project = 3
-    amt = p.get("amountDisplay", "N/A")
-    mod = p.get("dealType", p.get("modality", "N/A"))
-    tir = p.get("tir", ">9%")
-    sec_icon = SECTOR_ICONS.get(p.get("sector"), "📌")
-    
-    toc_rows.append(f"""
-    <tr>
-        <td class="toc-ref">ECPY-{p['id'].upper()[:16]}</td>
-        <td>{sec_icon} {p.get('sector', '')}</td>
-        <td class="toc-pname">{title}</td>
-        <td class="toc-val">{amt}</td>
-        <td>{mod}</td>
-        <td class="toc-tir">{tir}</td>
-        <td class="toc-pag">Pág. {page_num}</td>
-    </tr>
-    """)
+# 2. FICHAS INDIVIDUALES TRANSPUESTAS DE ÍNDICE (4 OFERTAS POR PÁGINA PARA NO EXCEDER MARGEN HORIZONTAL)
+CHUNK_SIZE = 4
+index_chunks = [projects[i:i + CHUNK_SIZE] for i in range(0, len(projects), CHUNK_SIZE)]
+total_pages = 1 + len(index_chunks) + len(projects)
 
-toc_html = f"""
-<div class="toc-page">
-    <div>
-        <div class="op-header" style="margin-bottom: 8px;">
+for chunk_idx, chunk in enumerate(index_chunks):
+    page_no = 2 + chunk_idx
+    cards_html = ""
+    for offset, p in enumerate(chunk):
+        proj_idx = chunk_idx * CHUNK_SIZE + offset + 1
+        es = p.get("es", {})
+        c = CONSULTANTS.get(p.get("assignedAgent"), CONSULTANTS["javier"])
+        amt = "A Invitación Exclusiva (Private Placement)" if p.get("isPrivatePlacement") else p.get("amountDisplay", "N/A")
+        mod = p.get("dealType", p.get("modality", "Venta / Socio Inversor"))
+        tir = p.get("tir", ">9%")
+        tir_cat = get_tir_category(tir)
+        cards_html += f"""
+        <div class="transposed-card">
+            <div class="transposed-header">
+                <span>OFERTA #{proj_idx:02d} — {es.get('title', p.get('id')).upper()}</span>
+                <span>REF: ECPY-{p['id'].upper()} | FICHA PÁG. {1 + len(index_chunks) + proj_idx}</span>
+            </div>
+            <table class="transposed-table">
+                <tbody>
+                    <tr>
+                        <th>Sector y Ubicación Geográfica</th>
+                        <td><strong>{es.get('categoryTag', p.get('sector'))}</strong> — {es.get('location', 'Argentina')}</td>
+                    </tr>
+                    <tr>
+                        <th>Ticket de Inversión y Modalidad</th>
+                        <td><strong>{amt}</strong> | {mod} ({p.get('capitalStructure', 'Estructuración Directa')})</td>
+                    </tr>
+                    <tr>
+                        <th>TIR Proyectada, EBITDA y Payback</th>
+                        <td><strong>TIR: {tir}</strong> ({tir_cat}) | <strong>EBITDA: {p.get('ebitda', 'Auditado')}</strong> | Recupero: <strong>{p.get('roi', 'N/A')}</strong></td>
+                    </tr>
+                    <tr>
+                        <th>Tesis Ejecutiva y Consultor Asignado</th>
+                        <td>{es.get('thesis', es.get('description', ''))}<br><strong>Consultor: {c['name']} (WhatsApp: {c['phone']})</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        """
+
+    idx_page_html = f"""
+    <div class="page">
+        <div class="page-watermark"><img src="{LOGO_B64}" alt="Marca de Agua Energy CPY" /></div>
+        <div class="page-content">
             <div>
-                <div class="op-brand-title">ENERGY CPY</div>
-                <div class="op-brand-sub">CARTERA EJECUTIVA — ÍNDICE MAESTRO DE PROYECTOS</div>
+                <div class="op-header">
+                    <div>
+                        <div class="op-brand-title">ENERGY CPY — ÍNDICE EJECUTIVO TRANSPUESTO</div>
+                        <div class="op-brand-sub">FICHAS COMPARATIVAS INDIVIDUALES POR OFERTA (SIN DESBORDE DE MARGEN A4)</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="op-ref-code">PARTE {chunk_idx + 1} DE {len(index_chunks)}</div>
+                        <div class="op-badge">OFERTAS #{chunk_idx * CHUNK_SIZE + 1:02d} A #{chunk_idx * CHUNK_SIZE + len(chunk):02d}</div>
+                    </div>
+                </div>
+                {cards_html}
             </div>
-            <div style="text-align: right;">
-                <div class="op-ref-code">SHOWROOM 2026</div>
-                <div class="op-badge">25 ACTIVOS SINDICADOS</div>
+            <div class="op-footer">
+                <div><strong>ENERGY CPY</strong> — Contacto Directo WhatsApp: {CONSULTANTS['javier']['phone']} / {CONSULTANTS['daniel']['phone']}</div>
+                <div><strong>Página {page_no} de {total_pages}</strong></div>
             </div>
-        </div>
-
-        <div class="toc-title">Índice General de Resúmenes Ejecutivos</div>
-        <div class="toc-sub">Relación ordenada de proyectos por sector y parámetros clave de inversión</div>
-
-        <table class="toc-table">
-            <thead>
-                <tr>
-                    <th>Ref. Código</th>
-                    <th>Sector</th>
-                    <th>Proyecto / Activo</th>
-                    <th>Ticket Inversión</th>
-                    <th>Modalidad</th>
-                    <th>TIR Proy.</th>
-                    <th style="text-align: right;">Ubicación</th>
-                </tr>
-            </thead>
-            <tbody>
-                {''.join(toc_rows)}
-            </tbody>
-        </table>
-    </div>
-
-    <div class="op-footer" style="margin-top: 10px;">
-        <div style="font-size: 7pt; color: #94a3b8;">
-            * Todos los proyectos cuentan con Memoria Financiera DCF y Data Room estructurado en Google Drive.
-        </div>
-        <div style="font-size: 7pt; color: #f5d061; font-weight: 700;">
-            Página 2 de 28
         </div>
     </div>
-</div>
-"""
-html_parts.append(toc_html)
+    """
+    html_parts.append(idx_page_html)
 
-# 3. 25 ONE-PAGERS
+# 3. RESÚMENES EJECUTIVOS INDIVIDUALES (ONE-PAGERS CON TABLA TRANSPUESTA + COMPARATIVA)
 for i, p in enumerate(projects):
     es = p.get("es", {})
-    page_num = i + 3
-    consultant = CONSULTANTS.get(p.get("assignedAgent"), CONSULTANTS["daniel"])
-    
-    amount_label = "A Invitación Exclusiva (Private Placement)" if p.get("isPrivatePlacement") else p.get("amountDisplay")
+    page_no = 1 + len(index_chunks) + i + 1
+    consultant = CONSULTANTS.get(p.get("assignedAgent"), CONSULTANTS["javier"])
+    amount_label = "A Invitación Exclusiva (Private Placement)" if p.get("isPrivatePlacement") else p.get("amountDisplay", "N/A")
     deal_type = p.get("dealType", p.get("modality", "Venta / Socio Inversor"))
     roi_label = p.get("roi", "N/A")
     tir_val = p.get("tir", ">9%")
     tir_category = get_tir_category(tir_val)
-    
-    highlights_html = "".join(f'<li><span class="op-check">✓</span><span>{h}</span></li>' for h in es.get("highlights", []))
-    metrics_html = "".join(f'''
-        <div class="op-metric-card">
-            <div class="op-metric-val {m.get("color", "text-gold")}">{m.get("val")}</div>
-            <div class="op-metric-lbl">{m.get("label")}</div>
-        </div>
-    ''' for m in es.get("metrics", []))
-    
-    fin_note = p.get("financialNote_es", "Cálculo de TIR proyectado mediante Flujo de Fondos Descontados (DCF) con horizonte de vida útil del activo, superando la Tasa de Corte de referencia (TIR objetivo >9% anual en USD).")
-    local_trend = es.get("marketTrend", {}).get("local", es.get("thesis", ""))
-    intl_trend = es.get("marketTrend", {}).get("intl", "Demanda global sostenida de commodities y flujos de capital institucional hacia activos estratégicos.")
-    
     sec_icon = SECTOR_ICONS.get(p.get("sector"), "📌")
+
+    highlights_html = "".join(f"<li>▪ {h}</li>" for h in es.get("highlights", []))
+    extra_metrics_rows = "".join(
+        f"<tr><th>{m.get('label')}</th><td><strong>{m.get('val')}</strong></td></tr>"
+        for m in es.get("metrics", [])
+    )
+    fin_note = p.get("financialNote_es", "Cálculo de TIR proyectado mediante Flujo de Fondos Descontados (DCF).")
+    local_trend = es.get("marketTrend", {}).get("local", es.get("thesis", ""))
+    intl_trend = es.get("marketTrend", {}).get("intl", "Demanda global sostenida.")
+
+    proj_amt = float(p.get("amountUSD") or 0)
+    share_pct = f"{(proj_amt / total_usd) * 100:.2f}%" if (not p.get("isPrivatePlacement") and proj_amt > 0) else "Private Placement"
 
     op_html = f"""
     <div class="page">
-        <div>
-            <!-- Header -->
-            <div class="op-header">
+        <div class="page-watermark"><img src="{LOGO_B64}" alt="Marca de Agua Energy CPY" /></div>
+        <div class="page-content">
+            <div>
+                <div class="op-header">
+                    <div>
+                        <div class="op-brand-title">ENERGY CPY — RESUMEN EJECUTIVO (ONE-PAGER)</div>
+                        <div class="op-brand-sub">ÁREA DESARROLLO SOSTENIBLE — PRIVATE INVESTMENT ADVISORY</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="op-ref-code">REF: ECPY-{p['id'].upper()}</div>
+                        <div class="op-badge">CONFIDENCIAL / GRADO DE INVERSIÓN</div>
+                    </div>
+                </div>
+
                 <div>
-                    <div class="op-brand-title">ENERGY CPY</div>
-                    <div class="op-brand-sub">ASESORAMIENTO PRIVADO DE INVERSIONES — ARGENTINA</div>
+                    <span class="op-tag">{sec_icon} {es.get('categoryTag', p.get('sector'))}</span>
+                    <h1 class="op-title">{es.get('title')}</h1>
+                    <div class="op-loc">📍 {es.get('location')} • Marco Regulatorio: {p.get('regulatoryRegime', 'Vigente')}</div>
                 </div>
-                <div style="text-align: right;">
-                    <div class="op-ref-code">REF: ECPY-{p['id'].upper()}</div>
-                    <div class="op-badge">CONFIDENCIAL / GRADO DE INVERSIÓN</div>
-                </div>
-            </div>
 
-            <!-- Title & Location -->
-            <div class="op-title-section">
-                <span class="op-tag">{sec_icon} {es.get('categoryTag', p.get('sector'))}</span>
-                <h1 class="op-title">{es.get('title')}</h1>
-                <div class="op-loc">📍 {es.get('location')} • Marco Regulatorio: {p.get('regulatoryRegime', 'Vigente')}</div>
-            </div>
+                <div class="op-deal-bar">
+                    <div>
+                        <span class="op-deal-lbl">Monto Inversión</span>
+                        <span class="op-deal-val">{amount_label}</span>
+                    </div>
+                    <div>
+                        <span class="op-deal-lbl">Tipo de Oferta</span>
+                        <span class="op-deal-val">{deal_type}</span>
+                    </div>
+                    <div>
+                        <span class="op-deal-lbl">{tir_category}</span>
+                        <span class="op-deal-val">TIR: {tir_val}</span>
+                    </div>
+                    <div>
+                        <span class="op-deal-lbl">Retorno / Payback</span>
+                        <span class="op-deal-val">{roi_label}</span>
+                    </div>
+                </div>
 
-            <!-- Deal Bar -->
-            <div class="op-deal-bar">
-                <div class="op-deal-col">
-                    <span class="op-deal-lbl">Monto Inversión</span>
-                    <span class="op-deal-val">{amount_label}</span>
-                </div>
-                <div class="op-deal-col">
-                    <span class="op-deal-lbl">Tipo de Oferta</span>
-                    <span class="op-deal-val">{deal_type}</span>
-                </div>
-                <div class="op-deal-col">
-                    <span class="op-deal-lbl" style="color: #10b981;">{tir_category}</span>
-                    <span class="op-deal-val text-green">{tir_val}</span>
-                </div>
-                <div class="op-deal-col">
-                    <span class="op-deal-lbl">Retorno / Payback</span>
-                    <span class="op-deal-val">{roi_label}</span>
-                </div>
-            </div>
-
-            <!-- Body Grid -->
-            <div class="op-body-grid">
                 <div class="op-card">
-                    <div class="op-card-title">💼 Resumen Ejecutivo del Activo</div>
+                    <div class="op-card-title">Resumen Ejecutivo de la Actividad y Tesis de Inversión</div>
                     <p class="op-desc">{es.get('description')}</p>
                     {f'<div class="op-thesis"><strong>Tesis Financiera: </strong>{es.get("thesis")}</div>' if es.get("thesis") else ''}
                 </div>
+
                 <div class="op-card">
-                    <div class="op-card-title">⭐ Factores Críticos de Valor & Aspectos Clave</div>
+                    <div class="op-card-title">Factores Críticos de Valor y Aspectos Clave</div>
                     <ul class="op-highlights">
                         {highlights_html}
                     </ul>
                 </div>
+
+                <div class="transposed-card">
+                    <div class="transposed-header">
+                        <span>TABLA INDIVIDUAL TRANSPUESTA DE PARÁMETROS FINANCIEROS Y TÉCNICOS</span>
+                        <span>OFERTA #{i + 1:02d} DE {total_projects}</span>
+                    </div>
+                    <table class="transposed-table">
+                        <tbody>
+                            <tr>
+                                <th>TIR Modelada y Calificación</th>
+                                <td><strong>{tir_val}</strong> ({tir_category}) — Flujo Anual / EBITDA: <strong>{p.get('ebitda', 'Auditado')}</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Estructura de Capital y Régimen</th>
+                                <td>{p.get('capitalStructure', 'Estructuración Directa')} | {p.get('regulatoryRegime', 'Vigente')}</td>
+                            </tr>
+                            <tr>
+                                <th>Memoria de Cálculo Financiero</th>
+                                <td>{fin_note}</td>
+                            </tr>
+                            <tr>
+                                <th>Tendencia Mercado Local e Internacional</th>
+                                <td><strong>Local:</strong> {local_trend}<br><strong>Internacional:</strong> {intl_trend}</td>
+                            </tr>
+                            {extra_metrics_rows}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="transposed-card">
+                    <div class="transposed-header">
+                        <span>TABLA RESUMEN COMPARATIVA CONTRA TOTALES DE CARTERA ENERGY CPY</span>
+                        <span>PONDERACIÓN: {share_pct}</span>
+                    </div>
+                    <table class="transposed-table">
+                        <tbody>
+                            <tr>
+                                <th>Ticket Oferta vs. Total Cartera</th>
+                                <td><strong>{amount_label}</strong> sobre Cartera Consolidada de <strong>{total_usd_str} ({total_projects} Proyectos)</strong></td>
+                            </tr>
+                            <tr>
+                                <th>Consultor Especialista Asignado</th>
+                                <td><strong>{consultant['name']}</strong> ({consultant['role']}) — WhatsApp Directo: <strong>{consultant['phone']}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <!-- Financial Protocol -->
-            <div class="op-proto-box">
-                <div class="op-card-title" style="margin-bottom: 3px; padding-bottom: 2px;">
-                    🧮 Protocolo Analista Financiero: Métricas Clave & Tasa de Corte
-                </div>
-                <div class="op-proto-grid">
-                    <div class="op-proto-item">
-                        <span class="op-proto-lbl">Calificación de Retorno:</span>
-                        <span class="op-proto-val text-green">{tir_category}</span>
-                    </div>
-                    <div class="op-proto-item">
-                        <span class="op-proto-lbl">TIR Modelada Activo:</span>
-                        <span class="op-proto-val text-gold">{tir_val}</span>
-                    </div>
-                    <div class="op-proto-item">
-                        <span class="op-proto-lbl">EBITDA Anual / Régimen:</span>
-                        <span class="op-proto-val text-cyan">{p.get('ebitda', 'Auditado')}</span>
-                    </div>
-                    <div class="op-proto-item">
-                        <span class="op-proto-lbl">Estructura & Marco:</span>
-                        <span class="op-proto-val">{p.get('regulatoryRegime', 'Vigente')}</span>
-                    </div>
-                </div>
-                <div class="op-proto-note">
-                    <strong>Memoria de Cálculo: </strong>{fin_note}
-                </div>
-            </div>
-
-            <!-- Market Trends -->
-            <div class="op-market-box">
-                <div class="op-card-title" style="margin-bottom: 3px; padding-bottom: 2px;">
-                    🌐 Perspectiva & Tendencias de Mercado
-                </div>
-                <div class="op-market-grid">
-                    <div class="op-market-col">
-                        <div class="op-market-tag">🇦🇷 Mercado Local (Argentina)</div>
-                        <p class="op-market-text">{local_trend}</p>
-                    </div>
-                    <div class="op-market-col">
-                        <div class="op-market-tag">🌎 Demanda Global / Internacional</div>
-                        <p class="op-market-text">{intl_trend}</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Metrics Grid -->
-            <div class="op-metrics-grid">
-                {metrics_html}
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="op-footer">
-            <div class="op-consultant">
-                <div class="op-avatar">{consultant['avatar']}</div>
-                <div>
-                    <div class="op-cname">{consultant['name']}</div>
-                    <div class="op-crole">{consultant['role']} • Energy CPY</div>
-                </div>
-            </div>
-            <div class="op-contact">
-                Email: <span>{consultant['email']}</span> • Tel/WA: <span>{consultant['phone']}</span> • <strong>Pág. {page_num} de 28</strong>
+            <div class="op-footer">
+                <div><strong>ENERGY CPY</strong> • Web: <code>inventarioenergycpy.github.io/showroom-energycpy/</code> • WhatsApp: <strong>{consultant['phone']}</strong></div>
+                <div><strong>Página {page_no} de {total_pages}</strong></div>
             </div>
         </div>
     </div>
     """
     html_parts.append(op_html)
 
-# 4. BACK COVER / INSTITUTIONAL NOTICE
-back_cover_html = """
-<div class="back-cover-page">
-    <div class="cover-border-inner"></div>
-    <div>
-        <div class="op-header" style="border-bottom-color: rgba(245, 208, 97, 0.4);">
-            <div>
-                <div class="cover-brand-title" style="font-size: 22pt;">ENERGY CPY</div>
-                <div class="cover-brand-sub">INSTITUTIONAL INVESTMENT ADVISORY</div>
-            </div>
-            <div class="cover-badge">MARCO REGULATORIO & DUE DILIGENCE</div>
-        </div>
-
-        <div style="margin-top: 18px;">
-            <div class="back-title">Garantías Legales, Estabilidad & Protocolo de Acceso</div>
-            <div class="back-sub">
-                Cada uno de los 25 proyectos sintetizados en este catálogo se encuentra formalizado bajo estrictos protocolos 
-                de sindicación, confidencialidad y gobernanza corporativa internacional.
-            </div>
-        </div>
-
-        <div class="back-card">
-            <div class="back-card-title">⚖️ 1. Marco Regulatorio, Cambiario & Estabilidad Fiscal (RIGI)</div>
-            <div class="back-card-text">
-                Los activos calificados de gran escala son plenamente elegibles bajo el <strong>Régimen de Incentivo para Grandes Inversiones (RIGI - Ley 27.742)</strong>, 
-                garantizando por 30 años:
-                <ul>
-                    <li><strong>Estabilidad Impositiva & Tributaria:</strong> Tasa reducida de Impuesto a las Ganancias al 25%, amortización acelerada y devolución anticipada de IVA.</li>
-                    <li><strong>Libre Disponibilidad Cambiaria:</strong> Libre acceso al Mercado Libre de Cambios (MLC) y disponibilidad progresiva de divisas del 100% de exportaciones.</li>
-                    <li><strong>Inmunidad Regulatoria & Arbitraje Internacional:</strong> Cláusula de protección bilateral de inversiones y solución de controversias ante tribunales arbitrales internacionales (CIADI / UNCITRAL).</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="back-card">
-            <div class="back-card-title">🔒 2. Matriz de Protección Legal en Tres Capas (Triple Shield)</div>
-            <div class="back-card-text">
-                <ul>
-                    <li><strong>Capa 1 (Acuerdo NDA & Exclusividad):</strong> Non-Disclosure Agreement bilateral obligatorio previo a la apertura de información técnica confidencial o financiera granular.</li>
-                    <li><strong>Capa 2 (Contratos de Mandato & Finders Fee):</strong> Protección de intermediación institucional registrada bajo normativa del Código Civil y Comercial de la Nación (Art. 1345 y conc.).</li>
-                    <li><strong>Capa 3 (Vehículos Fiduciarios & Escrow):</strong> Cierre de operaciones y canalización de fondos mediante Fideicomisos de Garantía (CCCN Art. 1666) y cuentas escrow en entidades bancarias de primera línea.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="back-card">
-            <div class="back-card-title">📁 3. Protocolo de Apertura de Data Room & Memorándum Financiero</div>
-            <div class="back-card-text">
-                Para solicitar el Memorándum de Inversión Completo (IM), el modelo financiero editable (.xlsx) y la documentación de respaldo técnico-legal de cualquiera de los proyectos:
-                <ul>
-                    <li>1. Indicar el código de referencia oficial del activo (Ej: <code>REF: ECPY-MINERIA-ORO-SAN-ANTONIO-SAN-JUAN</code>).</li>
-                    <li>2. Solicitar el modelo estándar de NDA institucional a la casilla oficial de contacto.</li>
-                    <li>3. Concluido el registro, el equipo de Energy CPY habilitará el acceso seguro vía Google Drive al Data Room del activo seleccionado.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="cover-footer">
-        <div>
-            <div style="font-size: 8.5pt; font-weight: 800; color: #ffffff;">ENERGY CPY — PRIVATE INVESTMENT SHOWROOM 2026</div>
-            <div style="font-size: 7.2pt; color: #94a3b8;">Contacto Oficial: inventario.energycpy@gmail.com • WhatsApp Red: +54 9 351 2064791 / +54 9 2974 23-3028</div>
-            <div style="font-size: 6.8pt; color: #64748b; margin-top: 2px;">Bóveda Digital: https://github.com/inventarioenergycpy • Showroom: https://inventarioenergycpy.github.io/showroom-energycpy/</div>
-        </div>
-        <div style="font-size: 8pt; font-weight: 800; color: #f5d061;">
-            Página 28 de 28
-        </div>
-    </div>
-</div>
-"""
-html_parts.append(back_cover_html)
-
 html_parts.append("</body></html>")
-
 full_html = "\n".join(html_parts)
 
-temp_html_path = r"C:\Users\majon\.gemini\antigravity\brain\25b183d1-d0a1-4bc0-a8cc-e6989cd9f44d\scratch\catalogo_completo.html"
-with open(temp_html_path, "w", encoding="utf-8") as f:
-    f.write(full_html)
+temp_html_path = BASE_DIR / "scripts" / "_temp_catalogo_imprimible_2026.html"
+temp_html_path.write_text(full_html, encoding="utf-8")
 
-print(f"Generated HTML at {temp_html_path} ({len(full_html)} bytes)")
+repo_pdf_path = BASE_DIR / "assets" / "pdf" / "Energy_CPY_Catalogo_Resumenes_Ejecutivos_Showroom_2026.pdf"
+repo_pdf_path.parent.mkdir(parents=True, exist_ok=True)
+downloads_pdf_path = pathlib.Path(r"C:\Users\majon\Downloads\Energy_CPY_Catalogo_Resumenes_Ejecutivos_Showroom_2026.pdf")
 
-output_pdf = r"C:\Users\majon\Downloads\Energy_CPY_Catalogo_Resumenes_Ejecutivos_Showroom_2026.pdf"
 chrome = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-cmd = [chrome, "--headless", "--disable-gpu", f"--print-to-pdf={output_pdf}", "--no-pdf-header-footer", temp_html_path]
-print("Running Headless Chrome to compile PDF...")
+cmd = [
+    chrome,
+    "--headless",
+    "--disable-gpu",
+    f"--print-to-pdf={repo_pdf_path}",
+    "--no-pdf-header-footer",
+    str(temp_html_path)
+]
+print("Compiling Printable Catalog PDF via Headless Chrome...")
 subprocess.run(cmd, check=True)
-
-print(f"SUCCESS! Output PDF generated at: {output_pdf}")
-print(f"File size: {os.path.getsize(output_pdf)} bytes")
+shutil.copy2(repo_pdf_path, downloads_pdf_path)
+temp_html_path.unlink(missing_ok=True)
+print(f"SUCCESS! Generated {repo_pdf_path} ({repo_pdf_path.stat().st_size} bytes) and copied to {downloads_pdf_path}")

@@ -4195,6 +4195,10 @@ function openOnePager(projectId, event) {
     const container = document.getElementById("onePagerContent");
     if (!modal || !container) return;
 
+    if (typeof injectRegisteredWatermark === "function") {
+        injectRegisteredWatermark();
+    }
+
     const langData = p[currentLang] || p.es || {};
     const onePagerTitle = langData.title || p.title || p.id;
     const onePagerDesc = langData.description || p.description || "";
@@ -4358,26 +4362,31 @@ function openOnePager(projectId, event) {
             </div>
         </div>
 
-        <!-- 4-Metrics Grid -->
-        <div class="op-metrics-grid">
+        <!-- 4-Metrics Grid (Screen View) -->
+        <div class="op-metrics-grid screen-only-wide-table">
             ${metricsHtml}
         </div>
 
-        <!-- Consultant Info & Direct Contact -->
+        <!-- Módulo de Exportación Imprimible: Tabla Individual Transpuesta + Tabla Resumen Comparativa de Totales + Registro Corporativo -->
+        ${typeof buildSingleProjectTransposedPrintSection === "function"
+            ? buildSingleProjectTransposedPrintSection(p, langData, consultant, isEn, tirCategory, tirProjectVal, amountLabel, dealTypeLabel, roiLabel)
+            : ""}
+
+        <!-- Consultant Info & Direct Contact (Zero Email Exposure) -->
         <div class="op-footer-box">
             <div class="op-consultant-info">
                 <div class="op-consultant-avatar">${consultant.name.charAt(0)}</div>
                 <div>
-                    <div class="op-consultant-name">${consultant.name}</div>
+                    <div class="op-consultant-name">${consultant.name} — <span style="font-weight:700;">WhatsApp: ${consultant.phone}</span></div>
                     <div class="op-consultant-role">${isEn ? consultant.role_en : consultant.role_es}</div>
                 </div>
             </div>
             <div class="op-consultant-links no-print">
-                <a href="${wspUrl}" target="_blank" class="op-btn-wsp">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
+                <a href="${wspUrl}" target="_blank" rel="noopener" class="op-btn-wsp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo (${consultant.phone})
                 </a>
-                <a href="mailto:${consultant.internalEmail}?subject=Consulta%20Inversion%20${encodeURIComponent(onePagerTitle)}" class="op-btn-email">
-                    <i class="fa-solid fa-envelope"></i> Email
+                <a href="#contacto" onclick="closeOnePager()" class="op-btn-email">
+                    <i class="fa-solid fa-file-signature"></i> ${isEn ? "Request Data Room" : "Solicitar Dossier"}
                 </a>
             </div>
         </div>

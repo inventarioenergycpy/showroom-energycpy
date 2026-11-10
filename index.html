@@ -104,6 +104,9 @@
                 <a href="#proyectos" class="btn btn-primary-gold">
                     <i class="fa-solid fa-rocket"></i> <span data-i18n="hero_btn_explore">Explorar Oportunidades</span>
                 </a>
+                <button type="button" class="btn btn-glass" style="border-color: var(--accent-gold); color: var(--accent-gold-light);" onclick="openPortfolioExecutiveSummaryPrint(event)">
+                    <i class="fa-solid fa-print"></i> <span data-i18n="hero_btn_print_summary">Imprimir Resumen Ejecutivo</span>
+                </button>
                 <a href="#contacto" class="btn btn-glass">
                     <i class="fa-solid fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Contactar a Dirección</span>
                 </a>
@@ -601,15 +604,22 @@
     </div>
 
         <!-- ==========================================================================
-         One-Pager Executive Summary Modal (1-Page A4 with Energy CPY Watermark)
+         One-Pager Executive Summary Modal (1-Page A4 with Energy CPY 4v Watermark 60% Transparency)
+         Powered by: exportacion-imprimible-marca-agua-energycpy (js/export-print-module.js)
          ========================================================================== -->
     <div class="modal-backdrop" id="onePagerModal" onclick="closeModalOnBackdrop(event)">
         <div class="one-pager-modal-container">
             <div class="one-pager-actions-bar no-print">
                 <div class="one-pager-actions-left">
-                    <span class="badge-onepager-live"><i class="fa-solid fa-file-contract"></i> Resumen Ejecutivo Sintético (1 Página A4)</span>
+                    <span class="badge-onepager-live"><i class="fa-solid fa-file-contract"></i> Resumen Ejecutivo Imprimible (Marca de Agua 60% & Registro Energy CPY)</span>
                 </div>
                 <div class="one-pager-actions-right">
+                    <button type="button" class="btn btn-toggle-print-preview" id="btnTogglePrintPreview" onclick="toggleOnePagerPrintPreview()">
+                        <i class="fa-solid fa-eye"></i> Vista Imprimible (Fondo Blanco)
+                    </button>
+                    <button type="button" class="btn btn-toggle-print-preview" onclick="openPortfolioExecutiveSummaryPrint(event)" title="Ver e Imprimir Resumen Ejecutivo Consolidado de las 16 Ofertas">
+                        <i class="fa-solid fa-layer-group"></i> Resumen Cartera (16 Ofertas)
+                    </button>
                     <button type="button" class="btn btn-print-pdf" onclick="printOnePager()">
                         <i class="fa-solid fa-print"></i> Imprimir / Guardar en PDF
                     </button>
@@ -619,13 +629,15 @@
                 </div>
             </div>
 
-            <!-- Single Page Printable A4 Sheet -->
+            <!-- Printable A4 Sheet -->
             <div class="one-pager-sheet-scroll">
                 <div class="one-pager-sheet" id="onePagerSheet">
-                    <!-- Watermark Overlay (Energy CPY) -->
-                    <div class="one-pager-watermark">ENERGY CPY — PRIVATE INVESTMENT ADVISORY</div>
+                    <!-- Watermark Overlay (Energy CPY 4v Logo — 60% Transparency / opacity: 0.40 Centered Max Fit) -->
+                    <div class="one-pager-watermark">
+                        <img src="assets/images/logo-energy-cpy-4v-transparente.png" alt="Marca de Agua Oficial Energy CPY" class="ecpy-watermark-img" />
+                    </div>
                     
-                    <!-- Dynamic Content Injected by main.js -->
+                    <!-- Dynamic Content Injected by main.js & export-print-module.js -->
                     <div id="onePagerContent">
                         <!-- Dynamic executive summary content -->
                     </div>
@@ -634,7 +646,9 @@
         </div>
     </div>
 
-<!-- Main JavaScript File -->
+    <!-- Energy CPY Printable Export & Watermark Module -->
+    <script src="js/export-print-module.js"></script>
+    <!-- Main JavaScript File -->
     <script src="js/main.js"></script>
 </body>
 </html>
