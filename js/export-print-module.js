@@ -80,14 +80,31 @@ function getWatermarkLogoSrc() {
 }
 
 /**
- * Inyecta la marca de agua oficial registrada en el contenedor #onePagerSheet
+ * Inyecta la marca de agua oficial registrada:
+ * 1) En #onePagerSheet .one-pager-watermark (para vista en pantalla y vista previa imprimible).
+ * 2) Como hijo directo de <body> (#ecpyGlobalPrintWatermark) con position: fixed; inset: 0
+ *    para garantizar su repetición centrada al 60% de transparencia (opacity: 0.40) en CADA HOJA
+ *    impresa sin importar cuántas páginas o qué tamaño de papel (A4, Carta, Oficio, A3, Vertical/Horizontal) se configure.
  */
 function injectRegisteredWatermark() {
-    const wmContainer = document.querySelector("#onePagerSheet .one-pager-watermark");
-    if (!wmContainer) return;
-
     const logoSrc = getWatermarkLogoSrc();
-    wmContainer.innerHTML = `<img src="${logoSrc}" alt="Marca de Agua Oficial Energy CPY (60% Transparencia)" class="ecpy-watermark-img" />`;
+
+    const wmContainer = document.querySelector("#onePagerSheet .one-pager-watermark");
+    if (wmContainer) {
+        wmContainer.innerHTML = `<img src="${logoSrc}" alt="Marca de Agua Oficial Energy CPY (60% Transparencia)" class="ecpy-watermark-img" />`;
+    }
+
+    let globalPrintWm = document.getElementById("ecpyGlobalPrintWatermark");
+    if (!globalPrintWm && document.body) {
+        globalPrintWm = document.createElement("div");
+        globalPrintWm.id = "ecpyGlobalPrintWatermark";
+        globalPrintWm.className = "ecpy-global-print-watermark";
+        globalPrintWm.setAttribute("aria-hidden", "true");
+        document.body.appendChild(globalPrintWm);
+    }
+    if (globalPrintWm) {
+        globalPrintWm.innerHTML = `<img src="${logoSrc}" alt="Marca de Agua Oficial Energy CPY (60% Transparencia)" class="ecpy-watermark-img" />`;
+    }
 }
 
 /**

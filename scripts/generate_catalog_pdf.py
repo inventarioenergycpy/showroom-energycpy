@@ -77,59 +77,77 @@ total_usd_str = f"USD {total_usd:,.1f}M".replace(",", "X").replace(".", ",").rep
 
 css = """
 @page {
-    size: A4 portrait;
-    margin: 0;
+    /* Sin bloqueo rígido de papel: se adapta a cualquier formato (A4, Carta, Oficio, A3, Vertical u Horizontal) */
+    margin: 9mm 12mm;
 }
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+html {
+    background-color: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: transparent;
     color: #000000;
+    position: static;
+    transform: none;
+    overflow: visible;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
 
-.page {
-    width: 210mm;
-    height: 297mm;
-    max-height: 297mm;
-    padding: 10mm 13mm 9mm 13mm;
-    position: relative;
-    overflow: hidden;
-    page-break-after: always;
-    break-after: page;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #ffffff;
-    color: #000000;
-}
-
-/* Marca de Agua Oficial Energy CPY 4v Centrada al Medio con 60% de Transparencia (opacity: 0.40) */
-.page-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 92%;
-    height: 88%;
-    max-width: 92%;
-    max-height: 88%;
+/* Marca de Agua Global Fija al Viewport de Impresión: se repite en CADA hoja sin importar el tamaño configurado */
+.global-page-watermark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     z-index: 0;
 }
-.page-watermark img {
-    width: 100%;
-    height: 100%;
+.global-page-watermark img {
+    width: 94%;
+    height: 90%;
+    max-width: 94%;
+    max-height: 90%;
     object-fit: contain;
+    object-position: center center;
     opacity: 0.40;
+}
+
+.page {
+    width: 100%;
+    min-height: 96vh;
+    padding: 2mm 1mm;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    color: #000000;
+    z-index: 2;
+}
+.page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+}
+
+/* Se oculta la marca de agua interna de .page para evitar duplicación con la marca fija global por hoja */
+.page-watermark {
+    display: none;
 }
 
 .page-content {
@@ -138,7 +156,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    flex: 1;
+    background: transparent;
 }
 
 /* Header Institucional */
@@ -341,7 +360,8 @@ html_parts = [
     "<title>Energy CPY — Catálogo Oficial de Resúmenes Ejecutivos Imprimibles 2026</title>",
     f"<style>{css}</style>",
     "</head>",
-    "<body>"
+    "<body>",
+    f"<div class='global-page-watermark' aria-hidden='true'><img src='{LOGO_B64}' alt='Marca de Agua Oficial Energy CPY 4v' /></div>"
 ]
 
 # 1. PORTADA EJECUTIVA IMPRIMIBLE (FONDO BLANCO, FUENTES NEGRAS #000000, MARCA DE AGUA 60%)
